@@ -15,7 +15,7 @@
 #pragma config FOSC = XT        // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
 #pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
-#pragma config MCLRE = ON       // RE3/MCLR pin function select bit (RE3/MCLR pin function is MCLR)
+#pragma config MCLRE = OFF       // RE3/MCLR pin function select bit (RE3/MCLR pin function is MCLR)
 #pragma config CP = OFF         // Code Protection bit (Program memory code protection is disabled)
 #pragma config CPD = OFF        // Data Code Protection bit (Data memory code protection is disabled)
 #pragma config BOREN = OFF      // Brown Out Reset Selection bits (BOR disabled)
@@ -27,6 +27,11 @@
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
 
+
+#define _XTAL_FREQ  8000000
+#define LED_ROJO PORTEbits.RE0
+#define LED_AMARILLO PORTEbits.RE1
+#define LED_VERDE PORTEbits.RE2
 //******************************************************************************
 // Palabra de configuración
 //******************************************************************************
@@ -43,18 +48,44 @@
 // Ciclo principal
 //******************************************************************************
 void main(void) {
-    return;
-}
+    
+
+
     //**************************************************************************
     // Loop principal
     //**************************************************************************
-
+    
+    while (1) {
+    
+        if (PORTAbits.RA0 == 0){
+            __delay_ms(50);
+            if (PORTAbits.RA0 == 1) { 
+            semaforo();
+            }
+        }
+    }
+}
 //******************************************************************************
 // Configuración
 //******************************************************************************
 
+
+
+
 //******************************************************************************
 // Funciones
 //******************************************************************************
-
-
+void semaforo(void) {
+    PORTC = 0;
+    PORTD = 0;
+    LED_ROJO = 1;
+    __delay_ms(500);
+    LED_ROJO = 0;
+    LED_AMARILLO = 1;
+    __delay_ms(500);
+    LED_AMARILLO = 0;
+    LED_VERDE = 1;
+    __delay_ms(500);
+    LED_VERDE = 0;
+    
+}
