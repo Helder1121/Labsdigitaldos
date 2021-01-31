@@ -2495,7 +2495,7 @@ extern __bank0 __bit __timeout;
 #pragma config FOSC = XT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
-#pragma config MCLRE = ON
+#pragma config MCLRE = OFF
 #pragma config CP = OFF
 #pragma config CPD = OFF
 #pragma config BOREN = OFF
@@ -2507,6 +2507,103 @@ extern __bank0 __bit __timeout;
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
 # 45 "lab1.c"
+unsigned char check = 0;
+unsigned int J1 = 0;
+unsigned int J2 = 0;
+
+
+
+
+void semaforo(void);
+void setup(void);
+
+
+
 void main(void) {
-    return;
+
+
+
+
+
+
+    setup();
+    while (1) {
+
+        if (PORTAbits.RA0 == 0){
+            _delay((unsigned long)((50)*(8000000/4000.0)));
+            if (PORTAbits.RA0 == 1) {
+            semaforo();
+            }
+        }
+    }
+}
+
+
+
+void setup(void){
+    TRISE = 0;
+    PORTE = 0;
+    ANSEL = 0;
+    ANSELH = 0;
+    TRISA = 0b00000111;
+    PORTA = 0;
+    TRISC = 0;
+    PORTC = 0;
+    TRISD = 0;
+    PORTD = 0;
+}
+
+
+
+
+void semaforo(void) {
+
+
+    PORTEbits.RE0 = 1;
+    _delay((unsigned long)((500)*(8000000/4000.0)));
+    PORTEbits.RE0 = 0;
+    PORTEbits.RE1 = 1;
+    _delay((unsigned long)((500)*(8000000/4000.0)));
+    PORTEbits.RE1 = 0;
+    PORTEbits.RE2 = 1;
+    _delay((unsigned long)((500)*(8000000/4000.0)));
+    PORTEbits.RE2 = 0;
+
+}
+
+void avance(void) {
+    while (check == 1){
+        if (PORTAbits.RA1 == 0){
+            _delay((unsigned long)((50)*(8000000/4000.0)));
+            if(PORTAbits.RA1 == 1) {
+                if (PORTC == 0){
+                    J1 = 0b00000001;
+                    PORTC = J1;
+            }
+            if (PORTC != 0){
+                J1 = J1*2;
+                PORTC = J1;
+            }
+            if (PORTCbits.RC7 == 1){
+                check = 0;
+            }
+        }
+    }
+        if (PORTAbits.RA2 == 0){
+            _delay((unsigned long)((50)*(8000000/4000.0)));
+            if(PORTAbits.RA2 == 1) {
+                if (PORTD == 0){
+                    J2 = 0b00000001;
+                    PORTD = J2;
+            }
+            if (PORTD != 0){
+                J2 = J2*2;
+                PORTD = J2;
+            }
+            if (PORTDbits.RD7 == 1){
+                check = 0;
+            }
+            }
+        }
+    }
 }
