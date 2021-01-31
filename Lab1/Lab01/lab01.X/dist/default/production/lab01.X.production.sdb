@@ -11,12 +11,14 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"57 D:\Cursos\Digitaldos\Labsdigitaldos\Lab1\Lab01\lab01.X\lab1.c
+"58 D:\Cursos\Digitaldos\Labsdigitaldos\Lab1\Lab01\lab01.X\lab1.c
 [v _main main `(v  1 e 1 0 ]
-"78
+"80
 [v _setup setup `(v  1 e 1 0 ]
-"94
+"98
 [v _semaforo semaforo `(v  1 e 1 0 ]
+"114
+[v _avance avance `(v  1 e 1 0 ]
 "166 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 [s S26 . 1 `uc 1 RA0 1 0 :1:0 
@@ -31,9 +33,23 @@
 "183
 [u S35 . 1 `S26 1 . 1 0 ]
 [v _PORTAbits PORTAbits `VES35  1 e 1 @5 ]
+"228
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+[s S107 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"245
+[u S116 . 1 `S107 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES116  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
-[s S80 . 1 `uc 1 RC0 1 0 :1:0 
+[s S86 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -43,11 +59,11 @@
 `uc 1 RC7 1 0 :1:7 
 ]
 "307
-[u S89 . 1 `S80 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES89  1 e 1 @7 ]
+[u S95 . 1 `S86 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES95  1 e 1 @7 ]
 "352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
-[s S101 . 1 `uc 1 RD0 1 0 :1:0 
+[s S128 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -57,20 +73,22 @@
 `uc 1 RD7 1 0 :1:7 
 ]
 "369
-[u S110 . 1 `S101 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES110  1 e 1 @8 ]
+[u S137 . 1 `S128 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES137  1 e 1 @8 ]
 "414
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
-[s S67 . 1 `uc 1 RE0 1 0 :1:0 
+[s S73 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 `uc 1 RE3 1 0 :1:3 
 ]
 "427
-[u S72 . 1 `S67 1 . 1 0 ]
-[v _PORTEbits PORTEbits `VES72  1 e 1 @9 ]
+[u S78 . 1 `S73 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES78  1 e 1 @9 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"1478
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1540
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
 "1602
@@ -84,21 +102,26 @@
 "45 D:\Cursos\Digitaldos\Labsdigitaldos\Lab1\Lab01\lab01.X\lab1.c
 [v _check check `uc  1 e 1 0 ]
 "46
-[v _J1 J1 `ui  1 e 2 0 ]
+[v _J1 J1 `uc  1 e 1 0 ]
 "47
-[v _J2 J2 `ui  1 e 2 0 ]
-"57
+[v _J2 J2 `uc  1 e 1 0 ]
+"58
 [v _main main `(v  1 e 1 0 ]
 {
-"74
+"76
 } 0
-"78
+"80
 [v _setup setup `(v  1 e 1 0 ]
 {
-"89
+"93
 } 0
-"94
+"98
 [v _semaforo semaforo `(v  1 e 1 0 ]
 {
-"107
+"112
+} 0
+"114
+[v _avance avance `(v  1 e 1 0 ]
+{
+"151
 } 0

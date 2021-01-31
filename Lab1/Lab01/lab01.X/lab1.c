@@ -43,14 +43,15 @@
 #define LED_VERDE PORTEbits.RE2
 
 unsigned char check = 0;
-unsigned int J1 = 0;
-unsigned int J2 = 0;
+unsigned char J1 = 0;
+unsigned char J2 = 0;
 
 //******************************************************************************
 // Prototipos de funciones
 //******************************************************************************
 void semaforo(void);
 void setup(void);
+void avance(void);
 //******************************************************************************
 // Ciclo principal
 //******************************************************************************
@@ -68,6 +69,7 @@ void main(void) {
             __delay_ms(50);
             if (PORTAbits.RA0 == 1) { 
             semaforo();
+            avance();
             }
         }
     }
@@ -86,14 +88,17 @@ void setup(void){
     PORTC = 0;
     TRISD = 0;
     PORTD = 0;
+    TRISB = 0;
+    PORTB = 0;
 }
 
 //******************************************************************************
 // Funciones
 //******************************************************************************
 void semaforo(void) {
-    //PORTC = 0;
-    //PORTD = 0;
+    PORTC = 0;
+    PORTD = 0;
+    PORTB = 0;
     LED_ROJO = 1;
     __delay_ms(500);
     LED_ROJO = 0;
@@ -103,7 +108,7 @@ void semaforo(void) {
     LED_VERDE = 1;
     __delay_ms(500);
     LED_VERDE = 0; 
-    //check = 1;
+    check = 1;
 }
 
 void avance(void) {
@@ -115,12 +120,13 @@ void avance(void) {
                     J1 = 0b00000001;
                     PORTC = J1;
             }
-            if (PORTC != 0){
+                else if (PORTC != 0){
                 J1 = J1*2;
                 PORTC = J1;
             }
             if (PORTCbits.RC7 == 1){
                 check = 0;
+                PORTBbits.RB0 = 1;
             }
         }
     }
@@ -131,12 +137,13 @@ void avance(void) {
                     J2 = 0b00000001;
                     PORTD = J2;
             }
-            if (PORTD != 0){
+                else if (PORTD != 0){
                 J2 = J2*2;
                 PORTD = J2;
             }
             if (PORTDbits.RD7 == 1){
                 check = 0;
+                PORTBbits.RB1 = 1;
             }
             }
         }

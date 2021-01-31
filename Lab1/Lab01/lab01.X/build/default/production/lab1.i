@@ -2508,14 +2508,15 @@ extern __bank0 __bit __timeout;
 #pragma config WRT = OFF
 # 45 "lab1.c"
 unsigned char check = 0;
-unsigned int J1 = 0;
-unsigned int J2 = 0;
+unsigned char J1 = 0;
+unsigned char J2 = 0;
 
 
 
 
 void semaforo(void);
 void setup(void);
+void avance(void);
 
 
 
@@ -2533,6 +2534,7 @@ void main(void) {
             _delay((unsigned long)((50)*(8000000/4000.0)));
             if (PORTAbits.RA0 == 1) {
             semaforo();
+            avance();
             }
         }
     }
@@ -2551,14 +2553,17 @@ void setup(void){
     PORTC = 0;
     TRISD = 0;
     PORTD = 0;
+    TRISB = 0;
+    PORTB = 0;
 }
 
 
 
 
 void semaforo(void) {
-
-
+    PORTC = 0;
+    PORTD = 0;
+    PORTB = 0;
     PORTEbits.RE0 = 1;
     _delay((unsigned long)((500)*(8000000/4000.0)));
     PORTEbits.RE0 = 0;
@@ -2568,7 +2573,7 @@ void semaforo(void) {
     PORTEbits.RE2 = 1;
     _delay((unsigned long)((500)*(8000000/4000.0)));
     PORTEbits.RE2 = 0;
-
+    check = 1;
 }
 
 void avance(void) {
@@ -2580,12 +2585,13 @@ void avance(void) {
                     J1 = 0b00000001;
                     PORTC = J1;
             }
-            if (PORTC != 0){
+                else if (PORTC != 0){
                 J1 = J1*2;
                 PORTC = J1;
             }
             if (PORTCbits.RC7 == 1){
                 check = 0;
+                PORTBbits.RB0 = 1;
             }
         }
     }
@@ -2596,12 +2602,13 @@ void avance(void) {
                     J2 = 0b00000001;
                     PORTD = J2;
             }
-            if (PORTD != 0){
+                else if (PORTD != 0){
                 J2 = J2*2;
                 PORTD = J2;
             }
             if (PORTDbits.RD7 == 1){
                 check = 0;
+                PORTBbits.RB1 = 1;
             }
             }
         }
