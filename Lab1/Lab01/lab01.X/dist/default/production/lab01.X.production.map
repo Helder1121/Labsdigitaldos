@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.31\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\lab01.X.production.sym \
   --cmf=dist/default/production\lab01.X.production.cmf -z -Q16F887 \
-  -oC:\Users\betov\AppData\Local\Temp\sgog.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\betov\AppData\Local\Temp\sd2s.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/lab01.X.production.map -E1 -ver=XC8 Compiler \
   --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK -ACODE=00h-07FFhx4 \
   -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 \
@@ -18,7 +18,7 @@ Linker command line:
   -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 \
   -preset_vec=00h,intentry,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=ENTRY -k C:\Users\betov\AppData\Local\Temp\sgog.o \
+  -pfunctab=ENTRY -k C:\Users\betov\AppData\Local\Temp\sd2s.o \
   dist/default/production\lab01.X.production.o 
 
 Object code version is 3.11
@@ -28,7 +28,7 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\betov\AppData\Local\Temp\sgog.o
+C:\Users\betov\AppData\Local\Temp\sd2s.o
                 end_init                              0        0        3        0       0
                 config                             2007     2007        2        0       4
 dist/default/production\lab01.X.production.o
@@ -232,7 +232,7 @@ ___sp                    stack        0000
 ___stackhi               (abs)        0000
 ___stacklo               (abs)        0000
 __end_of__initialization cinit        07FC
-__end_of_avance          text3        07F9
+__end_of_contador        text3        07F9
 __end_of_main            maintext     0755
 __end_of_semaforo        text2        0790
 __end_of_setup           text1        072D
@@ -243,12 +243,12 @@ __pmaintext              maintext     072D
 __ptext1                 text1        0709
 __ptext2                 text2        0755
 __ptext3                 text3        0790
-__size_of_avance         (abs)        0000
+__size_of_contador       (abs)        0000
 __size_of_main           (abs)        0000
 __size_of_semaforo       (abs)        0000
 __size_of_setup          (abs)        0000
-_avance                  text3        0790
-_check                   bssCOMMON    0077
+_contador                text3        0790
+_ganador                 bssCOMMON    0077
 _main                    maintext     072D
 _semaforo                text2        0755
 _setup                   text1        0709
@@ -291,7 +291,7 @@ FUNCTION INFORMATION:
 Total ram usage:        2 bytes
  Hardware stack levels required when called:    1
  This function calls:
-		_avance
+		_contador
 		_semaforo
 		_setup
  This function is called by:
@@ -301,7 +301,7 @@ Total ram usage:        2 bytes
 
  *************** function _setup *****************
  Defined at:
-		line 80 in file "lab1.c"
+		line 81 in file "lab1.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -330,7 +330,7 @@ Total ram usage:        0 bytes
 
  *************** function _semaforo *****************
  Defined at:
-		line 98 in file "lab1.c"
+		line 103 in file "lab1.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -357,9 +357,9 @@ Total ram usage:        3 bytes
  This function uses a non-reentrant model
 
 
- *************** function _avance *****************
+ *************** function _contador *****************
  Defined at:
-		line 114 in file "lab1.c"
+		line 123 in file "lab1.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -396,9 +396,9 @@ shared
 shared estimated size: 3
 
 lab1.c
-		_avance        		CODE           	0790	0000	105
 		_main          		CODE           	072D	0000	40
 		_semaforo      		CODE           	0755	0000	59
+		_contador      		CODE           	0790	0000	105
 		_setup         		CODE           	0709	0000	36
 
 lab1.c estimated size: 240

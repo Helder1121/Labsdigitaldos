@@ -13,12 +13,12 @@
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "58 D:\Cursos\Digitaldos\Labsdigitaldos\Lab1\Lab01\lab01.X\lab1.c
 [v _main main `(v  1 e 1 0 ]
-"80
+"81
 [v _setup setup `(v  1 e 1 0 ]
-"98
+"103
 [v _semaforo semaforo `(v  1 e 1 0 ]
-"114
-[v _avance avance `(v  1 e 1 0 ]
+"123
+[v _contador contador `(v  1 e 1 0 ]
 "166 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 [s S26 . 1 `uc 1 RA0 1 0 :1:0 
@@ -99,29 +99,29 @@
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
 [v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
-"45 D:\Cursos\Digitaldos\Labsdigitaldos\Lab1\Lab01\lab01.X\lab1.c
-[v _check check `uc  1 e 1 0 ]
-"46
+"42 D:\Cursos\Digitaldos\Labsdigitaldos\Lab1\Lab01\lab01.X\lab1.c
+[v _ganador ganador `uc  1 e 1 0 ]
+"43
 [v _J1 J1 `uc  1 e 1 0 ]
-"47
+"44
 [v _J2 J2 `uc  1 e 1 0 ]
 "58
 [v _main main `(v  1 e 1 0 ]
 {
-"76
+"77
 } 0
-"80
+"81
 [v _setup setup `(v  1 e 1 0 ]
 {
-"93
+"97
 } 0
-"98
+"103
 [v _semaforo semaforo `(v  1 e 1 0 ]
 {
-"112
+"119
 } 0
-"114
-[v _avance avance `(v  1 e 1 0 ]
+"123
+[v _contador contador `(v  1 e 1 0 ]
 {
-"151
+"171
 } 0
