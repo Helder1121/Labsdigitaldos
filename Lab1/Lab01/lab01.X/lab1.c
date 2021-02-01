@@ -118,8 +118,8 @@ void semaforo(void) {
 //declaro las variables del semaforo con sus delays para el incio de la carrera 
 }
 
-//Void contador para corrimiento de los leds, que se reincien e indiquen al puerto 
-//B el ganador
+//Void contador para corrimiento de los leds, que se reincien e indiquen al 
+//puerto B el ganador
 void contador(void) {
     while (ganador == 1){
         //La variable de ganador hara entrar al ciclo while
