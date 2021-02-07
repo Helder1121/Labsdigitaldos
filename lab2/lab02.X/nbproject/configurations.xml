@@ -13,6 +13,9 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>lab2.c</itemPath>
+      <itemPath>Libadc.c</itemPath>
+      <itemPath>libmulti.c</itemPath>
+      <itemPath>libport.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
