@@ -12,6 +12,7 @@
 #include <stdint.h>
 #include "ADC.h"
 #include "Multiplexado.h"
+#define _XTAL_FREQ  4000000 //Delay
 //******************************************************************************
 // Palabra de configuración
 //******************************************************************************
@@ -34,39 +35,94 @@
 //******************************************************************************
 // Variables
 //******************************************************************************
-#define _XTAL_FREQ  4000000 //Delay
+int Contador = 0;
+int conta = 0;
+int banders = 0;
+unsigned int valor_adc;
+unsigned int val_high;
+unsigned int val_low;
 
 //******************************************************************************
 // Prototipos de funciones
 //******************************************************************************
-
+void Config_P(void);
+void Config_Int(void);
+void Banderas(void);
+void Sep_Nb(void);
+void Display(void);
 //******************************************************************************
 // Ciclo principal
 //******************************************************************************
 void main(void) {
+    Config_P();
+    Config_Int();
+    ADC_INIT();
+    ADC_INTERRUPCION();
     //**************************************************************************
     // Loop principal
     //**************************************************************************
     while (1) {
-        if (PORTAbits.RA0 == 0){ 
-            __delay_ms(50);
-            if (PORTAbits.RA0 == 1) { 
-                
-            }
+        if (conta >= 1){ 
+            conta = 0;
+            Banderas();
         }
-        if (PORTAbits.RA1 == 0){ 
-            __delay_ms(50);
-            if (PORTAbits.RA1 == 1) { 
-                
-            }
+        Sep_Nb();
+        if (valor_adc > Contador){
+            PORTEbits.RE0 = 0;
+        
+        } else if (valor_adc < Contador){
+            PORTEbits.RE0 = 0;
         }
     }
-}    
+    return;
+}
+        
 //******************************************************************************
 // Configuración
 //******************************************************************************
-
+void Config_P(void){
+    TRISD = 0;
+    TRISB = 0b00000111;
+    TRISA = 0;
+    TRISE = 0;
+    ANSEL = 0;
+    ANSELH = 0b00000000;
+    PORTA = 0;
+    PORTB = 0;
+    PORTC = 0;
+    PORTD = 0;
+    PORTE = 0;
+}
 //******************************************************************************
 // Funciones
 //******************************************************************************
+void Config_Int(void){
+    TMR0 = 4;
+    OPTION_REG = 0b10000001;
+    INTCON = 0b10101001;
+    IOCB = 0b00000011;
+}
 
+void Display(void){
+    PORTE = 0;
+    if (banders == 0){
+        Multiplexado(val_low);
+        PORTEbits.RE1 = 1;
+    } else if (banders == 1){
+        Multiplexado(val_high);
+        PORTEbits.RE2 = 1;
+    }
+}
+
+void Banderas(void){
+    if (banders == 1){
+        banders = 0;
+    } else if (banders == 0){
+        banders = 1;
+    }
+}
+
+void Sep_Nb(void){
+    val_high = (0b11110000 & valor_adc);
+    val_low = (0b00001111 & valor_adc);
+}
