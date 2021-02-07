@@ -120,14 +120,14 @@ void main(void) {
         }
         //Función de la alarma 
         Sep_Nb();//Separacion de los nibbles 
-        if (valor_adc > Contador) { //Se prendera el led cuando se mayor 
+        if (ADRESH >= PORTD) { //Se prendera el led cuando se mayor 
             PORTEbits.RE0 = 1;
         
-        } else if (valor_adc < Contador) { // de lo contrario estara apagado 
+        } else { // de lo contrario estara apagado 
             PORTEbits.RE0 = 0;
         }
     }
-    return;
+    //return;
 }
         
 //******************************************************************************

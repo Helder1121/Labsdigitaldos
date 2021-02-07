@@ -133,7 +133,7 @@ void Multiplexado(uint8_t num){
             PORTC = 0x47;
             break;
         default:
-            PORTC = 0x3F;
+            PORTC = 0xFF;
             break;
     }
 }

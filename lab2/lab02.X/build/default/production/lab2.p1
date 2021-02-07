@@ -758,8 +758,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./Multiplexado.h: 135:         default:
 [e :U 178 ]
 "136
-[; ;./Multiplexado.h: 136:             PORTC = 0x3F;
-[e = _PORTC -> -> 63 `i `uc ]
+[; ;./Multiplexado.h: 136:             PORTC = 0xFF;
+[e = _PORTC -> -> 255 `i `uc ]
 "137
 [; ;./Multiplexado.h: 137:             break;
 [e $U 145  ]
@@ -953,7 +953,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;lab2.c: 86: 
 [e ( _ADC_READ (1 -> -> 8 `i `us ]
 "88
-[; ;lab2.c: 88:         if (valor_adc > Contador) {
+[; ;lab2.c: 88:         if (ADRESH >= PORTD) {
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "89
 [; ;lab2.c: 89:             PORTEbits.RE0 = 1;
@@ -970,7 +970,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;lab2.c: 94:     }
 [e ( _Display ..  ]
 "95
-[; ;lab2.c: 95:     return;
+[; ;lab2.c: 95: 
 }
 [e :U 186 ]
 "90
@@ -1044,7 +1044,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _Sep_Nb ..  ]
 "123
 [; ;lab2.c: 123:     INTCON = 0b10101001;
-[e $ ! > _valor_adc -> _Contador `ui 195  ]
+[e $ ! >= -> _ADRESH `i -> _PORTD `i 195  ]
 {
 "124
 [; ;lab2.c: 124:     IOCB = 0b00000011;
@@ -1054,7 +1054,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 196  ]
 [e :U 195 ]
-[e $ ! < _valor_adc -> _Contador `ui 197  ]
 {
 "127
 [; ;lab2.c: 127: void Display(void){
@@ -1062,7 +1061,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "128
 [; ;lab2.c: 128:     PORTE = 0;
 }
-[e :U 197 ]
 [e :U 196 ]
 "129
 [; ;lab2.c: 129:     if (banders == 0){
@@ -1070,9 +1068,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 191 ]
 [e $U 192  ]
 [e :U 193 ]
-"130
-[; ;lab2.c: 130:         Multiplexado(val_low);
-[e $UE 190  ]
 "131
 [; ;lab2.c: 131:         PORTEbits.RE1 = 1;
 [e :UE 190 ]
@@ -1118,7 +1113,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _PORTE -> -> 0 `i `uc ]
 "151
 [; ;lab2.c: 151: 
-[e :UE 198 ]
+[e :UE 197 ]
 }
 "155
 [v _Config_Int `(v ~T0 @X0 1 ef ]
@@ -1134,7 +1129,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "159
 [e = _IOCB -> -> 3 `i `uc ]
 "160
-[e :UE 199 ]
+[e :UE 198 ]
 }
 "162
 [v _Display `(v ~T0 @X0 1 ef ]
@@ -1144,7 +1139,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "163
 [e = _PORTE -> -> 0 `i `uc ]
 "164
-[e $ ! == _banders -> 0 `i 201  ]
+[e $ ! == _banders -> 0 `i 200  ]
 {
 "165
 [e ( _Multiplexado (1 -> _val_low `uc ]
@@ -1152,9 +1147,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
 "167
 }
-[e $U 202  ]
-[e :U 201 ]
-[e $ ! == _banders -> 1 `i 203  ]
+[e $U 201  ]
+[e :U 200 ]
+[e $ ! == _banders -> 1 `i 202  ]
 {
 "168
 [e ( _Multiplexado (1 -> _val_high `uc ]
@@ -1162,10 +1157,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _PORTEbits 0 2 -> -> 1 `i `uc ]
 "171
 }
-[e :U 203 ]
 [e :U 202 ]
+[e :U 201 ]
 "172
-[e :UE 200 ]
+[e :UE 199 ]
 }
 "174
 [v _Banderas `(v ~T0 @X0 1 ef ]
@@ -1173,24 +1168,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _Banderas ]
 [f ]
 "175
-[e $ ! == _banders -> 1 `i 205  ]
+[e $ ! == _banders -> 1 `i 204  ]
 {
 "176
 [e = _banders -> 0 `i ]
 "177
 }
-[e $U 206  ]
-[e :U 205 ]
-[e $ ! == _banders -> 0 `i 207  ]
+[e $U 205  ]
+[e :U 204 ]
+[e $ ! == _banders -> 0 `i 206  ]
 {
 "178
 [e = _banders -> 1 `i ]
 "179
 }
-[e :U 207 ]
 [e :U 206 ]
+[e :U 205 ]
 "181
-[e :UE 204 ]
+[e :UE 203 ]
 }
 "183
 [v _Sep_Nb `(v ~T0 @X0 1 ef ]
@@ -1202,5 +1197,5 @@ Version 4.0 HI-TECH Software Intermediate Code
 "185
 [e = _val_high << & -> -> 15 `i `ui _valor_adc -> 4 `i ]
 "188
-[e :UE 208 ]
+[e :UE 207 ]
 }

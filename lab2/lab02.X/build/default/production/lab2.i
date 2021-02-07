@@ -2756,7 +2756,7 @@ void Multiplexado(uint8_t num){
             PORTC = 0x47;
             break;
         default:
-            PORTC = 0x3F;
+            PORTC = 0xFF;
             break;
     }
 }
@@ -2870,14 +2870,14 @@ void main(void) {
         }
 
         Sep_Nb();
-        if (valor_adc > Contador) {
+        if (ADRESH >= PORTD) {
             PORTEbits.RE0 = 1;
 
-        } else if (valor_adc < Contador) {
+        } else {
             PORTEbits.RE0 = 0;
         }
     }
-    return;
+
 }
 
 
