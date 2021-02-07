@@ -19,19 +19,19 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"57 D:\Cursos\Digitaldos\Labsdigitaldos\lab2\lab02.X\lab2.c
+"59 D:\Cursos\Digitaldos\Labsdigitaldos\lab2\lab02.X\lab2.c
 [v _isr isr `II(v  1 e 1 0 ]
-"99
+"107
 [v _main main `(v  1 e 1 0 ]
-"126
+"136
 [v _Config_P Config_P `(v  1 e 1 0 ]
-"142
+"155
 [v _Config_Int Config_Int `(v  1 e 1 0 ]
-"149
+"162
 [v _Display Display `(v  1 e 1 0 ]
-"160
+"174
 [v _Banderas Banderas `(v  1 e 1 0 ]
-"168
+"183
 [v _Sep_Nb Sep_Nb `(v  1 e 1 0 ]
 "59 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
@@ -161,36 +161,36 @@
 [v _conta conta `i  1 e 2 0 ]
 "40
 [v _banders banders `i  1 e 2 0 ]
-"41
-[v _valor_adc valor_adc `ui  1 e 2 0 ]
 "42
+[v _valor_adc valor_adc `ui  1 e 2 0 ]
+"44
 [v _val_high val_high `ui  1 e 2 0 ]
-"43
+"45
 [v _val_low val_low `ui  1 e 2 0 ]
-"99
+"107
 [v _main main `(v  1 e 1 0 ]
 {
-"121
+"131
 } 0
-"168
+"183
 [v _Sep_Nb Sep_Nb `(v  1 e 1 0 ]
 {
-"171
+"188
 } 0
-"126
+"136
 [v _Config_P Config_P `(v  1 e 1 0 ]
 {
-"138
+"151
 } 0
-"142
+"155
 [v _Config_Int Config_Int `(v  1 e 1 0 ]
 {
-"147
-} 0
 "160
+} 0
+"174
 [v _Banderas Banderas `(v  1 e 1 0 ]
 {
-"166
+"181
 } 0
 "53 D:\Cursos\Digitaldos\Labsdigitaldos\lab2\lab02.X/ADC.h
 [v _ADC_INTERRUPCION ADC_INTERRUPCION `(v  1 e 1 0 ]
@@ -202,15 +202,15 @@
 {
 "43
 } 0
-"57 D:\Cursos\Digitaldos\Labsdigitaldos\lab2\lab02.X\lab2.c
+"59 D:\Cursos\Digitaldos\Labsdigitaldos\lab2\lab02.X\lab2.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"95
+"103
 } 0
-"149
+"162
 [v _Display Display `(v  1 e 1 0 ]
 {
-"158
+"172
 } 0
 "37 D:\Cursos\Digitaldos\Labsdigitaldos\lab2\lab02.X/Multiplexado.h
 [v _Multiplexado Multiplexado `(v  1 e 1 0 ]

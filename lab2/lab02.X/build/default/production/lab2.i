@@ -2788,7 +2788,9 @@ void Multiplexado(uint8_t num){
 int Contador = 0;
 int conta = 0;
 int banders = 0;
+
 unsigned int valor_adc;
+
 unsigned int val_high;
 unsigned int val_low;
 
@@ -2805,11 +2807,14 @@ void Display(void);
 
 
 void __attribute__((picinterrupt(("")))) isr(void){
+
     if (INTCONbits.RBIF){
         INTCONbits.RBIF = 0;
         if (PORTBbits.RB0 == 1){
+
             _delay((unsigned long)((200)*(4000000/4000.0)));
         }
+
         if (PORTBbits.RB0 == 0){
             Contador++;
             PORTD = Contador;
@@ -2829,9 +2834,12 @@ void __attribute__((picinterrupt(("")))) isr(void){
         PIR1bits.ADIF = 0;
 
         ADC_READ(8);
-        _delay((unsigned long)((1)*(4000000/4000.0)));
+
+        _delay((unsigned long)((2)*(4000000/4000.0)));
         ADCON0bits.GO = 1;
         while (ADCON0bits.GO !=0){
+
+
             valor_adc = ADRESH;
             Display();
         }
@@ -2857,13 +2865,15 @@ void main(void) {
     while (1) {
         if (conta >= 1){
             conta = 0;
+
             Banderas();
         }
+
         Sep_Nb();
-        if (valor_adc > Contador){
+        if (valor_adc > Contador) {
             PORTEbits.RE0 = 1;
 
-        } else if (valor_adc < Contador){
+        } else if (valor_adc < Contador) {
             PORTEbits.RE0 = 0;
         }
     }
@@ -2878,13 +2888,16 @@ void Config_P(void){
     TRISB = 0b00000111;
     TRISA = 0;
     TRISE = 0;
+
     ANSEL = 0;
     ANSELH = 0b00000000;
+
     PORTA = 0;
     PORTB = 0;
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
+
 }
 
 
@@ -2903,7 +2916,8 @@ void Display(void){
         PORTEbits.RE1 = 1;
     } else if (banders == 1){
         Multiplexado(val_high);
-        PORTEbits.RE2 = 0;
+        PORTEbits.RE2 = 1;
+
     }
 }
 
@@ -2913,9 +2927,12 @@ void Banderas(void){
     } else if (banders == 0){
         banders = 1;
     }
+
 }
 
 void Sep_Nb(void){
-    val_low = (0b11110000 & valor_adc);
-    val_high = (0b00001111 & valor_adc);
+    val_low = (0b11110000 & valor_adc) >> 4;
+    val_high = (0b00001111 & valor_adc) << 4;
+
+
 }

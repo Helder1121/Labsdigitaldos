@@ -35,10 +35,12 @@
 //******************************************************************************
 // Variables
 //******************************************************************************
-int Contador = 0;
+int Contador = 0; //Incremento
 int conta = 0;
-int banders = 0;
+int banders = 0; 
+//valor asignando 
 unsigned int valor_adc;
+//Nibbles
 unsigned int val_high;
 unsigned int val_low;
 
@@ -55,13 +57,16 @@ void Display(void);
 // Interrupcion
 //******************************************************************************
 void __interrupt() isr(void){
+    //Interrupccion puerto B
     if (INTCONbits.RBIF){
         INTCONbits.RBIF = 0;
         if (PORTBbits.RB0 == 1){
+            //Utilice delay en vez de antirebote
             __delay_ms(200);
         }
+        //Delay para el puerto RB0
         if (PORTBbits.RB0 == 0){
-            Contador++;
+            Contador++; //Incrementa el contador
             PORTD = Contador;
             __delay_ms(200);
         }
@@ -69,7 +74,7 @@ void __interrupt() isr(void){
             __delay_ms(200);
     }
             if (PORTBbits.RB1 == 0){
-            Contador--;
+            Contador--; //Decrementa el contador 
             PORTD = Contador;
             __delay_ms(200);
             }
@@ -78,18 +83,21 @@ void __interrupt() isr(void){
     if (PIR1bits.ADIF) {
         PIR1bits.ADIF = 0;
         
-        ADC_READ(8);
-        __delay_ms(1);
+        ADC_READ(8); //Canal 8
+        //Comienzo de la conversion del ADC
+        __delay_ms(2);
         ADCON0bits.GO = 1;
         while (ADCON0bits.GO !=0){
+            //Mientras Go sea diferente de 0 se deplegara en Adresh 
+            //el valor del ADC
             valor_adc = ADRESH;
             Display();
         }
     }
-    
+    //Configuracion del TMR0
     if (TMR0IF){
         TMR0IF = 0;
-        TMR0 = 4;
+        TMR0 = 4; //0.5 MS
         conta++;
     }
 }
@@ -106,14 +114,16 @@ void main(void) {
     //**************************************************************************
     while (1) {
         if (conta >= 1){ 
-            conta = 0;
+            conta = 0; 
+            //Limpiara la var si en dado caso es >=1 
             Banderas();
         }
-        Sep_Nb();
-        if (valor_adc > Contador){
+        //Función de la alarma 
+        Sep_Nb();//Separacion de los nibbles 
+        if (valor_adc > Contador) { //Se prendera el led cuando se mayor 
             PORTEbits.RE0 = 1;
         
-        } else if (valor_adc < Contador){
+        } else if (valor_adc < Contador) { // de lo contrario estara apagado 
             PORTEbits.RE0 = 0;
         }
     }
@@ -128,32 +138,36 @@ void Config_P(void){
     TRISB = 0b00000111;
     TRISA = 0;
     TRISE = 0;
+    //Todos estanran como salida menos loas tres de RB0.RB1 Y RB2
     ANSEL = 0;
-    ANSELH = 0b00000000;
+    ANSELH = 0b00000000; 
+    //Unicamente el canal8 
     PORTA = 0;
     PORTB = 0;
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
+    //Steo los puertos
 }
 //******************************************************************************
 // Funciones
 //******************************************************************************
 void Config_Int(void){
     TMR0 = 4;
-    OPTION_REG = 0b10000001;
-    INTCON = 0b10101001;
+    OPTION_REG = 0b10000001;//TMR0 1:4
+    INTCON = 0b10101001; //Habilitos los GIE
     IOCB = 0b00000011;
 }
 
 void Display(void){
-    PORTE = 0;
+    PORTE = 0;//steo el puerto E
     if (banders == 0){
         Multiplexado(val_low);
         PORTEbits.RE1 = 1;
     } else if (banders == 1){
         Multiplexado(val_high);
-        PORTEbits.RE2 = 0;
+        PORTEbits.RE2 = 1;
+        //Se asignan el valor a cada uno de los puertoE
     }
 }
 
@@ -163,9 +177,12 @@ void Banderas(void){
     } else if (banders == 0){
         banders = 1;
     }
+    //Apagamos y encedemos las banderas para el multiplexado 
 }
 
 void Sep_Nb(void){
-    val_low = (0b11110000 & valor_adc);
-    val_high = (0b00001111 & valor_adc);
+    val_low = (0b11110000 & valor_adc) >> 4;
+    val_high = (0b00001111 & valor_adc) << 4;
+    //https://www.geeksforgeeks.org/swap-two-nibbles-byte/ utilice esta pagina 
+    //de ejemplo para realizar la separacion de nibbles
 }

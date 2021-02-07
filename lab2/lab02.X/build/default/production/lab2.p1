@@ -94,8 +94,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1238
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1238: extern volatile unsigned char ADRESH __attribute__((address(0x01E)));
 [v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
-"52 lab2.c
-[; ;lab2.c: 52:         }
+"54 lab2.c
+[; ;lab2.c: 54:         ADCON0bits.GO = 1;
 [v _Display `(v ~T0 @X0 0 ef ]
 "4361 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4361: extern volatile __bit TMR0IF __attribute__((address(0x5A)));
@@ -104,17 +104,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 59: extern volatile unsigned char TMR0 __attribute__((address(0x001)));
 [v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
 [p mainexit ]
-"48 lab2.c
-[; ;lab2.c: 48:         ADCON0bits.GO = 1;
+"50 lab2.c
+[; ;lab2.c: 50: 
 [v _Config_P `(v ~T0 @X0 0 ef ]
-"49
-[; ;lab2.c: 49:         while (ADCON0bits.GO !=0){
-[v _Config_Int `(v ~T0 @X0 0 ef ]
-"50
-[; ;lab2.c: 50:             valor_adc = ADRESH;
-[v _Banderas `(v ~T0 @X0 0 ef ]
 "51
-[; ;lab2.c: 51:             Display();
+[; ;lab2.c: 51:         ADC_READ(8);
+[v _Config_Int `(v ~T0 @X0 0 ef ]
+"52
+[; ;lab2.c: 52: 
+[v _Banderas `(v ~T0 @X0 0 ef ]
+"53
+[; ;lab2.c: 53:         _delay((unsigned long)((2)*(4000000/4000.0)));
 [v _Sep_Nb `(v ~T0 @X0 0 ef ]
 "420 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 420:     struct {
@@ -812,37 +812,37 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;lab2.c: 21: 
 [p x WDTE  =  OFF        ]
 "22
-[; ;lab2.c: 22: void __attribute__((picinterrupt(("")))) isr(void){
+[; ;lab2.c: 22: 
 [p x PWRTE  =  OFF       ]
 "23
-[; ;lab2.c: 23:     if (INTCONbits.RBIF){
+[; ;lab2.c: 23: 
 [p x MCLRE  =  OFF        ]
 "24
-[; ;lab2.c: 24:         INTCONbits.RBIF = 0;
+[; ;lab2.c: 24: void __attribute__((picinterrupt(("")))) isr(void){
 [p x CP  =  OFF          ]
 "25
-[; ;lab2.c: 25:         if (PORTBbits.RB0 == 1){
+[; ;lab2.c: 25: 
 [p x CPD  =  OFF         ]
 "26
-[; ;lab2.c: 26:             _delay((unsigned long)((200)*(4000000/4000.0)));
+[; ;lab2.c: 26:     if (INTCONbits.RBIF){
 [p x BOREN  =  OFF       ]
 "27
-[; ;lab2.c: 27:         }
+[; ;lab2.c: 27:         INTCONbits.RBIF = 0;
 [p x IESO  =  OFF        ]
 "28
-[; ;lab2.c: 28:         if (PORTBbits.RB0 == 0){
+[; ;lab2.c: 28:         if (PORTBbits.RB0 == 1){
 [p x FCMEN  =  OFF       ]
 "29
-[; ;lab2.c: 29:             Contador++;
+[; ;lab2.c: 29: 
 [p x LVP  =  OFF         ]
 "32
-[; ;lab2.c: 32:         }
+[; ;lab2.c: 32: 
 [p x BOR4V  =  BOR40V    ]
 "33
-[; ;lab2.c: 33:                 if (PORTBbits.RB1 == 1){
+[; ;lab2.c: 33:         if (PORTBbits.RB0 == 0){
 [p x WRT  =  OFF         ]
 "38
-[; ;lab2.c: 38:             PORTD = Contador;
+[; ;lab2.c: 38:                 if (PORTBbits.RB1 == 1){
 [v _Contador `i ~T0 @X0 1 e ]
 [i _Contador
 -> 0 `i
@@ -854,351 +854,353 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 "40
-[; ;lab2.c: 40:             }
+[; ;lab2.c: 40:     }
 [v _banders `i ~T0 @X0 1 e ]
 [i _banders
 -> 0 `i
 ]
-"41
-[; ;lab2.c: 41:     }
-[v _valor_adc `ui ~T0 @X0 1 e ]
 "42
-[; ;lab2.c: 42: 
+[; ;lab2.c: 42:             Contador--;
+[v _valor_adc `ui ~T0 @X0 1 e ]
+"44
+[; ;lab2.c: 44:             _delay((unsigned long)((200)*(4000000/4000.0)));
 [v _val_high `ui ~T0 @X0 1 e ]
-"43
-[; ;lab2.c: 43:     if (PIR1bits.ADIF) {
+"45
+[; ;lab2.c: 45:             }
 [v _val_low `ui ~T0 @X0 1 e ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"57
-[; ;lab2.c: 57:         TMR0 = 4;
+"59
+[; ;lab2.c: 59:             Display();
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
-"58
-[; ;lab2.c: 58:         conta++;
+"61
+[; ;lab2.c: 61:     }
 [e $ ! != -> . . _INTCONbits 0 0 `i -> 0 `i 180  ]
 {
-"59
-[; ;lab2.c: 59:     }
-[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
-"60
-[; ;lab2.c: 60: }
-[e $ ! == -> . . _PORTBbits 0 0 `i -> 1 `i 181  ]
-{
-"61
-[; ;lab2.c: 61: 
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "62
 [; ;lab2.c: 62: 
+[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
+"63
+[; ;lab2.c: 63:     if (TMR0IF){
+[e $ ! == -> . . _PORTBbits 0 0 `i -> 1 `i 181  ]
+{
+"65
+[; ;lab2.c: 65:         TMR0 = 4;
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"66
+[; ;lab2.c: 66:         conta++;
 }
 [e :U 181 ]
-"63
-[; ;lab2.c: 63: 
-[e $ ! == -> . . _PORTBbits 0 0 `i -> 0 `i 182  ]
-{
-"64
-[; ;lab2.c: 64: void main(void) {
-[e ++ _Contador -> 1 `i ]
-"65
-[; ;lab2.c: 65:     Config_P();
-[e = _PORTD -> _Contador `uc ]
-"66
-[; ;lab2.c: 66:     Config_Int();
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"67
-[; ;lab2.c: 67:     ADC_INIT();
-}
-[e :U 182 ]
 "68
-[; ;lab2.c: 68:     ADC_INTERRUPCION();
-[e $ ! == -> . . _PORTBbits 0 1 `i -> 1 `i 183  ]
+[; ;lab2.c: 68: }
+[e $ ! == -> . . _PORTBbits 0 0 `i -> 0 `i 182  ]
 {
 "69
 [; ;lab2.c: 69: 
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[e ++ _Contador -> 1 `i ]
 "70
 [; ;lab2.c: 70: 
-}
-[e :U 183 ]
+[e = _PORTD -> _Contador `uc ]
 "71
 [; ;lab2.c: 71: 
-[e $ ! == -> . . _PORTBbits 0 1 `i -> 0 `i 184  ]
-{
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "72
-[; ;lab2.c: 72:     while (1) {
-[e -- _Contador -> 1 `i ]
+[; ;lab2.c: 72: void main(void) {
+}
+[e :U 182 ]
 "73
-[; ;lab2.c: 73:         if (conta >= 1){
-[e = _PORTD -> _Contador `uc ]
+[; ;lab2.c: 73:     Config_P();
+[e $ ! == -> . . _PORTBbits 0 1 `i -> 1 `i 183  ]
+{
 "74
-[; ;lab2.c: 74:             conta = 0;
+[; ;lab2.c: 74:     Config_Int();
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "75
-[; ;lab2.c: 75:             Banderas();
+[; ;lab2.c: 75:     ADC_INIT();
+}
+[e :U 183 ]
+"76
+[; ;lab2.c: 76:     ADC_INTERRUPCION();
+[e $ ! == -> . . _PORTBbits 0 1 `i -> 0 `i 184  ]
+{
+"77
+[; ;lab2.c: 77: 
+[e -- _Contador -> 1 `i ]
+"78
+[; ;lab2.c: 78: 
+[e = _PORTD -> _Contador `uc ]
+"79
+[; ;lab2.c: 79: 
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"80
+[; ;lab2.c: 80:     while (1) {
 }
 [e :U 184 ]
-"76
-[; ;lab2.c: 76:         }
+"81
+[; ;lab2.c: 81:         if (conta >= 1){
 }
 [e :U 180 ]
-"78
-[; ;lab2.c: 78:         if (valor_adc > Contador){
+"83
+[; ;lab2.c: 83: 
 [e $ ! != -> . . _PIR1bits 0 6 `i -> 0 `i 185  ]
 {
-"79
-[; ;lab2.c: 79:             PORTEbits.RE0 = 1;
-[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
-"81
-[; ;lab2.c: 81:         } else if (valor_adc < Contador){
-[e ( _ADC_READ (1 -> -> 8 `i `us ]
-"82
-[; ;lab2.c: 82:             PORTEbits.RE0 = 0;
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"83
-[; ;lab2.c: 83:         }
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
 "84
-[; ;lab2.c: 84:     }
+[; ;lab2.c: 84:             Banderas();
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+"86
+[; ;lab2.c: 86: 
+[e ( _ADC_READ (1 -> -> 8 `i `us ]
+"88
+[; ;lab2.c: 88:         if (valor_adc > Contador) {
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"89
+[; ;lab2.c: 89:             PORTEbits.RE0 = 1;
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+"90
+[; ;lab2.c: 90: 
 [e $U 186  ]
 [e :U 187 ]
 {
-"85
-[; ;lab2.c: 85:     return;
+"93
+[; ;lab2.c: 93:         }
 [e = _valor_adc -> _ADRESH `ui ]
-"86
-[; ;lab2.c: 86: }
+"94
+[; ;lab2.c: 94:     }
 [e ( _Display ..  ]
-"87
-[; ;lab2.c: 87: 
+"95
+[; ;lab2.c: 95:     return;
 }
 [e :U 186 ]
-"84
-[; ;lab2.c: 84:     }
-[e $ != -> . . _ADCON0bits 1 1 `i -> 0 `i 187  ]
-[e :U 188 ]
-"88
-[; ;lab2.c: 88: 
-}
-[e :U 185 ]
 "90
 [; ;lab2.c: 90: 
+[e $ != -> . . _ADCON0bits 1 1 `i -> 0 `i 187  ]
+[e :U 188 ]
+"96
+[; ;lab2.c: 96: }
+}
+[e :U 185 ]
+"98
+[; ;lab2.c: 98: 
 [e $ ! _TMR0IF 189  ]
 {
-"91
-[; ;lab2.c: 91: void Config_P(void){
+"99
+[; ;lab2.c: 99: 
 [e = _TMR0IF -> -> 0 `i `b ]
-"92
-[; ;lab2.c: 92:     TRISD = 0;
+"100
+[; ;lab2.c: 100: 
 [e = _TMR0 -> -> 4 `i `uc ]
-"93
-[; ;lab2.c: 93:     TRISB = 0b00000111;
+"101
+[; ;lab2.c: 101: void Config_P(void){
 [e ++ _conta -> 1 `i ]
-"94
-[; ;lab2.c: 94:     TRISA = 0;
+"102
+[; ;lab2.c: 102:     TRISD = 0;
 }
 [e :U 189 ]
-"95
-[; ;lab2.c: 95:     TRISE = 0;
+"103
+[; ;lab2.c: 103:     TRISB = 0b00000111;
 [e :UE 179 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"99
-[; ;lab2.c: 99:     PORTB = 0;
+"107
+[; ;lab2.c: 107:     ANSEL = 0;
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"100
-[; ;lab2.c: 100:     PORTC = 0;
+"108
+[; ;lab2.c: 108:     ANSELH = 0b00000000;
 [e ( _Config_P ..  ]
-"101
-[; ;lab2.c: 101:     PORTD = 0;
+"109
+[; ;lab2.c: 109: 
 [e ( _Config_Int ..  ]
-"102
-[; ;lab2.c: 102:     PORTE = 0;
+"110
+[; ;lab2.c: 110:     PORTA = 0;
 [e ( _ADC_INIT ..  ]
-"103
-[; ;lab2.c: 103: }
+"111
+[; ;lab2.c: 111:     PORTB = 0;
 [e ( _ADC_INTERRUPCION ..  ]
-"107
-[; ;lab2.c: 107: void Config_Int(void){
+"115
+[; ;lab2.c: 115: 
 [e :U 192 ]
 {
-"108
-[; ;lab2.c: 108:     TMR0 = 4;
+"116
+[; ;lab2.c: 116: }
 [e $ ! >= _conta -> 1 `i 194  ]
 {
-"109
-[; ;lab2.c: 109:     OPTION_REG = 0b10000001;
+"117
+[; ;lab2.c: 117: 
 [e = _conta -> 0 `i ]
-"110
-[; ;lab2.c: 110:     INTCON = 0b10101001;
+"119
+[; ;lab2.c: 119: 
 [e ( _Banderas ..  ]
-"111
-[; ;lab2.c: 111:     IOCB = 0b00000011;
+"120
+[; ;lab2.c: 120: void Config_Int(void){
 }
 [e :U 194 ]
-"112
-[; ;lab2.c: 112: }
+"122
+[; ;lab2.c: 122:     OPTION_REG = 0b10000001;
 [e ( _Sep_Nb ..  ]
-"113
-[; ;lab2.c: 113: 
+"123
+[; ;lab2.c: 123:     INTCON = 0b10101001;
 [e $ ! > _valor_adc -> _Contador `ui 195  ]
 {
-"114
-[; ;lab2.c: 114: void Display(void){
+"124
+[; ;lab2.c: 124:     IOCB = 0b00000011;
 [e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
-"116
-[; ;lab2.c: 116:     if (banders == 0){
+"126
+[; ;lab2.c: 126: 
 }
 [e $U 196  ]
 [e :U 195 ]
 [e $ ! < _valor_adc -> _Contador `ui 197  ]
 {
-"117
-[; ;lab2.c: 117:         Multiplexado(val_low);
+"127
+[; ;lab2.c: 127: void Display(void){
 [e = . . _PORTEbits 0 0 -> -> 0 `i `uc ]
-"118
-[; ;lab2.c: 118:         PORTEbits.RE1 = 1;
+"128
+[; ;lab2.c: 128:     PORTE = 0;
 }
 [e :U 197 ]
 [e :U 196 ]
-"119
-[; ;lab2.c: 119:     } else if (banders == 1){
+"129
+[; ;lab2.c: 129:     if (banders == 0){
 }
 [e :U 191 ]
 [e $U 192  ]
 [e :U 193 ]
-"120
-[; ;lab2.c: 120:         Multiplexado(val_high);
+"130
+[; ;lab2.c: 130:         Multiplexado(val_low);
 [e $UE 190  ]
-"121
-[; ;lab2.c: 121:         PORTEbits.RE2 = 0;
+"131
+[; ;lab2.c: 131:         PORTEbits.RE1 = 1;
 [e :UE 190 ]
 }
-"126
-[; ;lab2.c: 126:     if (banders == 1){
+"136
+[; ;lab2.c: 136:     }
 [v _Config_P `(v ~T0 @X0 1 ef ]
 {
 [e :U _Config_P ]
 [f ]
-"127
-[; ;lab2.c: 127:         banders = 0;
-[e = _TRISD -> -> 0 `i `uc ]
-"128
-[; ;lab2.c: 128:     } else if (banders == 0){
-[e = _TRISB -> -> 7 `i `uc ]
-"129
-[; ;lab2.c: 129:         banders = 1;
-[e = _TRISA -> -> 0 `i `uc ]
-"130
-[; ;lab2.c: 130:     }
-[e = _TRISE -> -> 0 `i `uc ]
-"131
-[; ;lab2.c: 131: }
-[e = _ANSEL -> -> 0 `i `uc ]
-"132
-[; ;lab2.c: 132: 
-[e = _ANSELH -> -> 0 `i `uc ]
-"133
-[; ;lab2.c: 133: void Sep_Nb(void){
-[e = _PORTA -> -> 0 `i `uc ]
-"134
-[; ;lab2.c: 134:     val_low = (0b11110000 & valor_adc);
-[e = _PORTB -> -> 0 `i `uc ]
-"135
-[; ;lab2.c: 135:     val_high = (0b00001111 & valor_adc);
-[e = _PORTC -> -> 0 `i `uc ]
-"136
-[; ;lab2.c: 136: }
-[e = _PORTD -> -> 0 `i `uc ]
 "137
-[e = _PORTE -> -> 0 `i `uc ]
+[; ;lab2.c: 137: }
+[e = _TRISD -> -> 0 `i `uc ]
 "138
+[; ;lab2.c: 138: 
+[e = _TRISB -> -> 7 `i `uc ]
+"139
+[; ;lab2.c: 139: void Banderas(void){
+[e = _TRISA -> -> 0 `i `uc ]
+"140
+[; ;lab2.c: 140:     if (banders == 1){
+[e = _TRISE -> -> 0 `i `uc ]
+"142
+[; ;lab2.c: 142:     } else if (banders == 0){
+[e = _ANSEL -> -> 0 `i `uc ]
+"143
+[; ;lab2.c: 143:         banders = 1;
+[e = _ANSELH -> -> 0 `i `uc ]
+"145
+[; ;lab2.c: 145: 
+[e = _PORTA -> -> 0 `i `uc ]
+"146
+[; ;lab2.c: 146: }
+[e = _PORTB -> -> 0 `i `uc ]
+"147
+[; ;lab2.c: 147: 
+[e = _PORTC -> -> 0 `i `uc ]
+"148
+[; ;lab2.c: 148: void Sep_Nb(void){
+[e = _PORTD -> -> 0 `i `uc ]
+"149
+[; ;lab2.c: 149:     val_low = (0b11110000 & valor_adc) >> 4;
+[e = _PORTE -> -> 0 `i `uc ]
+"151
+[; ;lab2.c: 151: 
 [e :UE 198 ]
 }
-"142
+"155
 [v _Config_Int `(v ~T0 @X0 1 ef ]
 {
 [e :U _Config_Int ]
 [f ]
-"143
+"156
 [e = _TMR0 -> -> 4 `i `uc ]
-"144
+"157
 [e = _OPTION_REG -> -> 129 `i `uc ]
-"145
+"158
 [e = _INTCON -> -> 169 `i `uc ]
-"146
+"159
 [e = _IOCB -> -> 3 `i `uc ]
-"147
+"160
 [e :UE 199 ]
 }
-"149
+"162
 [v _Display `(v ~T0 @X0 1 ef ]
 {
 [e :U _Display ]
 [f ]
-"150
+"163
 [e = _PORTE -> -> 0 `i `uc ]
-"151
+"164
 [e $ ! == _banders -> 0 `i 201  ]
 {
-"152
+"165
 [e ( _Multiplexado (1 -> _val_low `uc ]
-"153
+"166
 [e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
-"154
+"167
 }
 [e $U 202  ]
 [e :U 201 ]
 [e $ ! == _banders -> 1 `i 203  ]
 {
-"155
+"168
 [e ( _Multiplexado (1 -> _val_high `uc ]
-"156
-[e = . . _PORTEbits 0 2 -> -> 0 `i `uc ]
-"157
+"169
+[e = . . _PORTEbits 0 2 -> -> 1 `i `uc ]
+"171
 }
 [e :U 203 ]
 [e :U 202 ]
-"158
+"172
 [e :UE 200 ]
 }
-"160
+"174
 [v _Banderas `(v ~T0 @X0 1 ef ]
 {
 [e :U _Banderas ]
 [f ]
-"161
+"175
 [e $ ! == _banders -> 1 `i 205  ]
 {
-"162
+"176
 [e = _banders -> 0 `i ]
-"163
+"177
 }
 [e $U 206  ]
 [e :U 205 ]
 [e $ ! == _banders -> 0 `i 207  ]
 {
-"164
+"178
 [e = _banders -> 1 `i ]
-"165
+"179
 }
 [e :U 207 ]
 [e :U 206 ]
-"166
+"181
 [e :UE 204 ]
 }
-"168
+"183
 [v _Sep_Nb `(v ~T0 @X0 1 ef ]
 {
 [e :U _Sep_Nb ]
 [f ]
-"169
-[e = _val_low & -> -> 240 `i `ui _valor_adc ]
-"170
-[e = _val_high & -> -> 15 `i `ui _valor_adc ]
-"171
+"184
+[e = _val_low >> & -> -> 240 `i `ui _valor_adc -> 4 `i ]
+"185
+[e = _val_high << & -> -> 15 `i `ui _valor_adc -> 4 `i ]
+"188
 [e :UE 208 ]
 }
