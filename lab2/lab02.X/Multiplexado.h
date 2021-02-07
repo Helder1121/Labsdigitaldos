@@ -38,99 +38,100 @@ void Multiplexado(uint8_t num){
     TRISC = 0;
     PORTC = 0;
     switch (num){
+        //Menos significativo
         case 0:
-            PORTC = 0x3F;
+            PORTC = 0x3F;//0
             break;
         case 1:
-            PORTC = 0x06;
+            PORTC = 0x06;//1
             break;
         case 2:
-            PORTC = 0x5B;
+            PORTC = 0x5B;//2
             break;
         case 3:
-            PORTC = 0x4F;
+            PORTC = 0x4F;//3
             break;
         case 4:
-            PORTC = 0x66;
+            PORTC = 0x66;//4
             break;
         case 5:
-            PORTC = 0x6D;
+            PORTC = 0x6D;//5
             break;
         case 6:
-            PORTC = 0x7D;
+            PORTC = 0x7D;//6
             break;
         case 7:
-            PORTC = 0x07;
+            PORTC = 0x07;//7
             break;
         case 8:
-            PORTC = 0x7F;
+            PORTC = 0x7F;//8
             break;
         case 9:
-            PORTC = 0x6F;
+            PORTC = 0x6F;//9
             break;
         case 10:
-            PORTC = 0x77;
+            PORTC = 0x77;//A
             break;
         case 11:
-            PORTC = 0x1F;
+            PORTC = 0x1F;//B
             break;
         case 12:
-            PORTC = 0x4E;
+            PORTC = 0x4E;//C
             break;
         case 13:
-            PORTC = 0x3D;
+            PORTC = 0x3D;//D
             break;
         case 14:
-            PORTC = 0x4F;
+            PORTC = 0x4F;//E
             break;
         case 15:
-            PORTC = 0x47;
+            PORTC = 0x47;//F
             break;
 //Siguiente display
         case 128:
-            PORTC = 0x06;
+            PORTC = 0x06;//1
             break;
         case 64:
-            PORTC = 0x5B;
+            PORTC = 0x5B;//2
             break;
         case 192:
-            PORTC = 0x4F;
+            PORTC = 0x4F;//3
             break;
         case 32:
-            PORTC = 0x66;
+            PORTC = 0x66;//4
             break;
         case 160:
-            PORTC = 0x6D;
+            PORTC = 0x6D;//5
             break;
         case 96:
-            PORTC = 0x7D;
+            PORTC = 0x7D;//6
             break;
         case 224:
-            PORTC = 0x07;
+            PORTC = 0x07;//7
             break;
         case 16:
-            PORTC = 0x7F;
+            PORTC = 0x7F;//8
             break;
         case 144:
-            PORTC = 0x6F;
+            PORTC = 0x6F;//9
             break;
         case 80:
-            PORTC = 0x77;
+            PORTC = 0x77;//A
             break;
         case 208:
-            PORTC = 0x1F;
+            PORTC = 0x1F;//B
             break;
         case 48:
-            PORTC = 0x4E;
+            PORTC = 0x4E;//C
             break;
         case 176:
-            PORTC = 0x3D;
+            PORTC = 0x3D;//D
             break;
         case 112:
-            PORTC = 0x4F;
+            PORTC = 0x4F;//E
             break;
         case 240:
-            PORTC = 0x47;
+            PORTC = 0x47;//F
             break;
         default:
             PORTC = 0xFF;

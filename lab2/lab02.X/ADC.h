@@ -39,11 +39,11 @@ void ADC_INTERRUPCION();
 void ADC_INIT();
 
 void ADC_INIT(){
-    ADCON1 = 0b00000000;
+    ADCON1 = 0b00000000; //Justificado a la izquierda
 }
 
 unsigned ADC_READ(unsigned short canal){
-    switch (canal){
+    switch (canal){//canal 8
         case 8:
             ADCON0 = 0b01100001;
             break;
