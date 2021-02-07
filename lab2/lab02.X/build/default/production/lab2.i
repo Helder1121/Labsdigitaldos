@@ -2491,6 +2491,278 @@ extern __bank0 __bit __timeout;
 # 11 "lab2.c" 2
 
 
+# 1 "./ADC.h" 1
+# 33 "./ADC.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
+# 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int8_t;
+
+
+
+
+
+
+typedef signed int int16_t;
+
+
+
+
+
+
+
+typedef __int24 int24_t;
+
+
+
+
+
+
+
+typedef signed long int int32_t;
+# 52 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint8_t;
+
+
+
+
+
+typedef unsigned int uint16_t;
+
+
+
+
+
+
+typedef __uint24 uint24_t;
+
+
+
+
+
+
+typedef unsigned long int uint32_t;
+# 88 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int_least8_t;
+
+
+
+
+
+
+
+typedef signed int int_least16_t;
+# 109 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __int24 int_least24_t;
+# 118 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed long int int_least32_t;
+# 136 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint_least8_t;
+
+
+
+
+
+
+typedef unsigned int uint_least16_t;
+# 154 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __uint24 uint_least24_t;
+
+
+
+
+
+
+
+typedef unsigned long int uint_least32_t;
+# 181 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef signed char int_fast8_t;
+
+
+
+
+
+
+typedef signed int int_fast16_t;
+# 200 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __int24 int_fast24_t;
+
+
+
+
+
+
+
+typedef signed long int int_fast32_t;
+# 224 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef unsigned char uint_fast8_t;
+
+
+
+
+
+typedef unsigned int uint_fast16_t;
+# 240 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef __uint24 uint_fast24_t;
+
+
+
+
+
+
+typedef unsigned long int uint_fast32_t;
+# 268 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef int32_t intmax_t;
+# 282 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
+typedef uint32_t uintmax_t;
+
+
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+# 33 "./ADC.h" 2
+
+
+
+
+unsigned ADC_READ(unsigned short canal);
+void ADC_INTERRUPCION();
+void ADC_INIT();
+
+void ADC_INIT(){
+    ADCON1 = 0b00000000;
+}
+
+unsigned ADC_READ(unsigned short canal){
+    switch (canal){
+        case 8:
+            ADCON0 = 0b01100001;
+            break;
+    }
+}
+
+void ADC_INTERRUPCION(){
+    PIE1bits.ADIE = 1;
+    PIR1bits.ADIF = 1;
+}
+# 13 "lab2.c" 2
+
+# 1 "./Multiplexado.h" 1
+# 35 "./Multiplexado.h"
+void Multiplexado(uint8_t num);
+
+void Multiplexado(uint8_t num){
+    TRISC = 0;
+    PORTC = 0;
+    switch (num){
+        case 0:
+            PORTC = 0x3F;
+            break;
+        case 1:
+            PORTC = 0x06;
+            break;
+        case 2:
+            PORTC = 0x5B;
+            break;
+        case 3:
+            PORTC = 0x4F;
+            break;
+        case 4:
+            PORTC = 0x66;
+            break;
+        case 5:
+            PORTC = 0x6D;
+            break;
+        case 6:
+            PORTC = 0x7D;
+            break;
+        case 7:
+            PORTC = 0x07;
+            break;
+        case 8:
+            PORTC = 0x7F;
+            break;
+        case 9:
+            PORTC = 0x6F;
+            break;
+        case 10:
+            PORTC = 0x77;
+            break;
+        case 11:
+            PORTC = 0x1F;
+            break;
+        case 12:
+            PORTC = 0x4E;
+            break;
+        case 13:
+            PORTC = 0x3D;
+            break;
+        case 14:
+            PORTC = 0x4F;
+            break;
+        case 15:
+            PORTC = 0x47;
+            break;
+
+        case 128:
+            PORTC = 0x06;
+            break;
+        case 64:
+            PORTC = 0x5B;
+            break;
+        case 192:
+            PORTC = 0x4F;
+            break;
+        case 32:
+            PORTC = 0x66;
+            break;
+        case 160:
+            PORTC = 0x6D;
+            break;
+        case 96:
+            PORTC = 0x7D;
+            break;
+        case 224:
+            PORTC = 0x07;
+            break;
+        case 16:
+            PORTC = 0x7F;
+            break;
+        case 144:
+            PORTC = 0x6F;
+            break;
+        case 80:
+            PORTC = 0x77;
+            break;
+        case 208:
+            PORTC = 0x1F;
+            break;
+        case 48:
+            PORTC = 0x4E;
+            break;
+        case 176:
+            PORTC = 0x3D;
+            break;
+        case 112:
+            PORTC = 0x4F;
+            break;
+        case 240:
+            PORTC = 0x47;
+            break;
+        default:
+            PORTC = 0x3F;
+            break;
+    }
+}
+# 14 "lab2.c" 2
+
+
 
 
 
@@ -2513,52 +2785,137 @@ extern __bank0 __bit __timeout;
 
 
 
+int Contador = 0;
+int conta = 0;
+int banders = 0;
+unsigned int valor_adc;
+unsigned int val_high;
+unsigned int val_low;
 
-unsigned char conta = 0;
-unsigned char LED_VERDE = 0;
+
+
+
+void Config_P(void);
+void Config_Int(void);
+void Banderas(void);
+void Sep_Nb(void);
+void Display(void);
 
 
 
 
+void __attribute__((picinterrupt(("")))) isr(void){
+    if (INTCONbits.RBIF){
+        INTCONbits.RBIF = 0;
+        if (PORTBbits.RB0 == 1){
+            _delay((unsigned long)((200)*(4000000/4000.0)));
+        }
+        if (PORTBbits.RB0 == 0){
+            Contador++;
+            PORTD = Contador;
+            _delay((unsigned long)((200)*(4000000/4000.0)));
+        }
+                if (PORTBbits.RB1 == 1){
+            _delay((unsigned long)((200)*(4000000/4000.0)));
+    }
+            if (PORTBbits.RB1 == 0){
+            Contador--;
+            PORTD = Contador;
+            _delay((unsigned long)((200)*(4000000/4000.0)));
+            }
+    }
+
+    if (PIR1bits.ADIF) {
+        PIR1bits.ADIF = 0;
+
+        ADC_READ(8);
+        _delay((unsigned long)((1)*(4000000/4000.0)));
+        ADCON0bits.GO = 1;
+        while (ADCON0bits.GO !=0){
+            valor_adc = ADRESH;
+            Display();
+        }
+    }
+
+    if (TMR0IF){
+        TMR0IF = 0;
+        TMR0 = 4;
+        conta++;
+    }
+}
 
 
 
 void main(void) {
+    Config_P();
+    Config_Int();
+    ADC_INIT();
+    ADC_INTERRUPCION();
 
 
 
     while (1) {
-        if (PORTAbits.RA0 == 0){
-            _delay((unsigned long)((50)*(8000000/4000.0)));
-            if (PORTAbits.RA0 == 1) {
-
-            }
+        if (conta >= 1){
+            conta = 0;
+            Banderas();
         }
-        if (PORTAbits.RA1 == 0){
-            _delay((unsigned long)((50)*(8000000/4000.0)));
-            if (PORTAbits.RA1 == 1) {
+        Sep_Nb();
+        if (valor_adc > Contador){
+            PORTEbits.RE0 = 1;
 
-            }
+        } else if (valor_adc < Contador){
+            PORTEbits.RE0 = 0;
         }
     }
+    return;
 }
 
 
 
 
+void Config_P(void){
+    TRISD = 0;
+    TRISB = 0b00000111;
+    TRISA = 0;
+    TRISE = 0;
+    ANSEL = 0;
+    ANSELH = 0b00000000;
+    PORTA = 0;
+    PORTB = 0;
+    PORTC = 0;
+    PORTD = 0;
+    PORTE = 0;
+}
 
 
 
-void contadodr (void){
-    while (conta == 1);{
-        if (PORTB == 0){
-            LED_VERDE = 0b00000001;
-                PORTB = LED_VERDE;
-            }
-                else if (PORTB != 0){
-                LED_VERDE = LED_VERDE*2;
-                PORTB = LED_VERDE;
+void Config_Int(void){
+    TMR0 = 4;
+    OPTION_REG = 0b10000001;
+    INTCON = 0b10101001;
+    IOCB = 0b00000011;
+}
+
+void Display(void){
+    PORTE = 0;
+    if (banders == 0){
+        Multiplexado(val_low);
+        PORTEbits.RE1 = 1;
+    } else if (banders == 1){
+        Multiplexado(val_high);
+        PORTEbits.RE2 = 0;
     }
 }
 
+void Banderas(void){
+    if (banders == 1){
+        banders = 0;
+    } else if (banders == 0){
+        banders = 1;
+    }
+}
+
+void Sep_Nb(void){
+    val_low = (0b11110000 & valor_adc);
+    val_high = (0b00001111 & valor_adc);
 }

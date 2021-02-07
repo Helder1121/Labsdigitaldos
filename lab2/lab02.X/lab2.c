@@ -9,7 +9,7 @@
 // Importación de librerías
 //******************************************************************************
 #include <xc.h>
-#include <stdint.h>
+//#include <stdint.h>
 #include "ADC.h"
 #include "Multiplexado.h"
 #define _XTAL_FREQ  4000000 //Delay
@@ -50,6 +50,49 @@ void Config_Int(void);
 void Banderas(void);
 void Sep_Nb(void);
 void Display(void);
+
+//******************************************************************************
+// Interrupcion
+//******************************************************************************
+void __interrupt() isr(void){
+    if (INTCONbits.RBIF){
+        INTCONbits.RBIF = 0;
+        if (PORTBbits.RB0 == 1){
+            __delay_ms(200);
+        }
+        if (PORTBbits.RB0 == 0){
+            Contador++;
+            PORTD = Contador;
+            __delay_ms(200);
+        }
+                if (PORTBbits.RB1 == 1){
+            __delay_ms(200);
+    }
+            if (PORTBbits.RB1 == 0){
+            Contador--;
+            PORTD = Contador;
+            __delay_ms(200);
+            }
+    }
+    
+    if (PIR1bits.ADIF) {
+        PIR1bits.ADIF = 0;
+        
+        ADC_READ(8);
+        __delay_ms(1);
+        ADCON0bits.GO = 1;
+        while (ADCON0bits.GO !=0){
+            valor_adc = ADRESH;
+            Display();
+        }
+    }
+    
+    if (TMR0IF){
+        TMR0IF = 0;
+        TMR0 = 4;
+        conta++;
+    }
+}
 //******************************************************************************
 // Ciclo principal
 //******************************************************************************
@@ -68,7 +111,7 @@ void main(void) {
         }
         Sep_Nb();
         if (valor_adc > Contador){
-            PORTEbits.RE0 = 0;
+            PORTEbits.RE0 = 1;
         
         } else if (valor_adc < Contador){
             PORTEbits.RE0 = 0;
@@ -110,7 +153,7 @@ void Display(void){
         PORTEbits.RE1 = 1;
     } else if (banders == 1){
         Multiplexado(val_high);
-        PORTEbits.RE2 = 1;
+        PORTEbits.RE2 = 0;
     }
 }
 
@@ -123,6 +166,6 @@ void Banderas(void){
 }
 
 void Sep_Nb(void){
-    val_high = (0b11110000 & valor_adc);
-    val_low = (0b00001111 & valor_adc);
+    val_low = (0b11110000 & valor_adc);
+    val_high = (0b00001111 & valor_adc);
 }
