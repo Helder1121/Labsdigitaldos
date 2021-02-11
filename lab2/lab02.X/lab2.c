@@ -154,7 +154,7 @@ void Config_P(void){
 //******************************************************************************
 void Config_Int(void){
     TMR0 = 4;
-    OPTION_REG = 0b10000001;//TMR0 1:4
+    OPTION_REG = 0b10000001;//Rate 1:4
     INTCON = 0b10101001; //Habilitos los GIE
     IOCB = 0b00000011;
 }
