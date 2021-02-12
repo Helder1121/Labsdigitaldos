@@ -1,6 +1,6 @@
 /*
  * File:   lab03.c
- * Author: betov
+ * Author: Helder Ovalle
  *
  * Created on 8 de febrero de 2021, 10:35 AM
  */
@@ -14,7 +14,7 @@
 #pragma config MCLRE = OFF       // RE3/MCLR pin function select bit (RE3/MCLR pin function is MCLR)
 #pragma config CP = OFF         // Code Protection bit (Program memory code protection is disabled)
 #pragma config CPD = OFF        // Data Code Protection bit (Data memory code protection is disabled)
-#pragma config BOREN = OFF      // Brown Out Reset Selection bits (BOR disabled)
+#pragma config BOREN = ON      // Brown Out Reset Selection bits (BOR disabled)
 #pragma config IESO = OFF       // Internal External Switchover bit (Internal/External Switchover mode is disabled)
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is disabled)
 #pragma config LVP = OFF        // Low Voltage Programming Enable bit (RB3 pin has digital I/O, HV on MCLR must be used for programming)
@@ -26,7 +26,8 @@
 //******************************************************************************
 // Variables
 //******************************************************************************
-
+char data[16];
+float volt, volt2;
 //******************************************************************************
 // Importación de librerías
 //******************************************************************************
@@ -34,26 +35,95 @@
 #include <stdint.h>
 //Permite realizar los prints
 #include <stdio.h>
+//#include <pic16f887.h>
 #include "LCD.h"
 #include "ADC.h"
 #define _XTAL_FREQ 8000000
 //******************************************************************************
 // Prototipos de funciones
 //******************************************************************************
-
+void config_P();
+float ADC_1(void);
+float ADC_2(void);
+void Enviar_1(void);
+void Enviar_2(void);
 //******************************************************************************
 // Ciclo principal
 //******************************************************************************
-
+void main(void){
+    config_P();
+    config_ADC();
+    Lcd_Init();
+    LCD_Limpia();
+    Lcd_Set_Cursor(1, 1);
+    Lcd_Write_String("S1 S2 CONT");
     //**************************************************************************
     // Loop principal
     //**************************************************************************
-
+    while(1){
+        Lcd_Set_Cursor(1, 1);
+        Lcd_Write_String("S1     S2    CONT");
+        LCD_Limpia();
+        ADC_1();
+        //Enviar_1();
+        ADC_2();
+        //Enviar_2();
+        
+        sprintf(data, "%1.2f  " "%1.2f", volt, volt2);
+        Lcd_Set_Cursor(2, 1);
+        Lcd_Write_String(data);
+        __delay_ms(5);
+    }
+}
 //******************************************************************************
 // Configuración
 //******************************************************************************
-
+void config_P(){
+    TRISD = 0;
+    TRISE = 0;
+    TRISA = 3;
+    ANSEL = 3;
+    ANSELH = 0;
+    PORTD = 0;
+    PORTE = 0;
+}
 //******************************************************************************
 // Funciones
 //******************************************************************************
+float ADC_1(void){
+    Canal_ADC(0);
+    ADCON0bits.ADCS0 = 1;
+    ADCON0bits.ADCS1 = 0;
+    ADCON0bits.ADON = 1;
+    __delay_ms(0.25);
+    ADCON0bits.GO = 1;
+    while (ADCON0bits.GO == 1){
+        volt = ((ADRESH * 5.0)/255);
+    }
+}
 
+float ADC_2(void){
+    Canal_ADC(1);
+    ADCON0bits.ADCS0 = 1;
+    ADCON0bits.ADCS1 = 0;
+    ADCON0bits.ADON = 1;
+    __delay_ms(0.25);
+    ADCON0bits.GO = 1;
+    while (ADCON0bits.GO == 1){
+        volt2 = ((ADRESH * 5.0)/255);
+    }
+}
+
+void Enviar_1(void){
+    TXREG = volt;
+    while (TXSTAbits.TRMT == 1){
+        //return;
+    }
+}
+
+void Enviar_2(void){
+    TXREG = volt2;
+    while (TXSTAbits.TRMT == 1){
+        //return;
+    }
+}

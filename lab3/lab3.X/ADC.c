@@ -3,9 +3,6 @@
 #include "ADC.h"
 #define _XTAL_FREQ 8000000
 
-float volt = 0.0;
-float volt2 = 0.0;
-
 void config_ADC(void){
     ADCON1 = 0b00000000;//Justificado a la izquierda 
 }
@@ -115,29 +112,5 @@ unsigned Canal_ADC(unsigned short x){ //Fosc/8,datasheet
             ADCON0bits.CHS1 = 0;
             ADCON0bits.CHS0 = 0;//Canal 0
             break;           
-    }
-}
-
-uint8_t ADC_1(void){
-    Canal_ADC(0);
-    ADCON0bits.ADCS0 = 1;
-    ADCON0bits.ADCS1 = 0;
-    ADCON0bits.ADON = 1;
-    __delay_ms(0.25);
-    ADCON0bits.GO = 1;
-    while (ADCON0bits.GO == 1){
-        volt = ((ADRESH * 5.0)/255);
-    }
-}
-
-uint8_t ADC_2(void){
-    Canal_ADC(1);
-    ADCON0bits.ADCS0 = 1;
-    ADCON0bits.ADCS1 = 0;
-    ADCON0bits.ADON = 1;
-    __delay_ms(0.25);
-    ADCON0bits.GO = 1;
-    while (ADCON0bits.GO == 1){
-        volt2 = ((ADRESH * 5.0)/255);
     }
 }

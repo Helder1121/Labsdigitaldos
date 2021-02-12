@@ -2,7 +2,7 @@
 
 #include <xc.h>
 #include <stdint.h>
-#include "lcd.h"
+#include "LCD.h"
 #define _XTAL_FREQ 8000000
 
 //Funcion para indicar el caracter segun sea el tamaño del mismo. 
@@ -76,8 +76,7 @@ void Lcd_Set_Cursor(uint8_t x, uint8_t y){
     }
 }
 //Funcion para mandar un string
-void Lcd_Write_String(char *a)
-{
+void Lcd_Write_String(char *a){
 	int i;
 	for(i=0;a[i]!='\0';i++)
 	   LCD_CMD(a[i]);

@@ -4,6 +4,6 @@
 #include <stdint.h>
 
 unsigned Canal_ADC(unsigned short x);
-void config_ADC(void)
+void config_ADC(void);
 
 #endif	/* __ADC_H_ */
