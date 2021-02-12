@@ -2643,6 +2643,7 @@ void Write_USART(uint8_t a);
 void _baudios(void){
     SPBRG = 12;
 }
+
 void config_txsta(void){
     TXSTAbits.CSRC = 0;
     TXSTAbits.TX9 = 0;
@@ -2652,6 +2653,7 @@ void config_txsta(void){
     TXSTAbits.TRMT = 0;
     TXSTAbits.TX9D = 0;
 }
+
 void config_rcsta(void){
     RCSTAbits.SPEN = 1;
     RCSTAbits.RX9 = 0;

@@ -57,13 +57,13 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"67 D:\Cursos\Digitaldos\Labsdigitaldos\lab3\lab3.X\lab03.c
+"73 D:\Cursos\Digitaldos\Labsdigitaldos\lab3\lab3.X\lab03.c
 [v _main main `(v  1 e 1 0 ]
-"103
-[v _config_P config_P `(v  1 e 1 0 ]
 "118
+[v _config_P config_P `(v  1 e 1 0 ]
+"140
 [v _ADC_1 ADC_1 `(f  1 e 4 0 ]
-"129
+"151
 [v _ADC_2 ADC_2 `(f  1 e 4 0 ]
 "9 D:\Cursos\Digitaldos\Labsdigitaldos\lab3\lab3.X\LCD.c
 [v _Puerto Puerto `(v  1 e 1 0 ]
@@ -77,17 +77,17 @@
 [v _Lcd_Init Lcd_Init `(v  1 e 1 0 ]
 "67
 [v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 1 0 ]
-"79
+"81
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
 "5 D:\Cursos\Digitaldos\Labsdigitaldos\lab3\lab3.X\USART.c
 [v __baudios _baudios `(v  1 e 1 0 ]
-"8
+"9
 [v _config_txsta config_txsta `(v  1 e 1 0 ]
-"17
+"19
 [v _config_rcsta config_rcsta `(v  1 e 1 0 ]
-"25
+"27
 [v _Write_USART Write_USART `(v  1 e 1 0 ]
-"29
+"31
 [v _Write_USART_String Write_USART_String `(v  1 e 1 0 ]
 "290 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
@@ -95,7 +95,7 @@
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "414
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
-[s S308 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S307 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -105,18 +105,18 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "1068
-[s S317 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S316 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S321 . 1 `uc 1 . 1 0 :6:0 
+[s S320 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nRC8 1 0 :1:6 
 ]
-[s S324 . 1 `uc 1 . 1 0 :6:0 
+[s S323 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[u S327 . 1 `S308 1 . 1 0 `S317 1 . 1 0 `S321 1 . 1 0 `S324 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES327  1 e 1 @24 ]
+[u S326 . 1 `S307 1 . 1 0 `S316 1 . 1 0 `S320 1 . 1 0 `S323 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES326  1 e 1 @24 ]
 "1133
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "1140
@@ -214,10 +214,10 @@
 "43
 [v _volt volt `f  1 e 4 0 ]
 [v _volt2 volt2 `f  1 e 4 0 ]
-"67
+"73
 [v _main main `(v  1 e 1 0 ]
 {
-"99
+"114
 } 0
 "505 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
@@ -225,9 +225,9 @@
 [v sprintf@sp sp `*.4uc  1 a 1 wreg ]
 "533
 [v sprintf@fval fval `d  1 a 4 33 ]
-[u S536 . 4 `ul 1 vd 4 0 `d 1 integ 4 0 ]
+[u S535 . 4 `ul 1 vd 4 0 `d 1 integ 4 0 ]
 "543
-[v sprintf@tmpval tmpval `S536  1 a 4 27 ]
+[v sprintf@tmpval tmpval `S535  1 a 4 27 ]
 "545
 [v sprintf@val val `ul  1 a 4 19 ]
 "517
@@ -433,20 +433,20 @@
 [v ___fleq@ff2 ff2 `d  1 p 4 4 ]
 "12
 } 0
-"8 D:\Cursos\Digitaldos\Labsdigitaldos\lab3\lab3.X\USART.c
+"9 D:\Cursos\Digitaldos\Labsdigitaldos\lab3\lab3.X\USART.c
 [v _config_txsta config_txsta `(v  1 e 1 0 ]
 {
-"16
-} 0
 "17
+} 0
+"19
 [v _config_rcsta config_rcsta `(v  1 e 1 0 ]
 {
-"23
+"25
 } 0
-"103 D:\Cursos\Digitaldos\Labsdigitaldos\lab3\lab3.X\lab03.c
+"118 D:\Cursos\Digitaldos\Labsdigitaldos\lab3\lab3.X\lab03.c
 [v _config_P config_P `(v  1 e 1 0 ]
 {
-"114
+"136
 } 0
 "6 D:\Cursos\Digitaldos\Labsdigitaldos\lab3\lab3.X\ADC.c
 [v _config_ADC config_ADC `(v  1 e 1 0 ]
@@ -458,31 +458,31 @@
 {
 "7
 } 0
-"29
+"31
 [v _Write_USART_String Write_USART_String `(v  1 e 1 0 ]
 {
-"30
+"32
 [v Write_USART_String@i i `uc  1 a 1 4 ]
-"29
+"31
 [v Write_USART_String@a a `*.26uc  1 p 2 1 ]
-"34
+"36
 } 0
-"25
+"27
 [v _Write_USART Write_USART `(v  1 e 1 0 ]
 {
 [v Write_USART@a a `uc  1 a 1 wreg ]
 [v Write_USART@a a `uc  1 a 1 wreg ]
 [v Write_USART@a a `uc  1 a 1 0 ]
-"28
+"30
 } 0
-"79 D:\Cursos\Digitaldos\Labsdigitaldos\lab3\lab3.X\LCD.c
+"81 D:\Cursos\Digitaldos\Labsdigitaldos\lab3\lab3.X\LCD.c
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
 {
-"80
+"84
 [v Lcd_Write_String@i i `i  1 a 2 8 ]
-"79
+"81
 [v Lcd_Write_String@a a `*.26uc  1 p 2 3 ]
-"83
+"87
 } 0
 "21
 [v _LCD_CMD LCD_CMD `(v  1 e 1 0 ]
@@ -503,7 +503,7 @@
 [v Lcd_Set_Cursor@y y `uc  1 p 1 4 ]
 "69
 [v Lcd_Set_Cursor@x x `uc  1 a 1 6 ]
-"77
+"79
 } 0
 "47
 [v _Lcd_Init Lcd_Init `(v  1 e 1 0 ]
@@ -531,15 +531,15 @@
 [v Puerto@x x `uc  1 a 1 0 ]
 "18
 } 0
-"129 D:\Cursos\Digitaldos\Labsdigitaldos\lab3\lab3.X\lab03.c
+"151 D:\Cursos\Digitaldos\Labsdigitaldos\lab3\lab3.X\lab03.c
 [v _ADC_2 ADC_2 `(f  1 e 4 0 ]
 {
-"139
+"161
 } 0
-"118
+"140
 [v _ADC_1 ADC_1 `(f  1 e 4 0 ]
 {
-"128
+"150
 } 0
 "10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
@@ -559,17 +559,17 @@
 "8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S734 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S733 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S739 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S742 . 4 `l 1 i 4 0 `d 1 f 4 0 `S734 1 fAsBytes 4 0 `S739 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S742  1 a 4 24 ]
+[s S738 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S741 . 4 `l 1 i 4 0 `d 1 f 4 0 `S733 1 fAsBytes 4 0 `S738 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S741  1 a 4 24 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 18 ]
-[s S811 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S810 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S814 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S811 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S814  1 a 2 28 ]
+[u S813 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S810 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S813  1 a 2 28 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 23 ]
 "11

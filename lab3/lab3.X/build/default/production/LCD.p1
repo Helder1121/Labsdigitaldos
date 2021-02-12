@@ -533,58 +533,58 @@ Version 4.0 HI-TECH Software Intermediate Code
 "70
 [; ;LCD.c: 70:    a = 0x80 + y;
 [e = _a -> + -> 128 `i -> _y `i `uc ]
-"71
-[; ;LCD.c: 71:   datosLCD(a);
-[e ( _datosLCD (1 _a ]
 "72
-[; ;LCD.c: 72:     }
+[; ;LCD.c: 72:   datosLCD(a);
+[e ( _datosLCD (1 _a ]
+"73
+[; ;LCD.c: 73:     }
 }
 [e $U 161  ]
-"73
-[; ;LCD.c: 73:  else if(x == 2){
+"74
+[; ;LCD.c: 74:  else if(x == 2){
 [e :U 160 ]
 [e $ ! == -> _x `i -> 2 `i 162  ]
 {
-"74
-[; ;LCD.c: 74:    a = 0xC0 + y;
-[e = _a -> + -> 192 `i -> _y `i `uc ]
 "75
-[; ;LCD.c: 75:   datosLCD(a);
+[; ;LCD.c: 75:    a = 0xC0 + y;
+[e = _a -> + -> 192 `i -> _y `i `uc ]
+"77
+[; ;LCD.c: 77:   datosLCD(a);
 [e ( _datosLCD (1 _a ]
-"76
-[; ;LCD.c: 76:     }
+"78
+[; ;LCD.c: 78:     }
 }
 [e :U 162 ]
 [e :U 161 ]
-"77
-[; ;LCD.c: 77: }
+"79
+[; ;LCD.c: 79: }
 [e :UE 159 ]
 }
-"79
-[; ;LCD.c: 79: void Lcd_Write_String(char *a){
+"81
+[; ;LCD.c: 81: void Lcd_Write_String(char *a){
 [v _Lcd_Write_String `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _Lcd_Write_String ]
 [v _a `*uc ~T0 @X0 1 r1 ]
 [f ]
-"80
-[; ;LCD.c: 80:  int i;
+"84
+[; ;LCD.c: 84:  int i;
 [v _i `i ~T0 @X0 1 a ]
-"81
-[; ;LCD.c: 81:  for(i=0;a[i]!='\0';i++)
+"85
+[; ;LCD.c: 85:  for(i=0;a[i]!='\0';i++)
 {
 [e = _i -> 0 `i ]
 [e $U 167  ]
 [e :U 164 ]
-"82
-[; ;LCD.c: 82:     LCD_CMD(a[i]);
+"86
+[; ;LCD.c: 86:     LCD_CMD(a[i]);
 [e ( _LCD_CMD (1 *U + _a * -> _i `x -> -> # *U _a `i `x ]
 [e ++ _i -> 1 `i ]
 [e :U 167 ]
 [e $ != -> *U + _a * -> _i `x -> -> # *U _a `i `x `ui -> 0 `ui 164  ]
 [e :U 165 ]
 }
-"83
-[; ;LCD.c: 83: }
+"87
+[; ;LCD.c: 87: }
 [e :UE 163 ]
 }

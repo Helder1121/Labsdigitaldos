@@ -5,6 +5,7 @@
 void _baudios(void){
     SPBRG = 12; //9600 baudios para 8MHZ
 }
+//Configuracion dada en el datasheet
 void config_txsta(void){
     TXSTAbits.CSRC = 0;
     TXSTAbits.TX9 = 0;
@@ -14,6 +15,7 @@ void config_txsta(void){
     TXSTAbits.TRMT = 0;
     TXSTAbits.TX9D = 0;
 }
+//Configuracion dada en el datasheet
 void config_rcsta(void){
     RCSTAbits.SPEN = 1;
     RCSTAbits.RX9 = 0;

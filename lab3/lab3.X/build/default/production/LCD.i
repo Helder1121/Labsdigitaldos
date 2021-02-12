@@ -2711,15 +2711,19 @@ void Lcd_Set_Cursor(uint8_t x, uint8_t y){
  uint8_t a;
  if(x == 1){
    a = 0x80 + y;
+
   datosLCD(a);
     }
  else if(x == 2){
    a = 0xC0 + y;
+
   datosLCD(a);
     }
 }
 
 void Lcd_Write_String(char *a){
+
+
  int i;
  for(i=0;a[i]!='\0';i++)
     LCD_CMD(a[i]);

@@ -63,20 +63,24 @@ void Lcd_Init(){
     datosLCD (0x0C);     
     __delay_us(60);
 }
-
+//Funcion para configurar el cursos
 void Lcd_Set_Cursor(uint8_t x, uint8_t y){
 	uint8_t a;
-	if(x == 1){
-	  a = 0x80 + y;
+	if(x == 1){//Linea que se coloca arriba
+	  a = 0x80 + y;//direccion(hexadecimal) y posicion para colocarlo en la fila 
+                       //adecuada para ire leyendo adecuadamente
 		datosLCD(a);
     }
-	else if(x == 2){
-	  a = 0xC0 + y;
+	else if(x == 2){//Linea que se coloca abajo
+	  a = 0xC0 + y;//direccion(hexadecimal) y posicion para colocarlo en la fila 
+                       //adecuada para ire leyendo adecuadamente
 		datosLCD(a);
     }
 }
 //Funcion para mandar un string
 void Lcd_Write_String(char *a){
+    //funcion para poder imprimir texto usando el puntero 
+    //para guardar la direccion del registro o valor de a
 	int i;
 	for(i=0;a[i]!='\0';i++)
 	   LCD_CMD(a[i]);

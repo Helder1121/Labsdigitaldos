@@ -41,6 +41,11 @@
 //******************************************************************************
 char data[16];
 float volt, volt2;
+//char LecUSART = 0;
+//uint8_t contador = 0;
+//uint8_t valorADC1;
+//uint8_t valorADC2;
+
 //******************************************************************************
 // Prototipos de funciones
 //******************************************************************************
@@ -49,6 +54,7 @@ float ADC_1(void);
 float ADC_2(void);
 void Enviar_1(void);
 void Enviar_2(void);
+//float Volts_Bina(uint8_t b);
 
 //Interrupcion del RCIF 
 /*void __interrupt() ISR(){
@@ -60,7 +66,7 @@ void Enviar_2(void);
         else if(LecUSART=='-'){
             contador--;}
     }
- * }*/
+}*/
 //******************************************************************************
 // Ciclo principal
 //******************************************************************************
@@ -72,9 +78,13 @@ void main(void){
     config_rcsta();
     Lcd_Init();
     LCD_Limpia();
-    Lcd_Set_Cursor(1, 1);
-    Lcd_Write_String("S1   S2   CONT");
-       
+//    Lcd_Set_Cursor(1, 1);
+//    Lcd_Write_String("S1   S2   CONT");
+    //Mensaje en la lcd primera fila 
+//    valorADC1 = Canal_ADC(0);
+//    valorADC2 = Canal_ADC(1);
+//    volt = Volts_Bina(valorADC1);
+//    volt2 = Volts_Bina(valorADC2);   
     //**************************************************************************
     // Loop principal
     //**************************************************************************
@@ -82,12 +92,16 @@ void main(void){
         LCD_Limpia();
         Lcd_Set_Cursor(1, 1);
         Lcd_Write_String("S1   S2   CONT");
+        //Lo que se muestra en la LCD en la primera fila
         ADC_1();
-        ADC_2();           
-        sprintf(data, "%1.2f   " "%1.2f",volt,volt2);
+        ADC_2();
+
+        sprintf(data, "%1.2f   " "%1.2f"   ,volt,volt2/*,contador*/);
+        //Despliega en dos decimales el voltaje de 0V-5V
         Lcd_Set_Cursor(2, 1);
         Lcd_Write_String(data);
         Write_USART_String("S1        S2        CONT");
+        //Mensaje que se muestra en la terminal en la segunda linea
         Write_USART(13);
         Write_USART(10);
         //Saltar lineas
@@ -102,51 +116,62 @@ void main(void){
 // Configuración
 //******************************************************************************
 void config_P(){
+    //Configuracion de los puertos
     TRISD = 0;
     TRISE = 0;
     TRISA = 3;
     //TRISCbits.TRISC7 = 1;
     //TRISCbits.TRISC6 = 0;
-    ANSEL = 3;
+    ANSEL = 3;//Para los potenciometros
     ANSELH = 0;
+    //Steo los puertos
     PORTD = 0;
     PORTE = 0;
     PORTC = 0;
+    //Interrupcion
+//    INTCONbits.PEIE = 1;
+//    PIE1bits.RCIE = 1;
+//    PIR1bits.RCIF = 0;
+//    INTCONbits.GIE = 1;
 }
 //******************************************************************************
 // Funciones
 //******************************************************************************
 float ADC_1(void){
-    Canal_ADC(0);
+    Canal_ADC(0);//canal 0
     ADCON0bits.ADCS0 = 1;
     ADCON0bits.ADCS1 = 0;
     ADCON0bits.ADON = 1;
     __delay_ms(0.25);
-    ADCON0bits.GO = 1;
+    ADCON0bits.GO = 1;//Inicia la conversion
     while (ADCON0bits.GO == 1){
-        volt = ((ADRESH * 5.0)/255);
+        volt = ((ADRESH * 5.0)/255);//Conversion de 0V-5V
     }
 }
 float ADC_2(void){
-    Canal_ADC(1);
+    Canal_ADC(1);//Canal 1
     ADCON0bits.ADCS0 = 1;
     ADCON0bits.ADCS1 = 0;
     ADCON0bits.ADON = 1;
     __delay_ms(0.25);
-    ADCON0bits.GO = 1;
+    ADCON0bits.GO = 1;//Inicia la conversion
     while (ADCON0bits.GO == 1){
-        volt2 = ((ADRESH * 5.0)/255);
+        volt2 = ((ADRESH * 5.0)/255); //Conversion de 0V-5V
     }
 }
-void Enviar_1(void){
+void Enviar_1(void){//Envio de datos
     TXREG = volt;
-    while (TXSTAbits.TRMT == 1){
+    while (TXSTAbits.TRMT == 1){//Retorna y envia el voltaje a ADC1
         return;
     }
 }
-void Enviar_2(void){
+void Enviar_2(void){//Envio de datos
     TXREG = volt2;
-    while (TXSTAbits.TRMT == 1){
+    while (TXSTAbits.TRMT == 1){//Retorna y envia el voltaje a ADC2
         return;
     }
 }
+
+//float Volts_Bini(uint8_t b){
+//    return b*0.0196;
+//}

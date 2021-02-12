@@ -2801,15 +2801,13 @@ void Write_USART(uint8_t a);
 
 char data[16];
 float volt, volt2;
-
-
-
+# 52 "lab03.c"
 void config_P();
 float ADC_1(void);
 float ADC_2(void);
 void Enviar_1(void);
 void Enviar_2(void);
-# 67 "lab03.c"
+# 73 "lab03.c"
 void main(void){
     config_P();
     config_ADC();
@@ -2818,24 +2816,24 @@ void main(void){
     config_rcsta();
     Lcd_Init();
     LCD_Limpia();
-    Lcd_Set_Cursor(1, 1);
-    Lcd_Write_String("S1   S2   CONT");
-
-
-
-
+# 91 "lab03.c"
     while(1){
         LCD_Limpia();
         Lcd_Set_Cursor(1, 1);
         Lcd_Write_String("S1   S2   CONT");
+
         ADC_1();
         ADC_2();
-        sprintf(data, "%1.2f   " "%1.2f",volt,volt2);
+
+        sprintf(data, "%1.2f   " "%1.2f" ,volt,volt2 );
+
         Lcd_Set_Cursor(2, 1);
         Lcd_Write_String(data);
         Write_USART_String("S1        S2        CONT");
+
         Write_USART(13);
         Write_USART(10);
+
         Write_USART_String(data);
         Write_USART(13);
         Write_USART(10);
@@ -2847,6 +2845,7 @@ void main(void){
 
 
 void config_P(){
+
     TRISD = 0;
     TRISE = 0;
     TRISA = 3;
@@ -2854,9 +2853,15 @@ void config_P(){
 
     ANSEL = 3;
     ANSELH = 0;
+
     PORTD = 0;
     PORTE = 0;
     PORTC = 0;
+
+
+
+
+
 }
 
 
