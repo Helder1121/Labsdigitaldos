@@ -7,38 +7,14 @@
 
 //Funcion para indicar el caracter segun sea el tamaño del mismo. 
 void Puerto(uint8_t x){
-	if(x & 1){
-		D0 = 1;}
-	else{
-		D0 = 0;}
-    if(x & 2){
-		D1 = 1;}
-	else{
-		D1 = 0;}
-    if(x & 4){
-		D2 = 1;}
-	else{
-		D2 = 0;}
-    if(x & 8){
-		D3 = 1;}
-	else{
-		D3 = 0;}
-    if(x & 16){
-		D4 = 1;}
-	else{
-		D4 = 0;}
-    if(x & 32){
-		D5 = 1;}
-	else{
-		D5 = 0;}
-    if(x & 64){
-		D6 = 1;}
-	else{
-		D6 = 0;}
-    if(x & 128){
-		D7 = 1;}
-	else{
-		D7 = 0;}
+	if(x & 1){D0 = 1;}else{D0 = 0;}
+    if(x & 2){D1 = 1;}else{D1 = 0;}
+    if(x & 4){D2 = 1;}else{D2 = 0;}
+    if(x & 8){D3 = 1;}else{D3 = 0;}
+    if(x & 16){D4 = 1;}else{D4 = 0;}
+    if(x & 32){D5 = 1;}else{D5 = 0;}
+    if(x & 64){D6 = 1;}else{D6 = 0;}
+    if(x & 128){D7 = 1;}else{D7 = 0;}
 }
 
 //Funcion para imprimir el caracter
@@ -67,15 +43,25 @@ void LCD_Limpia(void){
     datosLCD(1);
 }
 //Funcion para iniciar la LCD
+//En base de la presentacion de clase. 
 void Lcd_Init(){
-    RS = 0;
-    EN = 0;
-    Puerto(0x00);
-    __delay_ms(50)
-    datosLCD(0x02);
-    datosLCD(0x38);
-    datosLCD(0x0C);
-    datosLCD(0x06);
+    __delay_ms(20);
+    datosLCD (0x30);
+    __delay_ms(5);
+    datosLCD (0x30);
+    __delay_us(100);
+    datosLCD (0x30);
+    __delay_us(100);
+    datosLCD (0x38);
+    __delay_us(60);
+    datosLCD (0x08);
+    __delay_us(60);
+    datosLCD (0x01);
+    __delay_ms(5);
+    datosLCD (0x06);
+    __delay_us(60);
+    datosLCD (0x0C);     
+    __delay_us(60);
 }
 
 void Lcd_Set_Cursor(uint8_t x, uint8_t y){
