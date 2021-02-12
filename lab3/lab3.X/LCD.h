@@ -46,4 +46,4 @@ void Puerto(uint8_t x);
 void LCD_Limpia(void);
 void Lcd_Set_Cursor(uint8_t x, uint8_t y);
 void Lcd_Write_String(char *a);
-#endif
+#endif /* __LCD_H_ */
