@@ -24,21 +24,23 @@
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
 
 //******************************************************************************
-// Variables
-//******************************************************************************
-char data[16];
-float volt, volt2;
-//******************************************************************************
 // Importación de librerías
 //******************************************************************************
 #include <xc.h>
 #include <stdint.h>
 //Permite realizar los prints
 #include <stdio.h>
-//#include <pic16f887.h>
+#include <pic16f887.h>
 #include "LCD.h"
 #include "ADC.h"
+#include "USART.h"
 #define _XTAL_FREQ 8000000
+
+//******************************************************************************
+// Variables
+//******************************************************************************
+char data[16];
+float volt, volt2;
 //******************************************************************************
 // Prototipos de funciones
 //******************************************************************************
@@ -47,32 +49,53 @@ float ADC_1(void);
 float ADC_2(void);
 void Enviar_1(void);
 void Enviar_2(void);
+
+//Interrupcion del RCIF 
+/*void __interrupt() ISR(){
+    if (RCIF == 1){
+        RCIF = 0;
+        LecUSART = Read_USART();
+        if(LecUSART=='+'){
+            contador++;}
+        else if(LecUSART=='-'){
+            contador--;}
+    }
+ * }*/
 //******************************************************************************
 // Ciclo principal
 //******************************************************************************
 void main(void){
     config_P();
     config_ADC();
+    _baudios();
+    config_txsta();
+    config_rcsta();
     Lcd_Init();
     LCD_Limpia();
     Lcd_Set_Cursor(1, 1);
-    Lcd_Write_String("S1 S2 CONT");
+    Lcd_Write_String("S1   S2   CONT");
+       
     //**************************************************************************
     // Loop principal
     //**************************************************************************
     while(1){
-        Lcd_Set_Cursor(1, 1);
-        Lcd_Write_String("S1     S2    CONT");
         LCD_Limpia();
+        Lcd_Set_Cursor(1, 1);
+        Lcd_Write_String("S1   S2   CONT");
         ADC_1();
-        //Enviar_1();
-        ADC_2();
-        //Enviar_2();
-        
-        sprintf(data, "%1.2f  " "%1.2f", volt, volt2);
+        ADC_2();           
+        sprintf(data, "%1.2f   " "%1.2f",volt,volt2);
         Lcd_Set_Cursor(2, 1);
         Lcd_Write_String(data);
-        __delay_ms(5);
+        Write_USART_String("S1        S2        CONT");
+        Write_USART(13);
+        Write_USART(10);
+        //Saltar lineas
+        Write_USART_String(data);
+        Write_USART(13);
+        Write_USART(10);
+        //Saltar lineas
+        __delay_ms(500);
     }
 }
 //******************************************************************************
@@ -82,10 +105,13 @@ void config_P(){
     TRISD = 0;
     TRISE = 0;
     TRISA = 3;
+    //TRISCbits.TRISC7 = 1;
+    //TRISCbits.TRISC6 = 0;
     ANSEL = 3;
     ANSELH = 0;
     PORTD = 0;
     PORTE = 0;
+    PORTC = 0;
 }
 //******************************************************************************
 // Funciones
@@ -101,7 +127,6 @@ float ADC_1(void){
         volt = ((ADRESH * 5.0)/255);
     }
 }
-
 float ADC_2(void){
     Canal_ADC(1);
     ADCON0bits.ADCS0 = 1;
@@ -113,17 +138,15 @@ float ADC_2(void){
         volt2 = ((ADRESH * 5.0)/255);
     }
 }
-
 void Enviar_1(void){
     TXREG = volt;
     while (TXSTAbits.TRMT == 1){
-        //return;
+        return;
     }
 }
-
 void Enviar_2(void){
     TXREG = volt2;
     while (TXSTAbits.TRMT == 1){
-        //return;
+        return;
     }
 }
