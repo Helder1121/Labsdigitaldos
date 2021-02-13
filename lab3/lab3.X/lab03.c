@@ -41,8 +41,9 @@
 //******************************************************************************
 char data[16];
 float volt, volt2;
-//char LecUSART = 0;
-//uint8_t contador = 0;
+char LecUSART = 0;
+char entregado = 0;
+uint8_t contador = 0;
 //uint8_t valorADC1;
 //uint8_t valorADC2;
 
@@ -54,10 +55,10 @@ float ADC_1(void);
 float ADC_2(void);
 void Enviar_1(void);
 void Enviar_2(void);
-//float Volts_Bina(uint8_t b);
+float Volts_Bina(uint8_t b);
 
 //Interrupcion del RCIF 
-/*void __interrupt() ISR(){
+void __interrupt() ISR(){
     if (RCIF == 1){
         RCIF = 0;
         LecUSART = Read_USART();
@@ -66,7 +67,7 @@ void Enviar_2(void);
         else if(LecUSART=='-'){
             contador--;}
     }
-}*/
+}
 //******************************************************************************
 // Ciclo principal
 //******************************************************************************
@@ -91,16 +92,15 @@ void main(void){
     while(1){
         LCD_Limpia();
         Lcd_Set_Cursor(1, 1);
-        Lcd_Write_String("S1   S2   CONT");
+        Lcd_Write_String("S1   S2   CONT ");
         //Lo que se muestra en la LCD en la primera fila
         ADC_1();
         ADC_2();
-
-        sprintf(data, "%1.2f   " "%1.2f"   ,volt,volt2/*,contador*/);
+        sprintf(data, "%1.2f   %1.2f   %d" ,volt,volt2,contador);
         //Despliega en dos decimales el voltaje de 0V-5V
         Lcd_Set_Cursor(2, 1);
         Lcd_Write_String(data);
-        Write_USART_String("S1        S2        CONT");
+        Write_USART_String("S1    S2    CONT");
         //Mensaje que se muestra en la terminal en la segunda linea
         Write_USART(13);
         Write_USART(10);
@@ -109,6 +109,11 @@ void main(void){
         Write_USART(13);
         Write_USART(10);
         //Saltar lineas
+        if (RCIF == 1){
+            entregado = RCREG;
+            if(entregado == '+'){contador = contador +1;}
+            if(entregado == '-'){contador = contador -1;}
+        }
         __delay_ms(500);
     }
 }

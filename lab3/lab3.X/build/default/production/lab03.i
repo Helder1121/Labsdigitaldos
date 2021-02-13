@@ -2801,13 +2801,36 @@ void Write_USART(uint8_t a);
 
 char data[16];
 float volt, volt2;
-# 52 "lab03.c"
+char LecUSART = 0;
+char entregado = 0;
+uint8_t contador = 0;
+
+
+
+
+
+
 void config_P();
 float ADC_1(void);
 float ADC_2(void);
 void Enviar_1(void);
 void Enviar_2(void);
-# 73 "lab03.c"
+float Volts_Bina(uint8_t b);
+
+
+void __attribute__((picinterrupt(("")))) ISR(){
+    if (RCIF == 1){
+        RCIF = 0;
+        LecUSART = Read_USART();
+        if(LecUSART=='+'){
+            contador++;}
+        else if(LecUSART=='-'){
+            contador--;}
+    }
+}
+
+
+
 void main(void){
     config_P();
     config_ADC();
@@ -2816,20 +2839,19 @@ void main(void){
     config_rcsta();
     Lcd_Init();
     LCD_Limpia();
-# 91 "lab03.c"
+# 92 "lab03.c"
     while(1){
         LCD_Limpia();
         Lcd_Set_Cursor(1, 1);
-        Lcd_Write_String("S1   S2   CONT");
+        Lcd_Write_String("S1   S2   CONT ");
 
         ADC_1();
         ADC_2();
-
-        sprintf(data, "%1.2f   " "%1.2f" ,volt,volt2 );
+        sprintf(data, "%1.2f   %1.2f   %d" ,volt,volt2,contador);
 
         Lcd_Set_Cursor(2, 1);
         Lcd_Write_String(data);
-        Write_USART_String("S1        S2        CONT");
+        Write_USART_String("S1    S2    CONT");
 
         Write_USART(13);
         Write_USART(10);
@@ -2838,6 +2860,11 @@ void main(void){
         Write_USART(13);
         Write_USART(10);
 
+        if (RCIF == 1){
+            entregado = RCREG;
+            if(entregado == '+'){contador = contador +1;}
+            if(entregado == '-'){contador = contador -1;}
+        }
         _delay((unsigned long)((500)*(8000000/4000.0)));
     }
 }
