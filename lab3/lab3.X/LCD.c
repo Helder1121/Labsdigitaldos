@@ -63,7 +63,7 @@ void Lcd_Init(){
     datosLCD (0x0C);     
     __delay_us(60);
 }
-//Funcion para configurar el cursos
+//Funcion para configurar el cursor
 void Lcd_Set_Cursor(uint8_t x, uint8_t y){
 	uint8_t a;
 	if(x == 1){//Linea que se coloca arriba

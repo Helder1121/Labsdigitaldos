@@ -2815,7 +2815,7 @@ float ADC_1(void);
 float ADC_2(void);
 void Enviar_1(void);
 void Enviar_2(void);
-float Volts_Bina(uint8_t b);
+
 
 
 void __attribute__((picinterrupt(("")))) ISR(){
@@ -2839,7 +2839,9 @@ void main(void){
     config_rcsta();
     Lcd_Init();
     LCD_Limpia();
-# 92 "lab03.c"
+
+
+
     while(1){
         LCD_Limpia();
         Lcd_Set_Cursor(1, 1);
@@ -2884,17 +2886,13 @@ void config_P(){
     PORTD = 0;
     PORTE = 0;
     PORTC = 0;
-
-
-
-
-
 }
 
 
 
 float ADC_1(void){
     Canal_ADC(0);
+
     ADCON0bits.ADCS0 = 1;
     ADCON0bits.ADCS1 = 0;
     ADCON0bits.ADON = 1;
@@ -2906,6 +2904,7 @@ float ADC_1(void){
 }
 float ADC_2(void){
     Canal_ADC(1);
+
     ADCON0bits.ADCS0 = 1;
     ADCON0bits.ADCS1 = 0;
     ADCON0bits.ADON = 1;

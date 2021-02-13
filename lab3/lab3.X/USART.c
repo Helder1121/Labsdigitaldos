@@ -7,20 +7,20 @@ void _baudios(void){
 }
 //Configuracion dada en el datasheet
 void config_txsta(void){
-    TXSTAbits.CSRC = 0;
-    TXSTAbits.TX9 = 0;
-    TXSTAbits.TXEN = 1;
-    TXSTAbits.SYNC = 0;
-    TXSTAbits.BRGH = 0;
-    TXSTAbits.TRMT = 0;
+    TXSTAbits.CSRC = 0;//Clock terminal
+    TXSTAbits.TX9 = 0;//8 bits de transmicion 
+    TXSTAbits.TXEN = 1;//Transmicion habilitada
+    TXSTAbits.SYNC = 0;//modo asincrono
+    TXSTAbits.BRGH = 0;//low speed
+    TXSTAbits.TRMT = 0;//Tsr full
     TXSTAbits.TX9D = 0;
 }
 //Configuracion dada en el datasheet
 void config_rcsta(void){
-    RCSTAbits.SPEN = 1;
+    RCSTAbits.SPEN = 1;//Se habilita el puerto serial 
     RCSTAbits.RX9 = 0;
     RCSTAbits.SREN = 0;
-    RCSTAbits.CREN = 1;
+    RCSTAbits.CREN = 1;//Recibir habilitadp 
     RCREG = 0;  
 }
 //Extraido de https://electrosome.com/uart-pic-microcontroller-mplab-xc8/
