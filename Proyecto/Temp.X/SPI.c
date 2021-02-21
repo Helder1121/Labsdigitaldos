@@ -1,4 +1,4 @@
- /*
+/*
  * File            : spi.c
  * Author          : Ligo George
  * Company         : electroSome
