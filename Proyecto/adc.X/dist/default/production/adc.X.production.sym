@@ -157,7 +157,7 @@ cstackCOMMON 70 7A COMMON 70 1
 bssBANK0 20 25 BANK0 20 1
 %locals
 dist/default/production\adc.X.production.o
-C:\Users\betov\AppData\Local\Temp\shcc.s
+C:\Users\betov\AppData\Local\Temp\si04.s
 783 F 0 CODE 0
 786 F 0 CODE 0
 806 F 0 CODE 0
