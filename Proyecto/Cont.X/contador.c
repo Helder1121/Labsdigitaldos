@@ -83,12 +83,13 @@ void setup(void){
     ANSEL = 0;
     ANSELH = 0;
     
-    //Steo los puertos
-    PORTB = 0;
-    PORTD = 0;
     
     TRISB = 3;
     TRISD = 0;
+    
+    //Steo los puertos
+    PORTB = 0;
+    PORTD = 0;
     
     INTCONbits.GIE = 1;         // Habilitamos interrupciones
     INTCONbits.PEIE = 1;        // Habilitamos interrupciones PEIE

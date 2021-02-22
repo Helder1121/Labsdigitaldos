@@ -31,49 +31,101 @@
 #include <stdint.h>
 #include <stdio.h>
 #include "SPI.h"
+#include "LCD.h"
+#include "USART.h"
 
 //******************************************************************************
 // Variables
 //******************************************************************************
 #define _XTAL_FREQ 8000000
-//uint8_t  = 0;
-
+uint8_t cont = 0;
+uint8_t ADC1 = 0;
+uint8_t ADC2 = 0;
+float v1,temp;
+char data[20];
 //******************************************************************************
 //Portotipos de funciones
 //******************************************************************************
-void setup();
-
+void setup(void);
+void contador(void);
+void ADC_lectura(void);
+float temperatura(void);
 //******************************************************************************
 // Ciclo principal
 //******************************************************************************
 void main(void){
     setup();
+    
+    _baudios();
+    config_txsta();
+    config_rcsta();
+    Lcd_Init();
+    LCD_Limpia();
     //**************************************************************************
     // Loop principal
     //**************************************************************************
     while(1){
-        PORTCbits.RC2 = 0;       //Slave Select
-        __delay_ms(1);
-       
-        spiWrite(1);
-        PORTB = spiRead();
-       
-        __delay_ms(1);
-         PORTCbits.RC2 = 1;       //Slave Deselect 
-      
-        __delay_ms(1);
-        PORTCbits.RC1 = 0;
-        __delay_ms(1);
-       
-        spiWrite(1);
-        PORTD = spiRead();
-       
-        __delay_ms(1);
-        PORTCbits.RC1 = 1; 
-        __delay_ms(1);
+        contador();
+        ADC_lectura();
+        //temperatura();
+        LCD_Limpia();
+        Lcd_Set_Cursor(1,1);
+        Lcd_Write_String("S1   CONT   S3");
+        
+//        v1 = ADC1*0.0196;
+        temp = temperatura();
+        sprintf(data, "%1.0f   %d   %3.0f" ,v1,cont,temp);
+        
+        Lcd_Set_Cursor(2,1);
+        Lcd_Write_String(data);
+        
+        Write_USART_String("S1   CONT   S3");
+        Write_USART(13);
+        Write_USART(10);
+        
+        Write_USART_String(data);
+        Write_USART(13);
+        Write_USART(10);
+        __delay_ms(500);
     }
-    return;
+}
+
+void ADC_lectura(void){
+    PORTCbits.RC0 = 0;       //Slave Select
+    __delay_ms(1);
+       
+    spiWrite(1);
+    v1 = spiRead();
+       
+    __delay_ms(1);
+    PORTCbits.RC0 = 1;       //Slave Deselect 
+    __delay_ms(1);
 }    
+    
+void contador(void){
+    PORTCbits.RC1 = 0;
+    __delay_ms(1);
+       
+    spiWrite(1);
+    cont = spiRead();
+       
+    __delay_ms(1);
+    PORTCbits.RC1 = 1; 
+    __delay_ms(1);
+}   
+
+float temperatura(void){
+    PORTCbits.RC2 = 0;
+    __delay_ms(1);
+       
+    spiWrite(1);
+    temp = spiRead();
+       
+    __delay_ms(1);
+    PORTCbits.RC2 = 1; 
+    __delay_ms(1);
+    return temp;
+}
 
 //******************************************************************************
 // Configuración
@@ -81,23 +133,24 @@ void main(void){
 void setup(void){
     ANSEL = 0;
     ANSELH = 0;
-    
+    TRISB = 0;
     TRISE = 0;
     TRISD = 0;
     //Steo los puertos
     PORTE = 0;
     PORTD = 0;
+    PORTB = 0;
     
     TRISC0 = 0;
     TRISC1 = 0;
     TRISC2 = 0;
-    //PORTCbits.RC0 = 1;
+    PORTCbits.RC0 = 1;
     PORTCbits.RC1 = 1;
     PORTCbits.RC2 = 1;
-    
-    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, 
-            SPI_IDLE_2_ACTIVE);
+    PORTCbits.RC7 = 1;
 
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, 
+        SPI_IDLE_2_ACTIVE);
 }
 
 

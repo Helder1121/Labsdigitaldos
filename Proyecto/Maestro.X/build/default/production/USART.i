@@ -1,4 +1,4 @@
-# 1 "ADC.c"
+# 1 "USART.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ADC.c" 2
+# 1 "USART.c" 2
+
 
 
 
@@ -2494,7 +2495,13 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 8 "ADC.c" 2
+# 9 "USART.c" 2
+
+
+# 1 "./USART.h" 1
+
+
+
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2629,135 +2636,51 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 9 "ADC.c" 2
-
-# 1 "./ADC.h" 1
+# 5 "./USART.h" 2
 
 
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 4 "./ADC.h" 2
-
-
-unsigned Canal_ADC(unsigned short x);
-void config_ADC(void);
-float ADC_1(void);
-float ADC_2(void);
-void Enviar_1(void);
-void Enviar_2(void);
-# 10 "ADC.c" 2
+void _baudios(void);
+void config_txsta(void);
+void config_rcsta(void);
+uint8_t Read_USART();
+void Write_USART_String(char *a);
+void Write_USART(uint8_t a);
+# 11 "USART.c" 2
 
 
-
-void config_ADC(void){
-    ADCON1 = 0b00000000;
-
+void _baudios(void){
+    SPBRG = 12;
 }
 
-unsigned Canal_ADC(unsigned short x){
-    switch(x){
+void config_txsta(void){
+    TXSTAbits.CSRC = 0;
+    TXSTAbits.TX9 = 0;
+    TXSTAbits.TXEN = 1;
+    TXSTAbits.SYNC = 0;
+    TXSTAbits.BRGH = 0;
+    TXSTAbits.TRMT = 0;
+    TXSTAbits.TX9D = 0;
+}
 
-        case 0:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 1:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 2:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 3:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 4:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 5:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 6:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 7:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 8:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 9:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 10:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 11:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 12:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 13:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 14:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 15:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 1;
-            break;
-        default:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 0;
-            break;
+void config_rcsta(void){
+    RCSTAbits.SPEN = 1;
+    RCSTAbits.RX9 = 0;
+    RCSTAbits.SREN = 0;
+    RCSTAbits.CREN = 1;
+    RCREG = 0;
+}
+
+void Write_USART(uint8_t a){
+    while(!TRMT);
+    TXREG=a;
+}
+void Write_USART_String(char *a){
+    uint8_t i;
+    for(i=0;a[i]!='\0';i++){
+        Write_USART(a[i]);
     }
+}
+uint8_t Read_USART(){
+  while(!RCIF);
+  return RCREG;
 }

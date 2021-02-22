@@ -10,7 +10,6 @@
 #include "ADC.h"
 #define _XTAL_FREQ 8000000
 
-float volt, volt2;//variable para los voltajes en los pots
 
 void config_ADC(void){
     ADCON1 = 0b00000000;//Justificado a la izquierda 
@@ -124,39 +123,4 @@ unsigned Canal_ADC(unsigned short x){ //Fosc/8,datasheet
     }
 }
 
-float ADC_1(void){
-    Canal_ADC(0);//canal 0
-    //Configuracion bits ADCON0
-    ADCON0bits.ADCS0 = 1;//Clock ADC conversion 
-    ADCON0bits.ADCS1 = 0;
-    ADCON0bits.ADON = 1;//Habilitamos el ADC
-    __delay_ms(0.25);//Para la conversion
-    ADCON0bits.GO = 1;//Inicia la conversion
-    while (ADCON0bits.GO == 1){
-        volt = ((ADRESH * 5.0)/255);//Conversion de 0V-5V
-    }
-}
-float ADC_2(void){
-    Canal_ADC(1);//Canal 1
-    //Configuracion bits ADCON0
-    ADCON0bits.ADCS0 = 1;//Clock ADC conversion 
-    ADCON0bits.ADCS1 = 0;
-    ADCON0bits.ADON = 1;//Habilitamos el ADC
-    __delay_ms(0.25);//Para la conversion
-    ADCON0bits.GO = 1;//Inicia la conversion
-    while (ADCON0bits.GO == 1){
-        volt2 = ((ADRESH * 5.0)/255); //Conversion de 0V-5V
-    }
-}
-void Enviar_1(void){//Envio de datos
-    TXREG = volt;
-    while (TXSTAbits.TRMT == 1){//Retorna y envia el voltaje a ADC1
-        return;
-    }
-}
-void Enviar_2(void){//Envio de datos
-    TXREG = volt2;
-    while (TXSTAbits.TRMT == 1){//Retorna y envia el voltaje a ADC2
-        return;
-    }
-}
+

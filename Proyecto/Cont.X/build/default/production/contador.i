@@ -2735,11 +2735,12 @@ void setup(void){
     ANSELH = 0;
 
 
-    PORTB = 0;
-    PORTD = 0;
-
     TRISB = 3;
     TRISD = 0;
+
+
+    PORTB = 0;
+    PORTD = 0;
 
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;

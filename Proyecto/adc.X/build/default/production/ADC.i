@@ -2649,7 +2649,6 @@ void Enviar_2(void);
 
 
 
-float volt, volt2;
 
 void config_ADC(void){
     ADCON1 = 0b00000000;
@@ -2760,42 +2759,5 @@ unsigned Canal_ADC(unsigned short x){
             ADCON0bits.CHS1 = 0;
             ADCON0bits.CHS0 = 0;
             break;
-    }
-}
-
-float ADC_1(void){
-    Canal_ADC(0);
-
-    ADCON0bits.ADCS0 = 1;
-    ADCON0bits.ADCS1 = 0;
-    ADCON0bits.ADON = 1;
-    _delay((unsigned long)((0.25)*(8000000/4000.0)));
-    ADCON0bits.GO = 1;
-    while (ADCON0bits.GO == 1){
-        volt = ((ADRESH * 5.0)/255);
-    }
-}
-float ADC_2(void){
-    Canal_ADC(1);
-
-    ADCON0bits.ADCS0 = 1;
-    ADCON0bits.ADCS1 = 0;
-    ADCON0bits.ADON = 1;
-    _delay((unsigned long)((0.25)*(8000000/4000.0)));
-    ADCON0bits.GO = 1;
-    while (ADCON0bits.GO == 1){
-        volt2 = ((ADRESH * 5.0)/255);
-    }
-}
-void Enviar_1(void){
-    TXREG = volt;
-    while (TXSTAbits.TRMT == 1){
-        return;
-    }
-}
-void Enviar_2(void){
-    TXREG = volt2;
-    while (TXSTAbits.TRMT == 1){
-        return;
     }
 }

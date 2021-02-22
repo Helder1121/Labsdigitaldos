@@ -24,7 +24,7 @@ SPI_CLOCK_IDLE_LOW 0
 SPI_IDLE_2_ACTIVE 0
 SPI_ACTIVE_2_IDLE 64
 ]
-"97 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\Temperatura.c
+"104 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\Temperatura.c
 [e E1299 . `uc
 SPI_MASTER_OSC_DIV4 32
 SPI_MASTER_OSC_DIV16 33
@@ -45,16 +45,13 @@ SPI_CLOCK_IDLE_LOW 0
 SPI_IDLE_2_ACTIVE 0
 SPI_ACTIVE_2_IDLE 64
 ]
-"19 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\ADC.c
+"18 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\ADC.c
 [v _Canal_ADC Canal_ADC `(ui  1 e 2 0 ]
-"4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\flge.c
-[v ___flge __flge `(b  1 e 0 0 ]
 "43 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
+[v i1___fltol __fltol `(l  1 e 4 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
-"8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcdiv.c
-[v ___fldiv __fldiv `(d  1 e 4 0 ]
 "8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8_16.c
@@ -71,20 +68,21 @@ SPI_ACTIVE_2_IDLE 64
 [v _spiReceiveWait spiReceiveWait `(v  1 s 1 spiReceiveWait ]
 "35
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
-"51 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\Temperatura.c
+"55 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\Temperatura.c
 [v _isr isr `II(v  1 e 1 0 ]
-"60
+"64
 [v _main main `(v  1 e 1 0 ]
-"71
+"77
 [v _semaf semaf `(v  1 e 1 0 ]
-"82
+"88
 [v _setup setup `(v  1 e 1 0 ]
-"13 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\ADC.c
-[v _volt volt `f  1 e 4 0 ]
-[v _volt2 volt2 `f  1 e 4 0 ]
-"352 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+"112
+[v _adc_11 adc_11 `(uc  1 e 1 0 ]
+"228 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
-[s S289 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S229 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -94,14 +92,14 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 GIE 1 0 :1:7 
 ]
 "482
-[s S298 . 1 `uc 1 . 1 0 :2:0 
+[s S238 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S303 . 1 `S289 1 . 1 0 `S298 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES303  1 e 1 @11 ]
-[s S321 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S243 . 1 `S229 1 . 1 0 `S238 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES243  1 e 1 @11 ]
+[s S261 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -110,14 +108,12 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 ADIF 1 0 :1:6 
 ]
 "553
-[u S329 . 1 `S321 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES329  1 e 1 @12 ]
+[u S269 . 1 `S261 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES269  1 e 1 @12 ]
 "843
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
 [v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
-"1133
-[v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "1238
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
 [s S152 . 1 `uc 1 ADON 1 0 :1:0 
@@ -143,7 +139,7 @@ SPI_ACTIVE_2_IDLE 64
 ]
 [u S172 . 1 `S152 1 . 1 0 `S157 1 . 1 0 `S166 1 . 1 0 `S169 1 . 1 0 ]
 [v _ADCON0bits ADCON0bits `VES172  1 e 1 @31 ]
-[s S359 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S299 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -153,13 +149,11 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "1433
-[u S368 . 1 `S359 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES368  1 e 1 @133 ]
-"1478
-[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+[u S308 . 1 `S299 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES308  1 e 1 @133 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
-[s S340 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S280 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -168,8 +162,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 ADIE 1 0 :1:6 
 ]
 "1718
-[u S348 . 1 `S340 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES348  1 e 1 @140 ]
+[u S288 . 1 `S280 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES288  1 e 1 @140 ]
 "2177
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
 [s S42 . 1 `uc 1 BF 1 0 :1:0 
@@ -215,25 +209,6 @@ SPI_ACTIVE_2_IDLE 64
 ]
 [u S82 . 1 `S42 1 . 1 0 `S51 1 . 1 0 `S56 1 . 1 0 `S62 1 . 1 0 `S67 1 . 1 0 `S72 1 . 1 0 `S77 1 . 1 0 ]
 [v _SSPSTATbits SSPSTATbits `VES82  1 e 1 @148 ]
-[s S206 . 1 `uc 1 TX9D 1 0 :1:0 
-`uc 1 TRMT 1 0 :1:1 
-`uc 1 BRGH 1 0 :1:2 
-`uc 1 SENDB 1 0 :1:3 
-`uc 1 SYNC 1 0 :1:4 
-`uc 1 TXEN 1 0 :1:5 
-`uc 1 TX9 1 0 :1:6 
-`uc 1 CSRC 1 0 :1:7 
-]
-"2582
-[s S215 . 1 `uc 1 TXD8 1 0 :1:0 
-`uc 1 . 1 0 :5:1 
-`uc 1 nTX8 1 0 :1:6 
-]
-[s S219 . 1 `uc 1 . 1 0 :6:0 
-`uc 1 TX8_9 1 0 :1:6 
-]
-[u S222 . 1 `S206 1 . 1 0 `S215 1 . 1 0 `S219 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES222  1 e 1 @152 ]
 "2977
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
 "3387
@@ -250,79 +225,96 @@ SPI_ACTIVE_2_IDLE 64
 [v _ADC ADC `uc  1 e 1 0 ]
 "41
 [v _temp temp `f  1 e 4 0 ]
-"60
+"64
 [v _main main `(v  1 e 1 0 ]
 {
-"70
+"76
 } 0
-"82
+"88
 [v _setup setup `(v  1 e 1 0 ]
 {
-"100
+"107
 } 0
 "12 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
 {
 [v spiInit@sType sType `E1264  1 a 1 wreg ]
 [v spiInit@sType sType `E1264  1 a 1 wreg ]
-[v spiInit@sDataSample sDataSample `E1272  1 p 1 3 ]
+[v spiInit@sDataSample sDataSample `E1272  1 p 1 0 ]
 "13
-[v spiInit@sClockIdle sClockIdle `E1276  1 p 1 4 ]
-[v spiInit@sTransmitEdge sTransmitEdge `E1280  1 p 1 5 ]
+[v spiInit@sClockIdle sClockIdle `E1276  1 p 1 1 ]
+[v spiInit@sTransmitEdge sTransmitEdge `E1280  1 p 1 2 ]
 "15
-[v spiInit@sType sType `E1264  1 a 1 6 ]
+[v spiInit@sType sType `E1264  1 a 1 3 ]
 "28
 } 0
-"71 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\Temperatura.c
+"77 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\Temperatura.c
 [v _semaf semaf `(v  1 e 1 0 ]
 {
-"78
+[v semaf@temp temp `uc  1 a 1 wreg ]
+[v semaf@temp temp `uc  1 a 1 wreg ]
+[v semaf@temp temp `uc  1 a 1 0 ]
+"84
 } 0
-"4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\flge.c
-[v ___flge __flge `(b  1 e 0 0 ]
+"112
+[v _adc_11 adc_11 `(uc  1 e 1 0 ]
 {
-[v ___flge@ff1 ff1 `d  1 p 4 0 ]
-[v ___flge@ff2 ff2 `d  1 p 4 4 ]
-"19
+"124
+} 0
+"18 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\ADC.c
+[v _Canal_ADC Canal_ADC `(ui  1 e 2 0 ]
+{
+[v Canal_ADC@x x `us  1 p 2 0 ]
+"124
 } 0
 "10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 {
 [v ___xxtofl@sign sign `uc  1 a 1 wreg ]
 "13
-[v ___xxtofl@arg arg `ul  1 a 4 6 ]
+[v ___xxtofl@arg arg `ul  1 a 4 10 ]
 "12
-[v ___xxtofl@exp exp `uc  1 a 1 5 ]
+[v ___xxtofl@exp exp `uc  1 a 1 9 ]
 "10
 [v ___xxtofl@sign sign `uc  1 a 1 wreg ]
-[v ___xxtofl@val val `l  1 p 4 3 ]
+[v ___xxtofl@val val `l  1 p 4 0 ]
 "15
-[v ___xxtofl@sign sign `uc  1 a 1 4 ]
+[v ___xxtofl@sign sign `uc  1 a 1 8 ]
 "44
+} 0
+"43 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+{
+"45
+[v ___fltol@exp1 exp1 `uc  1 a 1 10 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 9 ]
+"43
+[v ___fltol@f1 f1 `d  1 p 4 0 ]
+"70
 } 0
 "8 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S715 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S698 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S720 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S723 . 4 `l 1 i 4 0 `d 1 f 4 0 `S715 1 fAsBytes 4 0 `S720 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S723  1 a 4 30 ]
+[s S703 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S706 . 4 `l 1 i 4 0 `d 1 f 4 0 `S698 1 fAsBytes 4 0 `S703 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S706  1 a 4 34 ]
 "12
-[v ___flmul@grs grs `ul  1 a 4 24 ]
-[s S792 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[v ___flmul@grs grs `ul  1 a 4 28 ]
+[s S775 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S795 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S792 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S795  1 a 2 34 ]
+[u S778 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S775 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S778  1 a 2 38 ]
 "10
-[v ___flmul@bexp bexp `uc  1 a 1 29 ]
+[v ___flmul@bexp bexp `uc  1 a 1 33 ]
 "11
-[v ___flmul@aexp aexp `uc  1 a 1 28 ]
+[v ___flmul@aexp aexp `uc  1 a 1 32 ]
 "9
-[v ___flmul@sign sign `uc  1 a 1 23 ]
+[v ___flmul@sign sign `uc  1 a 1 27 ]
 "8
-[v ___flmul@b b `d  1 p 4 10 ]
-[v ___flmul@a a `d  1 p 4 14 ]
+[v ___flmul@b b `d  1 p 4 14 ]
+[v ___flmul@a a `d  1 p 4 18 ]
 "205
 } 0
 "4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8_16.c
@@ -330,25 +322,29 @@ SPI_ACTIVE_2_IDLE 64
 {
 [v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
 "6
-[v __Umul8_16@word_mpld word_mpld `ui  1 a 2 2 ]
+[v __Umul8_16@word_mpld word_mpld `ui  1 a 2 6 ]
 "5
-[v __Umul8_16@product product `ui  1 a 2 0 ]
+[v __Umul8_16@product product `ui  1 a 2 4 ]
 "4
 [v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
-[v __Umul8_16@multiplicand multiplicand `uc  1 p 1 3 ]
-[v __Umul8_16@multiplier multiplier `uc  1 a 1 4 ]
+[v __Umul8_16@multiplicand multiplicand `uc  1 p 1 0 ]
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 8 ]
 "60
 } 0
-"19 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\ADC.c
-[v _Canal_ADC Canal_ADC `(ui  1 e 2 0 ]
-{
-[v Canal_ADC@x x `us  1 p 2 3 ]
-"125
-} 0
-"51 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\Temperatura.c
+"55 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\Temperatura.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"56
+"60
+} 0
+"43 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\fltol.c
+[v i1___fltol __fltol `(l  1 e 4 0 ]
+{
+"45
+[v i1___fltol@exp1 exp1 `uc  1 a 1 10 ]
+[v i1___fltol@sign1 sign1 `uc  1 a 1 9 ]
+"43
+[v i1___fltol@f1 f1 `d  1 p 4 0 ]
+"70
 } 0
 "35 D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Temp.X\SPI.c
 [v _spiWrite spiWrite `(v  1 e 1 0 ]

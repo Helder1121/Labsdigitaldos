@@ -1,4 +1,4 @@
-# 1 "ADC.c"
+# 1 "LCD.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,14 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ADC.c" 2
-
-
-
-
-
-
-
+# 1 "LCD.c" 2
+# 10 "LCD.c"
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2494,7 +2488,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 8 "ADC.c" 2
+# 10 "LCD.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2629,135 +2623,107 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 9 "ADC.c" 2
+# 11 "LCD.c" 2
 
-# 1 "./ADC.h" 1
+# 1 "./LCD.h" 1
+
+
+
+
 
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
-# 4 "./ADC.h" 2
+# 8 "./LCD.h" 2
+# 42 "./LCD.h"
+void Lcd_Init();
+void LCD_CMD(char a);
+void datosLCD(uint8_t x);
+void Puerto(uint8_t x);
+void LCD_Limpia(void);
+void Lcd_Set_Cursor(uint8_t x, uint8_t y);
+void Lcd_Write_String(char *a);
+# 12 "LCD.c" 2
 
 
-unsigned Canal_ADC(unsigned short x);
-void config_ADC(void);
-float ADC_1(void);
-float ADC_2(void);
-void Enviar_1(void);
-void Enviar_2(void);
-# 10 "ADC.c" 2
 
 
-
-void config_ADC(void){
-    ADCON1 = 0b00000000;
-
+void Puerto(uint8_t x){
+ if(x & 1){RD0 = 1;}else{RD0 = 0;}
+    if(x & 2){RD1 = 1;}else{RD1 = 0;}
+    if(x & 4){RD2 = 1;}else{RD2 = 0;}
+    if(x & 8){RD3 = 1;}else{RD3 = 0;}
+    if(x & 16){RD4 = 1;}else{RD4 = 0;}
+    if(x & 32){RD5 = 1;}else{RD5 = 0;}
+    if(x & 64){RD6 = 1;}else{RD6 = 0;}
+    if(x & 128){RD7 = 1;}else{RD7 = 0;}
 }
 
-unsigned Canal_ADC(unsigned short x){
-    switch(x){
 
-        case 0:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 1:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 2:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 3:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 4:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 5:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 6:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 7:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 8:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 9:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 10:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 11:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 12:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 13:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 1;
-            break;
-        case 14:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 0;
-            break;
-        case 15:
-            ADCON0bits.CHS3 = 1;
-            ADCON0bits.CHS2 = 1;
-            ADCON0bits.CHS1 = 1;
-            ADCON0bits.CHS0 = 1;
-            break;
-        default:
-            ADCON0bits.CHS3 = 0;
-            ADCON0bits.CHS2 = 0;
-            ADCON0bits.CHS1 = 0;
-            ADCON0bits.CHS0 = 0;
-            break;
+void LCD_CMD(char a){
+    RE0 = 1;
+    Puerto(a);
+    RE1 = 1;
+    _delay((unsigned long)((5)*(8000000/4000000.0)));
+    RE1 = 0;
+    _delay((unsigned long)((5)*(8000000/4000000.0)));
+    _delay((unsigned long)((50)*(8000000/4000000.0)));
+}
+
+void datosLCD(uint8_t x){
+    RE0 = 0;
+    Puerto(x);
+    RE1 = 1;
+    _delay((unsigned long)((5)*(8000000/4000000.0)));
+    RE1 = 0;
+    _delay((unsigned long)((5)*(8000000/4000000.0)));
+    _delay((unsigned long)((2)*(8000000/4000.0)));
+}
+
+void LCD_Limpia(void){
+    datosLCD(0);
+    datosLCD(1);
+}
+
+
+void Lcd_Init(){
+    _delay((unsigned long)((20)*(8000000/4000.0)));
+    datosLCD (0x30);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+    datosLCD (0x30);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    datosLCD (0x30);
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
+    datosLCD (0x38);
+    _delay((unsigned long)((60)*(8000000/4000000.0)));
+    datosLCD (0x08);
+    _delay((unsigned long)((60)*(8000000/4000000.0)));
+    datosLCD (0x01);
+    _delay((unsigned long)((5)*(8000000/4000.0)));
+    datosLCD (0x06);
+    _delay((unsigned long)((60)*(8000000/4000000.0)));
+    datosLCD (0x0C);
+    _delay((unsigned long)((60)*(8000000/4000000.0)));
+}
+
+void Lcd_Set_Cursor(uint8_t x, uint8_t y){
+ uint8_t a;
+ if(x == 1){
+   a = 0x80 + y;
+
+  datosLCD(a);
     }
+ else if(x == 2){
+   a = 0xC0 + y;
+
+  datosLCD(a);
+    }
+}
+
+void Lcd_Write_String(char *a){
+
+
+ int i;
+ for(i=0;a[i]!='\0';i++)
+    LCD_CMD(a[i]);
 }

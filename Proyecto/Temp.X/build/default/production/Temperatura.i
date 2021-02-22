@@ -2704,18 +2704,22 @@ char spiRead();
 
 uint8_t ADC = 0;
 float temp;
-
+uint8_t volt, volt2;
 
 
 
 void setup(void);
-void semaf(void);
+void semaf(uint8_t temp);
+uint8_t adc_11(void);
+
+
+
 
 
 
 void __attribute__((picinterrupt(("")))) isr(void){
     if(SSPIF == 1){
-        spiWrite(ADC);
+        spiWrite(temp);
         SSPIF = 0;
     }
 }
@@ -2728,12 +2732,14 @@ void main(void){
 
 
     while(1){
-        ADC = Canal_ADC(8);
-        temp = ADC * 1.9547;
-        semaf();
+        adc_11();
+
+        ADC = adc_11();
+        temp = (1.95*ADC);
+        semaf(temp);
     }
 }
-void semaf(void){
+void semaf(uint8_t temp){
     if (temp < 25){
         PORTD = 1;}
     else if (temp > 25 && temp < 36){
@@ -2745,13 +2751,14 @@ void semaf(void){
 
 
 void setup(void){
-    ANSEL = 0;
+    ANSEL = 0b00001000;
     ANSELH = 0;
 
-    TRISB = 0;
+
     TRISD = 0;
 
     PORTD = 0;
+    PORTB = 0;
 
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
@@ -2762,4 +2769,21 @@ void setup(void){
     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
             SPI_IDLE_2_ACTIVE);
 
+}
+
+
+
+
+uint8_t adc_11(void){
+    Canal_ADC(8);
+
+    ADCON0bits.ADCS0 = 1;
+    ADCON0bits.ADCS1 = 0;
+    ADCON0bits.ADON = 1;
+    _delay((unsigned long)((0.25)*(8000000/4000.0)));
+    ADCON0bits.GO = 1;
+    while (ADCON0bits.GO == 1){
+
+    }
+    return ADRESH;
 }

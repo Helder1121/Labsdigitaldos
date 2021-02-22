@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
-                                                                                               Sun Feb 21 21:59:05 2021
+                                                                                               Mon Feb 22 11:25:55 2021
 
 Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
      1                           	processor	16F887
@@ -426,14 +426,14 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    412                           
    413                           ;psect for function _main
    414  0014                     _main:
-   415  0014                     l781:	
+   415  0014                     l789:	
    416                           ;incstack = 0
    417                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
    418                           
    419                           
    420                           ;contador.c: 58:     setup();
    421  0014  120A  118A  2057  120A  118A  	fcall	_setup
-   422  0019                     l783:
+   422  0019                     l791:
    423                           
    424                           ;contador.c: 63:         if (PORTBbits.RB0 == 0){
    425  0019  1283               	bcf	3,5	;RP0=0, select bank0
@@ -442,9 +442,9 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    428  001C  281E               	goto	u91
    429  001D  281F               	goto	u90
    430  001E                     u91:
-   431  001E  2838               	goto	l793
+   431  001E  2838               	goto	l801
    432  001F                     u90:
-   433  001F                     l785:
+   433  001F                     l793:
    434                           
    435                           ;contador.c: 64:             _delay((unsigned long)((100)*(8000000/4000.0)));
    436  001F  3002               	movlw	2
@@ -461,7 +461,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    447  0029  0BF9               	decfsz	??_main+2,f
    448  002A  2825               	goto	u137
    449  002B  0000               	nop
-   450  002C                     l787:
+   450  002C                     l795:
    451                           
    452                           ;contador.c: 65:             if (PORTBbits.RB0 == 1){
    453  002C  1283               	bcf	3,5	;RP0=0, select bank0
@@ -470,30 +470,30 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    456  002F  2831               	goto	u101
    457  0030  2832               	goto	u100
    458  0031                     u101:
-   459  0031  2838               	goto	l793
+   459  0031  2838               	goto	l801
    460  0032                     u100:
-   461  0032                     l789:
+   461  0032                     l797:
    462                           
    463                           ;contador.c: 66:                 conta ++;
    464  0032  3001               	movlw	1
    465  0033  00F7               	movwf	??_main
    466  0034  0877               	movf	??_main,w
    467  0035  07FA               	addwf	_conta,f
-   468  0036                     l791:
+   468  0036                     l799:
    469                           
    470                           ;contador.c: 67:                 PORTD = conta;
    471  0036  087A               	movf	_conta,w
    472  0037  0088               	movwf	8	;volatile
-   473  0038                     l793:
+   473  0038                     l801:
    474                           
    475                           ;contador.c: 70:         if (PORTBbits.RB1 == 0){
    476  0038  1886               	btfsc	6,1	;volatile
    477  0039  283B               	goto	u111
    478  003A  283C               	goto	u110
    479  003B                     u111:
-   480  003B  2819               	goto	l783
+   480  003B  2819               	goto	l791
    481  003C                     u110:
-   482  003C                     l795:
+   482  003C                     l803:
    483                           
    484                           ;contador.c: 71:             _delay((unsigned long)((100)*(8000000/4000.0)));
    485  003C  3002               	movlw	2
@@ -510,7 +510,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    496  0046  0BF9               	decfsz	??_main+2,f
    497  0047  2842               	goto	u147
    498  0048  0000               	nop
-   499  0049                     l797:
+   499  0049                     l805:
    500                           
    501                           ;contador.c: 72:             if (PORTBbits.RB1 == 1){
    502  0049  1283               	bcf	3,5	;RP0=0, select bank0
@@ -519,19 +519,19 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    505  004C  284E               	goto	u121
    506  004D  284F               	goto	u120
    507  004E                     u121:
-   508  004E  2819               	goto	l783
+   508  004E  2819               	goto	l791
    509  004F                     u120:
-   510  004F                     l799:
+   510  004F                     l807:
    511                           
    512                           ;contador.c: 73:                 conta --;
    513  004F  3001               	movlw	1
    514  0050  02FA               	subwf	_conta,f
-   515  0051                     l801:
+   515  0051                     l809:
    516                           
    517                           ;contador.c: 74:                 PORTD = conta;
    518  0051  087A               	movf	_conta,w
    519  0052  0088               	movwf	8	;volatile
-   520  0053  2819               	goto	l783
+   520  0053  2819               	goto	l791
    521  0054  120A  118A  280C   	ljmp	start
    522  0057                     __end_of_main:
    523                           
@@ -570,7 +570,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    556                           
    557                           ;psect for function _setup
    558  0057                     _setup:
-   559  0057                     l763:	
+   559  0057                     l767:	
    560                           ;incstack = 0
    561                           ; Regs used in _setup: [wreg+status,2+status,0+pclath+cstack]
    562                           
@@ -582,64 +582,64 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    568                           
    569                           ;contador.c: 84:     ANSELH = 0;
    570  005A  0189               	clrf	9	;volatile
-   571                           
-   572                           ;contador.c: 87:     PORTB = 0;
-   573  005B  1283               	bcf	3,5	;RP0=0, select bank0
-   574  005C  1303               	bcf	3,6	;RP1=0, select bank0
-   575  005D  0186               	clrf	6	;volatile
-   576                           
-   577                           ;contador.c: 88:     PORTD = 0;
-   578  005E  0188               	clrf	8	;volatile
-   579  005F                     l765:
-   580                           
-   581                           ;contador.c: 90:     TRISB = 3;
-   582  005F  3003               	movlw	3
-   583  0060  1683               	bsf	3,5	;RP0=1, select bank1
-   584  0061  1303               	bcf	3,6	;RP1=0, select bank1
-   585  0062  0086               	movwf	6	;volatile
-   586  0063                     l767:
-   587                           
-   588                           ;contador.c: 91:     TRISD = 0;
-   589  0063  0188               	clrf	8	;volatile
-   590  0064                     l769:
-   591                           
-   592                           ;contador.c: 93:     INTCONbits.GIE = 1;
-   593  0064  178B               	bsf	11,7	;volatile
-   594  0065                     l771:
-   595                           
-   596                           ;contador.c: 94:     INTCONbits.PEIE = 1;
-   597  0065  170B               	bsf	11,6	;volatile
-   598  0066                     l773:
-   599                           
-   600                           ;contador.c: 95:     PIR1bits.SSPIF = 0;
-   601  0066  1283               	bcf	3,5	;RP0=0, select bank0
-   602  0067  1303               	bcf	3,6	;RP1=0, select bank0
-   603  0068  118C               	bcf	12,3	;volatile
-   604  0069                     l775:
+   571  005B                     l769:
+   572                           
+   573                           ;contador.c: 87:     TRISB = 3;
+   574  005B  3003               	movlw	3
+   575  005C  1683               	bsf	3,5	;RP0=1, select bank1
+   576  005D  1303               	bcf	3,6	;RP1=0, select bank1
+   577  005E  0086               	movwf	6	;volatile
+   578  005F                     l771:
+   579                           
+   580                           ;contador.c: 88:     TRISD = 0;
+   581  005F  0188               	clrf	8	;volatile
+   582  0060                     l773:
+   583                           
+   584                           ;contador.c: 91:     PORTB = 0;
+   585  0060  1283               	bcf	3,5	;RP0=0, select bank0
+   586  0061  1303               	bcf	3,6	;RP1=0, select bank0
+   587  0062  0186               	clrf	6	;volatile
+   588  0063                     l775:
+   589                           
+   590                           ;contador.c: 92:     PORTD = 0;
+   591  0063  0188               	clrf	8	;volatile
+   592  0064                     l777:
+   593                           
+   594                           ;contador.c: 94:     INTCONbits.GIE = 1;
+   595  0064  178B               	bsf	11,7	;volatile
+   596  0065                     l779:
+   597                           
+   598                           ;contador.c: 95:     INTCONbits.PEIE = 1;
+   599  0065  170B               	bsf	11,6	;volatile
+   600  0066                     l781:
+   601                           
+   602                           ;contador.c: 96:     PIR1bits.SSPIF = 0;
+   603  0066  118C               	bcf	12,3	;volatile
+   604  0067                     l783:
    605                           
-   606                           ;contador.c: 96:     PIE1bits.SSPIE = 1;
-   607  0069  1683               	bsf	3,5	;RP0=1, select bank1
-   608  006A  1303               	bcf	3,6	;RP1=0, select bank1
-   609  006B  158C               	bsf	12,3	;volatile
-   610  006C                     l777:
+   606                           ;contador.c: 97:     PIE1bits.SSPIE = 1;
+   607  0067  1683               	bsf	3,5	;RP0=1, select bank1
+   608  0068  1303               	bcf	3,6	;RP1=0, select bank1
+   609  0069  158C               	bsf	12,3	;volatile
+   610  006A                     l785:
    611                           
-   612                           ;contador.c: 97:     TRISAbits.TRISA5 = 1;
-   613  006C  1685               	bsf	5,5	;volatile
-   614  006D                     l779:
+   612                           ;contador.c: 98:     TRISAbits.TRISA5 = 1;
+   613  006A  1685               	bsf	5,5	;volatile
+   614  006B                     l787:
    615                           
-   616                           ;contador.c: 99:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW
-      +                          ,
-   617  006D  01F3               	clrf	spiInit@sDataSample
-   618  006E  01F4               	clrf	spiInit@sClockIdle
-   619  006F  01F5               	clrf	spiInit@sTransmitEdge
-   620  0070  3024               	movlw	36
-   621  0071  120A  118A  2077  120A  118A  	fcall	_spiInit
-   622  0076                     l55:
-   623  0076  0008               	return
-   624  0077                     __end_of_setup:
+   616                           ;contador.c: 100:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LO
+      +                          W,
+   617  006B  01F3               	clrf	spiInit@sDataSample
+   618  006C  01F4               	clrf	spiInit@sClockIdle
+   619  006D  01F5               	clrf	spiInit@sTransmitEdge
+   620  006E  3024               	movlw	36
+   621  006F  120A  118A  2075  120A  118A  	fcall	_spiInit
+   622  0074                     l55:
+   623  0074  0008               	return
+   624  0075                     __end_of_setup:
    625                           
    626                           	psect	text2
-   627  0077                     __ptext2:	
+   627  0075                     __ptext2:	
    628 ;; *************** function _spiInit *****************
    629 ;; Defined at:
    630 ;;		line 12 in file "SPI.c"
@@ -675,66 +675,66 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    660                           
    661                           
    662                           ;psect for function _spiInit
-   663  0077                     _spiInit:
+   663  0075                     _spiInit:
    664                           
    665                           ;incstack = 0
    666                           ; Regs used in _spiInit: [wreg+status,2+status,0]
    667                           ;spiInit@sType stored from wreg
-   668  0077  00F6               	movwf	spiInit@sType
-   669  0078                     l753:
+   668  0075  00F6               	movwf	spiInit@sType
+   669  0076                     l757:
    670                           
    671                           ;SPI.c: 12: void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle;SPI
       +                          .c: 13: sClockIdle, Spi_Transmit_Edge sTransmitEdge);SPI.c: 14: {;SPI.c: 15:     TRISC5 
       +                          = 0;
-   672  0078  1683               	bsf	3,5	;RP0=1, select bank1
-   673  0079  1303               	bcf	3,6	;RP1=0, select bank1
-   674  007A  1287               	bcf	7,5	;volatile
+   672  0076  1683               	bsf	3,5	;RP0=1, select bank1
+   673  0077  1303               	bcf	3,6	;RP1=0, select bank1
+   674  0078  1287               	bcf	7,5	;volatile
    675                           
    676                           ;SPI.c: 16:     if(sType & 0b00000100)
-   677  007B  1D76               	btfss	spiInit@sType,2
-   678  007C  287E               	goto	u81
-   679  007D  287F               	goto	u80
-   680  007E                     u81:
-   681  007E  2883               	goto	l759
-   682  007F                     u80:
-   683  007F                     l755:
+   677  0079  1D76               	btfss	spiInit@sType,2
+   678  007A  287C               	goto	u81
+   679  007B  287D               	goto	u80
+   680  007C                     u81:
+   681  007C  2881               	goto	l763
+   682  007D                     u80:
+   683  007D                     l759:
    684                           
    685                           ;SPI.c: 17:     {;SPI.c: 18:         SSPSTAT = sTransmitEdge;
-   686  007F  0875               	movf	spiInit@sTransmitEdge,w
-   687  0080  0094               	movwf	20	;volatile
-   688  0081                     l757:
+   686  007D  0875               	movf	spiInit@sTransmitEdge,w
+   687  007E  0094               	movwf	20	;volatile
+   688  007F                     l761:
    689                           
    690                           ;SPI.c: 19:         TRISC3 = 1;
-   691  0081  1587               	bsf	7,3	;volatile
+   691  007F  1587               	bsf	7,3	;volatile
    692                           
    693                           ;SPI.c: 20:     }
-   694  0082  2887               	goto	l71
-   695  0083                     l759:
+   694  0080  2885               	goto	l71
+   695  0081                     l763:
    696                           
    697                           ;SPI.c: 22:     {;SPI.c: 23:         SSPSTAT = sDataSample | sTransmitEdge;
-   698  0083  0873               	movf	spiInit@sDataSample,w
-   699  0084  0475               	iorwf	spiInit@sTransmitEdge,w
-   700  0085  0094               	movwf	20	;volatile
-   701  0086                     l761:
+   698  0081  0873               	movf	spiInit@sDataSample,w
+   699  0082  0475               	iorwf	spiInit@sTransmitEdge,w
+   700  0083  0094               	movwf	20	;volatile
+   701  0084                     l765:
    702                           
    703                           ;SPI.c: 24:         TRISC3 = 0;
-   704  0086  1187               	bcf	7,3	;volatile
-   705  0087                     l71:	
+   704  0084  1187               	bcf	7,3	;volatile
+   705  0085                     l71:	
    706                           ;SPI.c: 25:     }
    707                           
    708                           
    709                           ;SPI.c: 27:     SSPCON = sType | sClockIdle;
-   710  0087  0876               	movf	spiInit@sType,w
-   711  0088  0474               	iorwf	spiInit@sClockIdle,w
-   712  0089  1283               	bcf	3,5	;RP0=0, select bank0
-   713  008A  1303               	bcf	3,6	;RP1=0, select bank0
-   714  008B  0094               	movwf	20	;volatile
-   715  008C                     l72:
-   716  008C  0008               	return
-   717  008D                     __end_of_spiInit:
+   710  0085  0876               	movf	spiInit@sType,w
+   711  0086  0474               	iorwf	spiInit@sClockIdle,w
+   712  0087  1283               	bcf	3,5	;RP0=0, select bank0
+   713  0088  1303               	bcf	3,6	;RP1=0, select bank0
+   714  0089  0094               	movwf	20	;volatile
+   715  008A                     l72:
+   716  008A  0008               	return
+   717  008B                     __end_of_spiInit:
    718                           
    719                           	psect	text3
-   720  008D                     __ptext3:	
+   720  008B                     __ptext3:	
    721 ;; *************** function _isr *****************
    722 ;; Defined at:
    723 ;;		line 48 in file "contador.c"
@@ -767,38 +767,38 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    750                           
    751                           
    752                           ;psect for function _isr
-   753  008D                     _isr:
-   754  008D                     i1l713:
+   753  008B                     _isr:
+   754  008B                     i1l717:
    755                           
    756                           ;contador.c: 49:     if(SSPIF == 1){
-   757  008D  1283               	bcf	3,5	;RP0=0, select bank0
-   758  008E  1303               	bcf	3,6	;RP1=0, select bank0
-   759  008F  1D8C               	btfss	12,3	;volatile
-   760  0090  2892               	goto	u3_21
-   761  0091  2893               	goto	u3_20
-   762  0092                     u3_21:
-   763  0092  289C               	goto	i1l40
-   764  0093                     u3_20:
-   765  0093                     i1l715:
+   757  008B  1283               	bcf	3,5	;RP0=0, select bank0
+   758  008C  1303               	bcf	3,6	;RP1=0, select bank0
+   759  008D  1D8C               	btfss	12,3	;volatile
+   760  008E  2890               	goto	u3_21
+   761  008F  2891               	goto	u3_20
+   762  0090                     u3_21:
+   763  0090  289A               	goto	i1l40
+   764  0091                     u3_20:
+   765  0091                     i1l719:
    766                           
    767                           ;contador.c: 50:         spiWrite(conta);
-   768  0093  087A               	movf	_conta,w
-   769  0094  120A  118A  20A3  120A  118A  	fcall	_spiWrite
-   770  0099                     i1l717:
+   768  0091  087A               	movf	_conta,w
+   769  0092  120A  118A  20A1  120A  118A  	fcall	_spiWrite
+   770  0097                     i1l721:
    771                           
    772                           ;contador.c: 51:         SSPIF = 0;
-   773  0099  1283               	bcf	3,5	;RP0=0, select bank0
-   774  009A  1303               	bcf	3,6	;RP1=0, select bank0
-   775  009B  118C               	bcf	12,3	;volatile
-   776  009C                     i1l40:
-   777  009C  0872               	movf	??_isr+1,w
-   778  009D  008A               	movwf	10
-   779  009E  0E71               	swapf	??_isr,w
-   780  009F  0083               	movwf	3
-   781  00A0  0EFE               	swapf	btemp,f
-   782  00A1  0E7E               	swapf	btemp,w
-   783  00A2  0009               	retfie
-   784  00A3                     __end_of_isr:
+   773  0097  1283               	bcf	3,5	;RP0=0, select bank0
+   774  0098  1303               	bcf	3,6	;RP1=0, select bank0
+   775  0099  118C               	bcf	12,3	;volatile
+   776  009A                     i1l40:
+   777  009A  0872               	movf	??_isr+1,w
+   778  009B  008A               	movwf	10
+   779  009C  0E71               	swapf	??_isr,w
+   780  009D  0083               	movwf	3
+   781  009E  0EFE               	swapf	btemp,f
+   782  009F  0E7E               	swapf	btemp,w
+   783  00A0  0009               	retfie
+   784  00A1                     __end_of_isr:
    785                           
    786                           	psect	intentry
    787  0004                     __pintentry:	
@@ -812,10 +812,10 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    795  0006  00F1               	movwf	??_isr
    796  0007  080A               	movf	10,w
    797  0008  00F2               	movwf	??_isr+1
-   798  0009  120A  118A  288D   	ljmp	_isr
+   798  0009  120A  118A  288B   	ljmp	_isr
    799                           
    800                           	psect	text4
-   801  00A3                     __ptext4:	
+   801  00A1                     __ptext4:	
    802 ;; *************** function _spiWrite *****************
    803 ;; Defined at:
    804 ;;		line 35 in file "SPI.c"
@@ -847,22 +847,22 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    830                           
    831                           
    832                           ;psect for function _spiWrite
-   833  00A3                     _spiWrite:
+   833  00A1                     _spiWrite:
    834                           
    835                           ;incstack = 0
    836                           ; Regs used in _spiWrite: [wreg]
    837                           ;spiWrite@dat stored from wreg
-   838  00A3  00F0               	movwf	spiWrite@dat
-   839  00A4                     i1l691:
+   838  00A1  00F0               	movwf	spiWrite@dat
+   839  00A2                     i1l691:
    840                           
    841                           ;SPI.c: 35: void spiWrite(char dat);SPI.c: 36: {;SPI.c: 37:     SSPBUF = dat;
-   842  00A4  0870               	movf	spiWrite@dat,w
-   843  00A5  1283               	bcf	3,5	;RP0=0, select bank0
-   844  00A6  1303               	bcf	3,6	;RP1=0, select bank0
-   845  00A7  0093               	movwf	19	;volatile
-   846  00A8                     i1l81:
-   847  00A8  0008               	return
-   848  00A9                     __end_of_spiWrite:
+   842  00A2  0870               	movf	spiWrite@dat,w
+   843  00A3  1283               	bcf	3,5	;RP0=0, select bank0
+   844  00A4  1303               	bcf	3,6	;RP1=0, select bank0
+   845  00A5  0093               	movwf	19	;volatile
+   846  00A6                     i1l81:
+   847  00A6  0008               	return
+   848  00A7                     __end_of_spiWrite:
    849  007E                     btemp	set	126	;btemp
    850  007E                     wtemp0	set	126
    851                           
@@ -1029,45 +1029,45 @@ DATA                 0      0       B      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.31 build 20201012212115 
-Symbol Table                                                                                   Sun Feb 21 21:59:05 2021
+Symbol Table                                                                                   Mon Feb 22 11:25:55 2021
 
-            _SSPSTATbits 0094                       l71 0087                       l55 0076  
-                     l72 008C                       u80 007F                       u81 007E  
-                     u90 001F                       u91 001E                      l801 0051  
-                    l761 0086                      l753 0078                      l755 007F  
-                    l771 0065                      l763 0057                      l757 0081  
-                    l773 0066                      l765 005F                      l781 0014  
-                    l759 0083                      l775 0069                      l767 0063  
-                    l791 0036                      l783 0019                      l777 006C  
-                    l769 0064                      l785 001F                      l793 0038  
-                    l779 006D                      l795 003C                      l787 002C  
-                    l797 0049                      l789 0032                      l799 004F  
-                    u100 0032                      u101 0031                      u110 003C  
-                    u111 003B                      u120 004F                      u121 004E  
-                    u137 0025                      u147 0042                      _isr 008D  
-                   ?_isr 0070                     i1l40 009C                     i1l81 00A8  
-                   u3_20 0093                     u3_21 0092                     _main 0014  
-                   btemp 007E                     start 000C                    ??_isr 0071  
-                  ?_main 0070                    _ANSEL 0188                    i1l713 008D  
-                  i1l715 0093                    i1l717 0099                    i1l691 00A4  
-                  _PORTB 0006                    _PORTD 0008                    _TRISB 0086  
-                  _TRISD 0088                    _SSPIF 0063                    _conta 007A  
-                  _setup 0057                    pclath 000A          __end_of_spiInit 008D  
-                  status 0003                    wtemp0 007E          __initialization 000F  
-           __end_of_main 0057                   ??_main 0077                   ?_setup 0070  
-                 _ANSELH 0189                   _TRISC3 043B                   _TRISC5 043D  
-                 _SSPCON 0014                   _SSPBUF 0013                   saved_w 007E  
-       __end_of_spiWrite 00A9                ??_spiInit 0076  __end_of__initialization 0010  
-         __pcstackCOMMON 0070            __end_of_setup 0077                  ??_setup 0077  
-             __pmaintext 0014               __pintentry 0004                  _SSPSTAT 0094  
-              ?_spiWrite 0070                  __ptext1 0057                  __ptext2 0077  
-                __ptext3 008D                  __ptext4 00A3             __size_of_isr 0016  
-                _spiInit 0077     end_of_initialization 0010               ??_spiWrite 0070  
-              _PORTBbits 0006                _TRISAbits 0085              spiWrite@dat 0070  
-    start_initialization 000F              __end_of_isr 00A3              __pbssCOMMON 007A  
-              ___latbits 0002        __size_of_spiWrite 0006                 ?_spiInit 0073  
-         __size_of_setup 0020     spiInit@sTransmitEdge 0075        interrupt_function 0004  
-               _PIE1bits 008C       spiInit@sDataSample 0073                 _PIR1bits 000C  
-       __size_of_spiInit 0016            __size_of_main 0043                 _spiWrite 00A3  
-           spiInit@sType 0076        spiInit@sClockIdle 0074               _INTCONbits 000B  
-               intlevel1 0000  
+            _SSPSTATbits 0094                       l71 0085                       l55 0074  
+                     l72 008A                       u80 007D                       u81 007C  
+                     u90 001F                       u91 001E                      l801 0038  
+                    l803 003C                      l805 0049                      l807 004F  
+                    l761 007F                      l809 0051                      l763 0081  
+                    l771 005F                      l765 0084                      l757 0076  
+                    l781 0066                      l773 0060                      l759 007D  
+                    l783 0067                      l775 0063                      l767 0057  
+                    l791 0019                      l785 006A                      l777 0064  
+                    l769 005B                      l793 001F                      l787 006B  
+                    l779 0065                      l795 002C                      l797 0032  
+                    l789 0014                      l799 0036                      u100 0032  
+                    u101 0031                      u110 003C                      u111 003B  
+                    u120 004F                      u121 004E                      u137 0025  
+                    u147 0042                      _isr 008B                     ?_isr 0070  
+                   i1l40 009A                     i1l81 00A6                     u3_20 0091  
+                   u3_21 0090                     _main 0014                     btemp 007E  
+                   start 000C                    ??_isr 0071                    ?_main 0070  
+                  _ANSEL 0188                    i1l721 0097                    i1l717 008B  
+                  i1l719 0091                    i1l691 00A2                    _PORTB 0006  
+                  _PORTD 0008                    _TRISB 0086                    _TRISD 0088  
+                  _SSPIF 0063                    _conta 007A                    _setup 0057  
+                  pclath 000A          __end_of_spiInit 008B                    status 0003  
+                  wtemp0 007E          __initialization 000F             __end_of_main 0057  
+                 ??_main 0077                   ?_setup 0070                   _ANSELH 0189  
+                 _TRISC3 043B                   _TRISC5 043D                   _SSPCON 0014  
+                 _SSPBUF 0013                   saved_w 007E         __end_of_spiWrite 00A7  
+              ??_spiInit 0076  __end_of__initialization 0010           __pcstackCOMMON 0070  
+          __end_of_setup 0075                  ??_setup 0077               __pmaintext 0014  
+             __pintentry 0004                  _SSPSTAT 0094                ?_spiWrite 0070  
+                __ptext1 0057                  __ptext2 0075                  __ptext3 008B  
+                __ptext4 00A1             __size_of_isr 0016                  _spiInit 0075  
+   end_of_initialization 0010               ??_spiWrite 0070                _PORTBbits 0006  
+              _TRISAbits 0085              spiWrite@dat 0070      start_initialization 000F  
+            __end_of_isr 00A1              __pbssCOMMON 007A                ___latbits 0002  
+      __size_of_spiWrite 0006                 ?_spiInit 0073           __size_of_setup 001E  
+   spiInit@sTransmitEdge 0075        interrupt_function 0004                 _PIE1bits 008C  
+     spiInit@sDataSample 0073                 _PIR1bits 000C         __size_of_spiInit 0016  
+          __size_of_main 0043                 _spiWrite 00A1             spiInit@sType 0076  
+      spiInit@sClockIdle 0074               _INTCONbits 000B                 intlevel1 0000  

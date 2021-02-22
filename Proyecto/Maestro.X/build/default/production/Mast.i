@@ -2779,39 +2779,136 @@ void spiWrite(char);
 unsigned spiDataReady();
 char spiRead();
 # 33 "Mast.c" 2
-# 44 "Mast.c"
-void setup();
 
+# 1 "./LCD.h" 1
+
+
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
+# 8 "./LCD.h" 2
+# 42 "./LCD.h"
+void Lcd_Init();
+void LCD_CMD(char a);
+void datosLCD(uint8_t x);
+void Puerto(uint8_t x);
+void LCD_Limpia(void);
+void Lcd_Set_Cursor(uint8_t x, uint8_t y);
+void Lcd_Write_String(char *a);
+# 34 "Mast.c" 2
+
+# 1 "./USART.h" 1
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
+# 5 "./USART.h" 2
+
+
+void _baudios(void);
+void config_txsta(void);
+void config_rcsta(void);
+uint8_t Read_USART();
+void Write_USART_String(char *a);
+void Write_USART(uint8_t a);
+# 35 "Mast.c" 2
+
+
+
+
+
+
+uint8_t cont = 0;
+uint8_t ADC1 = 0;
+uint8_t ADC2 = 0;
+float v1,temp;
+char data[20];
+
+
+
+void setup(void);
+void contador(void);
+void ADC_lectura(void);
+float temperatura(void);
 
 
 
 void main(void){
     setup();
 
+    _baudios();
+    config_txsta();
+    config_rcsta();
+    Lcd_Init();
+    LCD_Limpia();
+
 
 
     while(1){
-        PORTCbits.RC2 = 0;
-        _delay((unsigned long)((1)*(8000000/4000.0)));
+        contador();
+        ADC_lectura();
 
-        spiWrite(1);
-        PORTB = spiRead();
+        LCD_Limpia();
+        Lcd_Set_Cursor(1,1);
+        Lcd_Write_String("S1   CONT   S3");
 
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-         PORTCbits.RC2 = 1;
 
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        PORTCbits.RC1 = 0;
-        _delay((unsigned long)((1)*(8000000/4000.0)));
+        temp = temperatura();
+        sprintf(data, "%1.0f   %d   %3.0f" ,v1,cont,temp);
 
-        spiWrite(1);
-        PORTD = spiRead();
+        Lcd_Set_Cursor(2,1);
+        Lcd_Write_String(data);
 
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        PORTCbits.RC1 = 1;
-        _delay((unsigned long)((1)*(8000000/4000.0)));
+        Write_USART_String("S1   CONT   S3");
+        Write_USART(13);
+        Write_USART(10);
+
+        Write_USART_String(data);
+        Write_USART(13);
+        Write_USART(10);
+        _delay((unsigned long)((500)*(8000000/4000.0)));
     }
-    return;
+}
+
+void ADC_lectura(void){
+    PORTCbits.RC0 = 0;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+
+    spiWrite(1);
+    v1 = spiRead();
+
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+    PORTCbits.RC0 = 1;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+}
+
+void contador(void){
+    PORTCbits.RC1 = 0;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+
+    spiWrite(1);
+    cont = spiRead();
+
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+    PORTCbits.RC1 = 1;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+}
+
+float temperatura(void){
+    PORTCbits.RC2 = 0;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+
+    spiWrite(1);
+    temp = spiRead();
+
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+    PORTCbits.RC2 = 1;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+    return temp;
 }
 
 
@@ -2820,21 +2917,22 @@ void main(void){
 void setup(void){
     ANSEL = 0;
     ANSELH = 0;
-
+    TRISB = 0;
     TRISE = 0;
     TRISD = 0;
 
     PORTE = 0;
     PORTD = 0;
+    PORTB = 0;
 
     TRISC0 = 0;
     TRISC1 = 0;
     TRISC2 = 0;
-
+    PORTCbits.RC0 = 1;
     PORTCbits.RC1 = 1;
     PORTCbits.RC2 = 1;
+    PORTCbits.RC7 = 1;
 
-    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
-            SPI_IDLE_2_ACTIVE);
-
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
+        SPI_IDLE_2_ACTIVE);
 }

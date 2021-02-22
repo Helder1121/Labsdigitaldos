@@ -39,18 +39,22 @@
 #define _XTAL_FREQ 8000000
 uint8_t ADC = 0;
 float temp;
-
+uint8_t volt, volt2;//variable para los voltajes en los pots
 //******************************************************************************
 //Portotipos de funciones
 //******************************************************************************
 void setup(void);
-void semaf(void);
+void semaf(uint8_t temp);
+uint8_t adc_11(void);
+//uint8_t adc_21(void);
+//void Enviar_1(void);
+//void Enviar_2(void);
 //******************************************************************************
 // COdigo de interrupcion
 //******************************************************************************
 void __interrupt() isr(void){
     if(SSPIF == 1){
-        spiWrite(ADC);
+        spiWrite(temp);
         SSPIF = 0;
     }
 }
@@ -63,12 +67,14 @@ void main(void){
     // Loop principal
     //**************************************************************************
     while(1){
-        ADC = Canal_ADC(8);
-        temp = ADC * 1.9547;
-        semaf();
+        adc_11();
+        //ADC_2();
+        ADC = adc_11();
+        temp = (1.95*ADC);
+        semaf(temp);
     }        
 }
-void semaf(void){
+void semaf(uint8_t temp){
     if (temp < 25){
         PORTD = 1;}
     else if (temp > 25 && temp < 36){
@@ -80,13 +86,14 @@ void semaf(void){
 // Configuración
 //******************************************************************************
 void setup(void){
-    ANSEL = 0;
+    ANSEL = 0b00001000;
     ANSELH = 0;
     
-    TRISB = 0;
+    //TRISB = 0;
     TRISD = 0;
     //Steo el puerto
     PORTD = 0;
+    PORTB = 0;
     
     INTCONbits.GIE = 1;         // Habilitamos interrupciones
     INTCONbits.PEIE = 1;        // Habilitamos interrupciones PEIE
@@ -99,3 +106,43 @@ void setup(void){
 
 }
 
+//******************************************************************************
+// Funciones
+//******************************************************************************
+uint8_t adc_11(void){
+    Canal_ADC(8);//canal 0
+    //Configuracion bits ADCON0
+    ADCON0bits.ADCS0 = 1;//Clock ADC conversion 
+    ADCON0bits.ADCS1 = 0;
+    ADCON0bits.ADON = 1;//Habilitamos el ADC
+    __delay_ms(0.25);//Para la conversion
+    ADCON0bits.GO = 1;//Inicia la conversion
+    while (ADCON0bits.GO == 1){
+        //Conversion de 0V-5V
+    }
+    return ADRESH;
+}
+//uint8_t adc_21(void){
+//    Canal_ADC(1);//Canal 1
+//    //Configuracion bits ADCON0
+//    ADCON0bits.ADCS0 = 1;//Clock ADC conversion 
+//    ADCON0bits.ADCS1 = 0;
+//    ADCON0bits.ADON = 1;//Habilitamos el ADC
+//    __delay_ms(0.25);//Para la conversion
+//    ADCON0bits.GO = 1;//Inicia la conversion
+//    while (ADCON0bits.GO == 1){
+//        volt2 = ((ADRESH * 150)/255); //Conversion de 0V-5V
+//    }
+//}
+//void Enviar_1(void){//Envio de datos
+//    TXREG = volt;
+//    while (TXSTAbits.TRMT == 1){//Retorna y envia el voltaje a ADC1
+//        return;
+//    }
+//}
+//void Enviar_2(void){//Envio de datos
+//    TXREG = volt2;
+//    while (TXSTAbits.TRMT == 1){//Retorna y envia el voltaje a ADC2
+//        return;
+//    }
+//}

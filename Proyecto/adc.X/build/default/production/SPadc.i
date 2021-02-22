@@ -2703,11 +2703,15 @@ void Enviar_2(void);
 
 
 uint8_t ADC = 0;
+uint8_t volt, volt2;
 
 
 
 void setup(void);
-
+uint8_t adc_11(void);
+uint8_t adc_21(void);
+void Enviar_1(void);
+void Enviar_2(void);
 
 
 
@@ -2722,20 +2726,31 @@ void __attribute__((picinterrupt(("")))) isr(void){
 
 void main(void){
     setup();
+    config_ADC();
 
 
 
     while(1){
-        ADC = Canal_ADC(8);
+
+        adc_21();
+        ADC = adc_21();
+        PORTD = ADC;
     }
 }
 
 
 
 void setup(void){
-    ANSEL = 0;
+    ANSEL = 1;
     ANSELH = 0;
+    TRISA = 1;
     TRISB = 0;
+    TRISD = 0;
+
+
+    PORTA = 0;
+    PORTB = 0;
+    PORTD = 0;
 
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
@@ -2746,4 +2761,44 @@ void setup(void){
     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
             SPI_IDLE_2_ACTIVE);
 
+}
+
+
+
+
+uint8_t adc_11(void){
+    Canal_ADC(0);
+
+    ADCON0bits.ADCS0 = 1;
+    ADCON0bits.ADCS1 = 0;
+    ADCON0bits.ADON = 1;
+    _delay((unsigned long)((0.25)*(8000000/4000.0)));
+    ADCON0bits.GO = 1;
+    while (ADCON0bits.GO == 1){
+        return ADRESH;
+    }
+}
+uint8_t adc_21(void){
+    Canal_ADC(0);
+
+    ADCON0bits.ADCS0 = 1;
+    ADCON0bits.ADCS1 = 0;
+    ADCON0bits.ADON = 1;
+    _delay((unsigned long)((0.25)*(8000000/4000.0)));
+    ADCON0bits.GO = 1;
+    while (ADCON0bits.GO == 1){
+        return ADRESH;
+    }
+}
+void Enviar_1(void){
+    TXREG = volt;
+    while (TXSTAbits.TRMT == 1){
+        return;
+    }
+}
+void Enviar_2(void){
+    TXREG = volt2;
+    while (TXSTAbits.TRMT == 1){
+        return;
+    }
 }
