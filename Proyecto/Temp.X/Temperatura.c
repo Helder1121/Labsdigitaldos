@@ -70,14 +70,11 @@ void main(void){
 }
 void semaf(void){
     if (temp < 25){
-        PORTD = 1;
-    }
+        PORTD = 1;}
     else if (temp > 25 && temp < 36){
-        PORTD = 2;
-    }
+        PORTD = 2;}
     else if (temp > 36){
-        PORTD = 4;
-    }
+        PORTD = 4;}
 }
 //******************************************************************************
 // Configuración
@@ -88,8 +85,7 @@ void setup(void){
     
     TRISB = 0;
     TRISD = 0;
-    //Steo los puertos
-    PORTB = 0;
+    //Steo el puerto
     PORTD = 0;
     
     INTCONbits.GIE = 1;         // Habilitamos interrupciones

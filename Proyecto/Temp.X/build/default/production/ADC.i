@@ -2772,7 +2772,7 @@ float ADC_1(void){
     _delay((unsigned long)((0.25)*(8000000/4000.0)));
     ADCON0bits.GO = 1;
     while (ADCON0bits.GO == 1){
-        volt = ((ADRESH * 5.0)/255);
+        volt = ((ADRESH * 1.5)/255);
     }
 }
 float ADC_2(void){
@@ -2784,7 +2784,7 @@ float ADC_2(void){
     _delay((unsigned long)((0.25)*(8000000/4000.0)));
     ADCON0bits.GO = 1;
     while (ADCON0bits.GO == 1){
-        volt2 = ((ADRESH * 5.0)/255);
+        volt2 = ((ADRESH * 1.5)/255);
     }
 }
 void Enviar_1(void){

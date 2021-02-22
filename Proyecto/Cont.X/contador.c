@@ -63,14 +63,14 @@ void main(void){
         if (PORTBbits.RB0 == 0){
             __delay_ms(100);
             if (PORTBbits.RB0 == 1){
-                conta = conta + 1;
+                conta ++;
                 PORTD = conta;
             }
         }
         if (PORTBbits.RB1 == 0){
             __delay_ms(100);
             if (PORTBbits.RB1 == 1){
-                conta = conta - 1;
+                conta --;
                 PORTD = conta;
             }
         }
@@ -83,11 +83,12 @@ void setup(void){
     ANSEL = 0;
     ANSELH = 0;
     
-    TRISB = 3;
-    TRISD = 0;
     //Steo los puertos
     PORTB = 0;
     PORTD = 0;
+    
+    TRISB = 3;
+    TRISD = 0;
     
     INTCONbits.GIE = 1;         // Habilitamos interrupciones
     INTCONbits.PEIE = 1;        // Habilitamos interrupciones PEIE

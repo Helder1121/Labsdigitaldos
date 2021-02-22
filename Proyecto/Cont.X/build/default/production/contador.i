@@ -2714,14 +2714,14 @@ void main(void){
         if (PORTBbits.RB0 == 0){
             _delay((unsigned long)((100)*(8000000/4000.0)));
             if (PORTBbits.RB0 == 1){
-                conta = conta + 1;
+                conta ++;
                 PORTD = conta;
             }
         }
         if (PORTBbits.RB1 == 0){
             _delay((unsigned long)((100)*(8000000/4000.0)));
             if (PORTBbits.RB1 == 1){
-                conta = conta - 1;
+                conta --;
                 PORTD = conta;
             }
         }
@@ -2734,11 +2734,12 @@ void setup(void){
     ANSEL = 0;
     ANSELH = 0;
 
-    TRISB = 3;
-    TRISD = 0;
 
     PORTB = 0;
     PORTD = 0;
+
+    TRISB = 3;
+    TRISD = 0;
 
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;

@@ -13,16 +13,16 @@
 %PSECTS
 $dist/default/production\Cont.X.production.o
 cinit CODE 0 F F 5 2
-text1 CODE 0 5B 5B 1E 2
-text2 CODE 0 79 79 16 2
-text3 CODE 0 8F 8F 16 2
-text4 CODE 0 A5 A5 6 2
-maintext CODE 0 14 14 47 2
+text1 CODE 0 57 57 20 2
+text2 CODE 0 77 77 16 2
+text3 CODE 0 8D 8D 16 2
+text4 CODE 0 A3 A3 6 2
+maintext CODE 0 14 14 43 2
 cstackCOMMON COMMON 1 70 70 A 1
 intentry CODE 0 4 4 8 2
 bssCOMMON COMMON 1 7A 7A 1 1
 config CONFIG 4 2007 2007 2 2
-$C:\Users\betov\AppData\Local\Temp\sht8.o
+$C:\Users\betov\AppData\Local\Temp\sgj8.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -41,13 +41,13 @@ BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
 CONST 3-3 2
-CONST AB-1FFF 2
+CONST A9-1FFF 2
 ENTRY 3-3 2
-ENTRY AB-1FFF 2
+ENTRY A9-1FFF 2
 IDLOC 2000-2003 2
 STACK 110-16F 1
 CODE 3-3 2
-CODE AB-1FFF 2
+CODE A9-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-10F 1
@@ -55,9 +55,9 @@ SFR3 180-18F 1
 COMMON 7B-7D 1
 EEDATA 2100-21FF 2
 STRCODE 3-3 2
-STRCODE AB-1FFF 2
+STRCODE A9-1FFF 2
 STRING 3-3 2
-STRING AB-1FFF 2
+STRING A9-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -72,58 +72,58 @@ STRING AB-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Cont.X.production.o
-F cinit CODE >622:C:\Users\betov\AppData\Local\Temp\sht8.s
-F cinit CODE >625:C:\Users\betov\AppData\Local\Temp\sht8.s
-F cinit CODE >636:C:\Users\betov\AppData\Local\Temp\sht8.s
-10 cinit CODE >642:C:\Users\betov\AppData\Local\Temp\sht8.s
-10 cinit CODE >644:C:\Users\betov\AppData\Local\Temp\sht8.s
-11 cinit CODE >645:C:\Users\betov\AppData\Local\Temp\sht8.s
+F cinit CODE >622:C:\Users\betov\AppData\Local\Temp\sgj8.s
+F cinit CODE >625:C:\Users\betov\AppData\Local\Temp\sgj8.s
+F cinit CODE >636:C:\Users\betov\AppData\Local\Temp\sgj8.s
+10 cinit CODE >642:C:\Users\betov\AppData\Local\Temp\sgj8.s
+10 cinit CODE >644:C:\Users\betov\AppData\Local\Temp\sgj8.s
+11 cinit CODE >645:C:\Users\betov\AppData\Local\Temp\sgj8.s
 4 intentry CODE >48:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-A5 text4 CODE >35:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-A6 text4 CODE >37:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-AA text4 CODE >38:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-8F text3 CODE >48:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-8F text3 CODE >49:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-95 text3 CODE >50:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-9B text3 CODE >51:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-9E text3 CODE >53:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-79 text2 CODE >12:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-7A text2 CODE >15:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-7D text2 CODE >16:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-81 text2 CODE >18:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-83 text2 CODE >19:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-84 text2 CODE >20:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-85 text2 CODE >23:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-88 text2 CODE >24:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-89 text2 CODE >25:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-89 text2 CODE >27:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-8E text2 CODE >28:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
-5B text1 CODE >82:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-5B text1 CODE >83:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-5E text1 CODE >84:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-5F text1 CODE >86:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-63 text1 CODE >87:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-64 text1 CODE >89:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-67 text1 CODE >90:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-68 text1 CODE >92:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-69 text1 CODE >93:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-6A text1 CODE >94:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-6B text1 CODE >95:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-6E text1 CODE >96:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-6F text1 CODE >98:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-78 text1 CODE >101:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+A3 text4 CODE >35:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+A4 text4 CODE >37:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+A8 text4 CODE >38:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+8D text3 CODE >48:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+8D text3 CODE >49:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+93 text3 CODE >50:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+99 text3 CODE >51:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+9C text3 CODE >53:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+77 text2 CODE >12:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+78 text2 CODE >15:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+7B text2 CODE >16:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+7F text2 CODE >18:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+81 text2 CODE >19:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+82 text2 CODE >20:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+83 text2 CODE >23:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+86 text2 CODE >24:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+87 text2 CODE >25:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+87 text2 CODE >27:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+8C text2 CODE >28:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
+57 text1 CODE >82:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+57 text1 CODE >83:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+5A text1 CODE >84:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+5B text1 CODE >87:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+5E text1 CODE >88:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+5F text1 CODE >90:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+63 text1 CODE >91:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+64 text1 CODE >93:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+65 text1 CODE >94:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+66 text1 CODE >95:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+69 text1 CODE >96:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+6C text1 CODE >97:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+6D text1 CODE >99:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+76 text1 CODE >102:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
 14 maintext CODE >57:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
 14 maintext CODE >58:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
 19 maintext CODE >63:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
 1F maintext CODE >64:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
 2C maintext CODE >65:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
 32 maintext CODE >66:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-37 maintext CODE >67:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-39 maintext CODE >70:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-3D maintext CODE >71:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-4A maintext CODE >72:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-50 maintext CODE >73:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
-55 maintext CODE >74:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+36 maintext CODE >67:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+38 maintext CODE >70:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+3C maintext CODE >71:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+49 maintext CODE >72:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+4F maintext CODE >73:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
+51 maintext CODE >74:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\contador.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -137,7 +137,7 @@ AA text4 CODE >38:D:\Cursos\Digitaldos\Labsdigitaldos\Proyecto\Cont.X\SPI.c
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
 ___latbits 2 0 ABS 0 - dist/default/production\Cont.X.production.o
-__Hspace_0 AB 0 ABS 0 - -
+__Hspace_0 A9 0 ABS 0 - -
 __Hspace_1 7B 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
@@ -145,19 +145,19 @@ __Hspace_4 4010 0 ABS 0 - -
 spiInit@sTransmitEdge 75 0 COMMON 1 cstackCOMMON dist/default/production\Cont.X.production.o
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\betov\AppData\Local\Temp\sht8.o
+___sp 0 0 STACK 2 stack C:\Users\betov\AppData\Local\Temp\sgj8.o
 _main 28 0 CODE 0 maintext dist/default/production\Cont.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Cont.X.production.o
-start 18 0 CODE 0 init C:\Users\betov\AppData\Local\Temp\sht8.o
+start 18 0 CODE 0 init C:\Users\betov\AppData\Local\Temp\sgj8.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Cont.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\betov\AppData\Local\Temp\sht8.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\betov\AppData\Local\Temp\sht8.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\betov\AppData\Local\Temp\sht8.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\betov\AppData\Local\Temp\sht8.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\betov\AppData\Local\Temp\sht8.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\betov\AppData\Local\Temp\sht8.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\betov\AppData\Local\Temp\sgj8.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\betov\AppData\Local\Temp\sgj8.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\betov\AppData\Local\Temp\sgj8.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\betov\AppData\Local\Temp\sgj8.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\betov\AppData\Local\Temp\sgj8.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\betov\AppData\Local\Temp\sgj8.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\Cont.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -165,8 +165,8 @@ __Hclrtext 0 0 ABS 0 clrtext -
 _ANSELH 189 0 ABS 0 - dist/default/production\Cont.X.production.o
 __size_of_spiInit 0 0 ABS 0 - dist/default/production\Cont.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\betov\AppData\Local\Temp\sht8.o
-___stacklo 0 0 ABS 0 - C:\Users\betov\AppData\Local\Temp\sht8.o
+___stackhi 0 0 ABS 0 - C:\Users\betov\AppData\Local\Temp\sgj8.o
+___stacklo 0 0 ABS 0 - C:\Users\betov\AppData\Local\Temp\sgj8.o
 __size_of_setup 0 0 ABS 0 - dist/default/production\Cont.X.production.o
 spiInit@sDataSample 73 0 COMMON 1 cstackCOMMON dist/default/production\Cont.X.production.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\Cont.X.production.o
@@ -175,7 +175,7 @@ _SSPBUF 13 0 ABS 0 - dist/default/production\Cont.X.production.o
 _SSPCON 14 0 ABS 0 - dist/default/production\Cont.X.production.o
 _TRISC3 43B 0 ABS 0 - dist/default/production\Cont.X.production.o
 _TRISC5 43D 0 ABS 0 - dist/default/production\Cont.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\betov\AppData\Local\Temp\sht8.o
+___int_sp 0 0 STACK 2 stack C:\Users\betov\AppData\Local\Temp\sgj8.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -183,7 +183,7 @@ __Hbank3 0 0 ABS 0 bank3 -
 __Hcinit 28 0 CODE 0 cinit -
 __Hstack 0 0 STACK 2 stack -
 __Hmaintext 0 0 ABS 0 maintext -
-__end_of_spiInit 11E 0 CODE 0 text2 dist/default/production\Cont.X.production.o
+__end_of_spiInit 11A 0 CODE 0 text2 dist/default/production\Cont.X.production.o
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 4012 0 CONFIG 4 config -
 __Lbank0 0 0 ABS 0 bank0 -
@@ -211,15 +211,15 @@ __Lsfr2 0 0 ABS 0 sfr2 -
 __Lsfr3 0 0 ABS 0 sfr3 -
 __Ltext 0 0 ABS 0 text -
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-__S0 AB 0 ABS 0 - -
+__S0 A9 0 ABS 0 - -
 __S1 7B 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-_isr 11E 0 CODE 0 text3 dist/default/production\Cont.X.production.o
+_isr 11A 0 CODE 0 text3 dist/default/production\Cont.X.production.o
 saved_w 7E 0 ABS 0 - dist/default/production\Cont.X.production.o
-__end_of_isr 14A 0 CODE 0 text3 dist/default/production\Cont.X.production.o
+__end_of_isr 146 0 CODE 0 text3 dist/default/production\Cont.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\betov\AppData\Local\Temp\sht8.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\betov\AppData\Local\Temp\sgj8.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\Cont.X.production.o
 __pmaintext 28 0 CODE 0 maintext dist/default/production\Cont.X.production.o
 __Lcommon 0 0 ABS 0 common -
@@ -237,11 +237,11 @@ end_of_initialization 20 0 CODE 0 cinit dist/default/production\Cont.X.productio
 __Hintentry 18 0 CODE 0 intentry -
 __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 6 0 CODE 0 reset_vec -
-__ptext1 B6 0 CODE 0 text1 dist/default/production\Cont.X.production.o
-__ptext2 F2 0 CODE 0 text2 dist/default/production\Cont.X.production.o
-__ptext3 11E 0 CODE 0 text3 dist/default/production\Cont.X.production.o
-__ptext4 14A 0 CODE 0 text4 dist/default/production\Cont.X.production.o
-_spiInit F2 0 CODE 0 text2 dist/default/production\Cont.X.production.o
+__ptext1 AE 0 CODE 0 text1 dist/default/production\Cont.X.production.o
+__ptext2 EE 0 CODE 0 text2 dist/default/production\Cont.X.production.o
+__ptext3 11A 0 CODE 0 text3 dist/default/production\Cont.X.production.o
+__ptext4 146 0 CODE 0 text4 dist/default/production\Cont.X.production.o
+_spiInit EE 0 CODE 0 text2 dist/default/production\Cont.X.production.o
 spiWrite@dat 70 0 COMMON 1 cstackCOMMON dist/default/production\Cont.X.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 spiInit@sType 76 0 COMMON 1 cstackCOMMON dist/default/production\Cont.X.production.o
@@ -254,26 +254,26 @@ __Lclrtext 0 0 ABS 0 clrtext -
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\Cont.X.production.o
 _SSPSTAT 94 0 ABS 0 - dist/default/production\Cont.X.production.o
 __Hend_init 1E 0 CODE 0 end_init -
-__end_of_main B6 0 CODE 0 maintext dist/default/production\Cont.X.production.o
+__end_of_main AE 0 CODE 0 maintext dist/default/production\Cont.X.production.o
 _ANSEL 188 0 ABS 0 - dist/default/production\Cont.X.production.o
 _PORTB 6 0 ABS 0 - dist/default/production\Cont.X.production.o
 _PORTD 8 0 ABS 0 - dist/default/production\Cont.X.production.o
 _SSPIF 63 0 ABS 0 - dist/default/production\Cont.X.production.o
 _TRISB 86 0 ABS 0 - dist/default/production\Cont.X.production.o
 _TRISD 88 0 ABS 0 - dist/default/production\Cont.X.production.o
-__end_of_setup F2 0 CODE 0 text1 dist/default/production\Cont.X.production.o
+__end_of_setup EE 0 CODE 0 text1 dist/default/production\Cont.X.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 _conta 7A 0 COMMON 1 bssCOMMON dist/default/production\Cont.X.production.o
 interrupt_function 8 0 CODE 0 intentry dist/default/production\Cont.X.production.o
-_setup B6 0 CODE 0 text1 dist/default/production\Cont.X.production.o
+_setup AE 0 CODE 0 text1 dist/default/production\Cont.X.production.o
 _SSPSTATbits 94 0 ABS 0 - dist/default/production\Cont.X.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\Cont.X.production.o
 __size_of_isr 0 0 ABS 0 - dist/default/production\Cont.X.production.o
 spiInit@sClockIdle 74 0 COMMON 1 cstackCOMMON dist/default/production\Cont.X.production.o
 __initialization 1E 0 CODE 0 cinit dist/default/production\Cont.X.production.o
-_spiWrite 14A 0 CODE 0 text4 dist/default/production\Cont.X.production.o
-__end_of_spiWrite 156 0 CODE 0 text4 dist/default/production\Cont.X.production.o
+_spiWrite 146 0 CODE 0 text4 dist/default/production\Cont.X.production.o
+__end_of_spiWrite 152 0 CODE 0 text4 dist/default/production\Cont.X.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -300,7 +300,7 @@ __end_of_spiWrite 156 0 CODE 0 text4 dist/default/production\Cont.X.production.o
 # All other numeric quantities are in decimal.
 %SEGMENTS
 cstackCOMMON 1 70 70 B 1
-intentry 0 4 8 A7 2
+intentry 0 4 8 A5 2
 reset_vec 0 0 0 3 2
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section

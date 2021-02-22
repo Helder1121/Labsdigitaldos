@@ -32,9 +32,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1602
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
 [v _TRISD `Vuc ~T0 @X0 0 e@136 ]
-"228
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
-[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
 "465
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 465:     struct {
 [s S16 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -83,8 +80,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1433
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1433: extern volatile TRISAbits_t TRISAbits __attribute__((address(0x085)));
 [v _TRISAbits `VS52 ~T0 @X0 0 e@133 ]
-"101 Temperatura.c
-[; ;Temperatura.c: 101:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
+"97 Temperatura.c
+[; ;Temperatura.c: 97:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
 [c E1299 32 33 34 35 36 37 .. ]
 [n E1299 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
 [c E1307 0 128 .. ]
@@ -432,85 +429,76 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! < _temp -> -> 25 `i `f 145  ]
 {
 "73
-[; ;Temperatura.c: 73:         PORTD = 1;
+[; ;Temperatura.c: 73:         PORTD = 1;}
 [e = _PORTD -> -> 1 `i `uc ]
-"74
-[; ;Temperatura.c: 74:     }
 }
 [e $U 146  ]
-"75
-[; ;Temperatura.c: 75:     else if (temp > 25 && temp < 36){
+"74
+[; ;Temperatura.c: 74:     else if (temp > 25 && temp < 36){
 [e :U 145 ]
 [e $ ! && > _temp -> -> 25 `i `f < _temp -> -> 36 `i `f 147  ]
 {
-"76
-[; ;Temperatura.c: 76:         PORTD = 2;
+"75
+[; ;Temperatura.c: 75:         PORTD = 2;}
 [e = _PORTD -> -> 2 `i `uc ]
-"77
-[; ;Temperatura.c: 77:     }
 }
 [e $U 148  ]
-"78
-[; ;Temperatura.c: 78:     else if (temp > 36){
+"76
+[; ;Temperatura.c: 76:     else if (temp > 36){
 [e :U 147 ]
 [e $ ! > _temp -> -> 36 `i `f 149  ]
 {
-"79
-[; ;Temperatura.c: 79:         PORTD = 4;
+"77
+[; ;Temperatura.c: 77:         PORTD = 4;}
 [e = _PORTD -> -> 4 `i `uc ]
-"80
-[; ;Temperatura.c: 80:     }
 }
 [e :U 149 ]
 [e :U 148 ]
 [e :U 146 ]
-"81
-[; ;Temperatura.c: 81: }
+"78
+[; ;Temperatura.c: 78: }
 [e :UE 144 ]
 }
-"85
-[; ;Temperatura.c: 85: void setup(void){
+"82
+[; ;Temperatura.c: 82: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"86
-[; ;Temperatura.c: 86:     ANSEL = 0;
+"83
+[; ;Temperatura.c: 83:     ANSEL = 0;
 [e = _ANSEL -> -> 0 `i `uc ]
-"87
-[; ;Temperatura.c: 87:     ANSELH = 0;
+"84
+[; ;Temperatura.c: 84:     ANSELH = 0;
 [e = _ANSELH -> -> 0 `i `uc ]
-"89
-[; ;Temperatura.c: 89:     TRISB = 0;
+"86
+[; ;Temperatura.c: 86:     TRISB = 0;
 [e = _TRISB -> -> 0 `i `uc ]
-"90
-[; ;Temperatura.c: 90:     TRISD = 0;
+"87
+[; ;Temperatura.c: 87:     TRISD = 0;
 [e = _TRISD -> -> 0 `i `uc ]
-"92
-[; ;Temperatura.c: 92:     PORTB = 0;
-[e = _PORTB -> -> 0 `i `uc ]
-"93
-[; ;Temperatura.c: 93:     PORTD = 0;
+"89
+[; ;Temperatura.c: 89:     PORTD = 0;
 [e = _PORTD -> -> 0 `i `uc ]
-"95
-[; ;Temperatura.c: 95:     INTCONbits.GIE = 1;
+"91
+[; ;Temperatura.c: 91:     INTCONbits.GIE = 1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"96
-[; ;Temperatura.c: 96:     INTCONbits.PEIE = 1;
+"92
+[; ;Temperatura.c: 92:     INTCONbits.PEIE = 1;
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-"97
-[; ;Temperatura.c: 97:     PIR1bits.SSPIF = 0;
+"93
+[; ;Temperatura.c: 93:     PIR1bits.SSPIF = 0;
 [e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-"98
-[; ;Temperatura.c: 98:     PIE1bits.SSPIE = 1;
+"94
+[; ;Temperatura.c: 94:     PIE1bits.SSPIE = 1;
 [e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
-"99
-[; ;Temperatura.c: 99:     TRISAbits.TRISA5 = 1;
+"95
+[; ;Temperatura.c: 95:     TRISAbits.TRISA5 = 1;
 [e = . . _TRISAbits 0 5 -> -> 1 `i `uc ]
-"101
-[; ;Temperatura.c: 101:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
+"97
+[; ;Temperatura.c: 97:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW,
 [e ( _spiInit (4 , , , . `E1299 4 . `E1307 0 . `E1311 1 . `E1315 0 ]
-"104
-[; ;Temperatura.c: 104: }
+"100
+[; ;Temperatura.c: 100: }
 [e :UE 150 ]
 }
