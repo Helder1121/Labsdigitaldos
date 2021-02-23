@@ -28,7 +28,7 @@ void config_rcsta(void){
     RCSTAbits.SPEN = 1;//Se habilita el puerto serial 
     RCSTAbits.RX9 = 0;
     RCSTAbits.SREN = 0;
-    RCSTAbits.CREN = 1;//Recibir habilitadp 
+    RCSTAbits.CREN = 1;//Recibir habilitada
     RCREG = 0;  
 }
 //Extraido de https://electrosome.com/uart-pic-microcontroller-mplab-xc8/

@@ -42,7 +42,7 @@ uint8_t cont = 0;
 uint8_t ADC1 = 0;
 uint8_t ADC2 = 0;
 float v1,temp;
-char data[20];
+char data[20];//Variable mostrara los valos en la lcd
 //******************************************************************************
 //Portotipos de funciones
 //******************************************************************************
@@ -68,24 +68,26 @@ void main(void){
         contador();
         ADC_lectura();
         //temperatura();
-        LCD_Limpia();
-        Lcd_Set_Cursor(1,1);
+        LCD_Limpia();//Limpiamos la lcd
+        Lcd_Set_Cursor(1,1);//Se mostrar en la primera fila de la lcd
         Lcd_Write_String("S1   CONT   S3");
-        
+        //Mensaje que se muestra en la terminal en la primera linea
 //        v1 = ADC1*0.0196;
         temp = temperatura();
         sprintf(data, "%1.0f   %d   %3.0f" ,v1,cont,temp);
         
-        Lcd_Set_Cursor(2,1);
-        Lcd_Write_String(data);
+        Lcd_Set_Cursor(2,1);//Segunda fila
+        Lcd_Write_String(data);//Mostrara el valor en la LCD
         
         Write_USART_String("S1   CONT   S3");
+        //Mensaje que se muestra en la terminal en la segunda linea
         Write_USART(13);
         Write_USART(10);
-        
-        Write_USART_String(data);
+        //Saltar lineas
+        Write_USART_String(data);//Muestra en la terminal los valores
         Write_USART(13);
         Write_USART(10);
+        //Saltar lineas
         __delay_ms(500);
     }
 }
@@ -103,26 +105,26 @@ void ADC_lectura(void){
 }    
     
 void contador(void){
-    PORTCbits.RC1 = 0;
+    PORTCbits.RC1 = 0;      //Slave Select
     __delay_ms(1);
        
     spiWrite(1);
     cont = spiRead();
        
     __delay_ms(1);
-    PORTCbits.RC1 = 1; 
+    PORTCbits.RC1 = 1;       //Slave Deselect
     __delay_ms(1);
 }   
 
 float temperatura(void){
-    PORTCbits.RC2 = 0;
+    PORTCbits.RC2 = 0;       //Slave Select
     __delay_ms(1);
        
     spiWrite(1);
     temp = spiRead();
        
     __delay_ms(1);
-    PORTCbits.RC2 = 1; 
+    PORTCbits.RC2 = 1;         //Slave Deselect
     __delay_ms(1);
     return temp;
 }
@@ -143,7 +145,7 @@ void setup(void){
     
     TRISC0 = 0;
     TRISC1 = 0;
-    TRISC2 = 0;
+    TRISC2 = 0;//Donde se colocaran los esclavos
     PORTCbits.RC0 = 1;
     PORTCbits.RC1 = 1;
     PORTCbits.RC2 = 1;

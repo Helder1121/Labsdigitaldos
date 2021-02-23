@@ -56,6 +56,7 @@ void __interrupt() isr(void){
     if(SSPIF == 1){
         spiWrite(temp);
         SSPIF = 0;
+        //Mandarlo al SPI
     }
 }
 //******************************************************************************
@@ -70,16 +71,16 @@ void main(void){
         adc_11();
         //ADC_2();
         ADC = adc_11();
-        temp = (1.95*ADC);
+        temp = (1.95*ADC);//COnversion para los grados
         semaf(temp);
     }        
 }
 void semaf(uint8_t temp){
-    if (temp < 25){
+    if (temp < 25){//Verde <25
         PORTD = 1;}
-    else if (temp > 25 && temp < 36){
+    else if (temp > 25 && temp < 36){//Amariillo para el rango de 25-36
         PORTD = 2;}
-    else if (temp > 36){
+    else if (temp > 36){//Rojo para >36
         PORTD = 4;}
 }
 //******************************************************************************
@@ -110,7 +111,7 @@ void setup(void){
 // Funciones
 //******************************************************************************
 uint8_t adc_11(void){
-    Canal_ADC(8);//canal 0
+    Canal_ADC(8);//canal 8
     //Configuracion bits ADCON0
     ADCON0bits.ADCS0 = 1;//Clock ADC conversion 
     ADCON0bits.ADCS1 = 0;
@@ -118,7 +119,7 @@ uint8_t adc_11(void){
     __delay_ms(0.25);//Para la conversion
     ADCON0bits.GO = 1;//Inicia la conversion
     while (ADCON0bits.GO == 1){
-        //Conversion de 0V-5V
+        //Conversion 
     }
     return ADRESH;
 }

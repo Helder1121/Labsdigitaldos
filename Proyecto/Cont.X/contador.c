@@ -49,6 +49,7 @@ void __interrupt() isr(void){
     if(SSPIF == 1){
         spiWrite(conta);
         SSPIF = 0;
+        //Mandarlo al SPI
     }
 }
 //******************************************************************************

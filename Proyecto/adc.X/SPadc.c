@@ -42,10 +42,10 @@ uint8_t volt, volt2;//variable para los voltajes en los pots
 //Portotipos de funciones
 //******************************************************************************
 void setup(void);
-uint8_t adc_11(void);
+//uint8_t adc_11(void);
 uint8_t adc_21(void);
-void Enviar_1(void);
-void Enviar_2(void);
+//void Enviar_1(void);
+//void Enviar_2(void);
 //******************************************************************************
 // COdigo de interrupcion
 //******************************************************************************
@@ -54,6 +54,7 @@ void __interrupt() isr(void){
         spiWrite(ADC);
         SSPIF = 0;
     }
+    //Mandarlo al SPI
 }
 //******************************************************************************
 // Ciclo principal
@@ -100,20 +101,20 @@ void setup(void){
 //******************************************************************************
 // Funciones
 //******************************************************************************
-uint8_t adc_11(void){
-    Canal_ADC(0);//canal 0
-    //Configuracion bits ADCON0
-    ADCON0bits.ADCS0 = 1;//Clock ADC conversion 
-    ADCON0bits.ADCS1 = 0;
-    ADCON0bits.ADON = 1;//Habilitamos el ADC
-    __delay_ms(0.25);//Para la conversion
-    ADCON0bits.GO = 1;//Inicia la conversion
-    while (ADCON0bits.GO == 1){
-        return  ADRESH;//Conversion de 0V-5V
-    }
-}
+//uint8_t adc_11(void){
+//    Canal_ADC(0);//canal 0
+//    //Configuracion bits ADCON0
+//    ADCON0bits.ADCS0 = 1;//Clock ADC conversion 
+//    ADCON0bits.ADCS1 = 0;
+//    ADCON0bits.ADON = 1;//Habilitamos el ADC
+//    __delay_ms(0.25);//Para la conversion
+//    ADCON0bits.GO = 1;//Inicia la conversion
+//    while (ADCON0bits.GO == 1){
+//        return  ADRESH;//Conversion de 0V-5V
+//    }
+//}
 uint8_t adc_21(void){
-    Canal_ADC(0);//Canal 1
+    Canal_ADC(0);//Canal 0
     //Configuracion bits ADCON0
     ADCON0bits.ADCS0 = 1;//Clock ADC conversion 
     ADCON0bits.ADCS1 = 0;
@@ -121,18 +122,18 @@ uint8_t adc_21(void){
     __delay_ms(0.25);//Para la conversion
     ADCON0bits.GO = 1;//Inicia la conversion
     while (ADCON0bits.GO == 1){
-        return  ADRESH; //Conversion de 0V-5V
+        return  ADRESH; //Conversion 
     }
 }
-void Enviar_1(void){//Envio de datos
-    TXREG = volt;
-    while (TXSTAbits.TRMT == 1){//Retorna y envia el voltaje a ADC1
-        return;
-    }
-}
-void Enviar_2(void){//Envio de datos
-    TXREG = volt2;
-    while (TXSTAbits.TRMT == 1){//Retorna y envia el voltaje a ADC2
-        return;
-    }
-}
+//void Enviar_1(void){//Envio de datos
+//    TXREG = volt;
+//    while (TXSTAbits.TRMT == 1){//Retorna y envia el voltaje a ADC1
+//        return;
+//    }
+//}
+//void Enviar_2(void){//Envio de datos
+//    TXREG = volt2;
+//    while (TXSTAbits.TRMT == 1){//Retorna y envia el voltaje a ADC2
+//        return;
+//    }
+//}

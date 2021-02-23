@@ -75,12 +75,12 @@ void Lcd_Set_Cursor(uint8_t x, uint8_t y){
 	uint8_t a;
 	if(x == 1){//Linea que se coloca arriba
 	  a = 0x80 + y;//direccion(hexadecimal) y posicion para colocarlo en la fila 
-                       //adecuada para ire leyendo adecuadamente
+                       //adecuada para ir leyendo adecuadamente
 		datosLCD(a);
     }
 	else if(x == 2){//Linea que se coloca abajo
 	  a = 0xC0 + y;//direccion(hexadecimal) y posicion para colocarlo en la fila 
-                       //adecuada para ire leyendo adecuadamente
+                       //adecuada para ir leyendo adecuadamente
 		datosLCD(a);
     }
 }
