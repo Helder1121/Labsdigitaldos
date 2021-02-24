@@ -71,7 +71,7 @@ void main(void){
         adc_11();
         //ADC_2();
         ADC = adc_11();
-        temp = (1.95*ADC);//COnversion para los grados
+        temp = (1.95*ADC);//COnversion en bits a numero decimal 
         semaf(temp);
     }        
 }
