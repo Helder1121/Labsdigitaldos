@@ -5,6 +5,9 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>USART.h</itemPath>
+      <itemPath>config.h</itemPath>
+      <itemPath>MPU.h</itemPath>
+      <itemPath>I2c.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -15,6 +18,8 @@
                    projectFiles="true">
       <itemPath>main.c</itemPath>
       <itemPath>USART.c</itemPath>
+      <itemPath>MPU.c</itemPath>
+      <itemPath>I2c.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

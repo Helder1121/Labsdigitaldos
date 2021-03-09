@@ -4,17 +4,17 @@
  * Comments:
  * Revision history: 
  */
-#ifndef __USART_H_
-#define	__USART_H_
+#define _XTAL_FREQ  16000000
 
-#include <xc.h> // include processor files - each processor file is guarded.  
-#include <stdint.h>
+#define BaudRate    57800
+#define TX_D        TRISC6
+#define RX_D        TRISC7
 
-void _baudios(void);
-void config_txsta(void);
-void config_rcsta(void);
-uint8_t Read_USART();
-void Write_USART_String(char *a);
-void Write_USART(uint8_t a);
-#endif	/* __UART_H_ */
+//-----------[ Functions' Prototypes ]--------------
+
+//---[ UART Routines ]---
+
+void UART_TX_Init(void);
+void UART_Write(unsigned char);
+void UART_Write_String(char*);
 
