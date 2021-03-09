@@ -1,4 +1,4 @@
-# 1 "USART.c"
+# 1 "I2c.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,14 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "USART.c" 2
-# 10 "USART.c"
+# 1 "I2c.c" 2
+
+
+
+
+
+
+
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,42 +2494,114 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 10 "USART.c" 2
+# 8 "I2c.c" 2
 
-# 1 "./USART.h" 1
-# 17 "./USART.h"
-void UART_TX_Init(void);
-void UART_Write(unsigned char);
-void UART_Write_String(char*);
-# 11 "USART.c" 2
+# 1 "./I2c.h" 1
+# 13 "./I2c.h"
+void I2C_Master_Init();
+void I2C_Master_Wait();
+void I2C_Master_Start();
+void I2C_Start(char add);
+void I2C_Master_RepeatedStart();
+void I2C_Master_Stop();
+void I2C_ACK();
+void I2C_NACK();
+unsigned char I2C_Master_Write(unsigned char data);
+unsigned char I2C_Read_Byte();
+unsigned char I2C_Read(unsigned char);
+# 9 "I2c.c" 2
 
 
 
 
 
 
-void UART_TX_Init(void)
+void I2C_Master_Init()
 {
-  BRGH = 1;
-  SPBRG = 51;
-
-  SYNC = 0;
-  SPEN = 1;
-
-  TRISC6 = 1;
-  TRISC7 = 1;
-  TXEN = 1;
+  SSPCON = 0x28;
+  SSPCON2 = 0x00;
+  SSPSTAT = 0x00;
+  SSPADD = ((16000000/4)/100000) - 1;
+  TRISC3 = 1;
+  TRISC4 = 1;
 }
 
-void UART_Write(unsigned char data)
+void I2C_Master_Wait()
 {
-  while(!TRMT);
-  TXREG = data;
+    while ((SSPSTAT & 0x04) || (SSPCON2 & 0x1F));
 }
 
-void UART_Write_String(char* buf)
+void I2C_Master_Start()
 {
-    int i=0;
-    while(buf[i] != '\0')
-        UART_Write(buf[i++]);
+    I2C_Master_Wait();
+    SEN = 1;
+}
+
+void I2C_Start(char add)
+{
+    I2C_Master_Wait();
+    SEN = 1;
+    I2C_Master_Write(add);
+}
+
+void I2C_Master_RepeatedStart()
+{
+    I2C_Master_Wait();
+    RSEN = 1;
+}
+
+void I2C_Master_Stop()
+{
+    I2C_Master_Wait();
+    PEN = 1;
+}
+
+void I2C_ACK(void)
+{
+ ACKDT = 0;
+    ACKEN = 1;
+    while(ACKEN);
+}
+
+void I2C_NACK(void)
+{
+ ACKDT = 1;
+ ACKEN = 1;
+    while(ACKEN);
+}
+
+unsigned char I2C_Master_Write(unsigned char data)
+{
+    I2C_Master_Wait();
+    SSPBUF = data;
+    while(!SSPIF);
+ SSPIF = 0;
+    return ACKSTAT;
+}
+
+unsigned char I2C_Read_Byte(void)
+{
+
+    I2C_Master_Wait();
+    RCEN = 1;
+ while(!SSPIF);
+ SSPIF = 0;
+    I2C_Master_Wait();
+    return SSPBUF;
+}
+
+unsigned char I2C_Read(unsigned char ACK_NACK)
+{
+
+    unsigned char Data;
+    RCEN = 1;
+    while(!BF);
+    Data = SSPBUF;
+    if(ACK_NACK==0)
+        I2C_ACK();
+    else
+        I2C_NACK();
+    while(!SSPIF);
+    SSPIF=0;
+    return Data;
 }

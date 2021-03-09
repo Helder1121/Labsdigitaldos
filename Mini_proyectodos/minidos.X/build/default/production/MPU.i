@@ -1,4 +1,4 @@
-# 1 "USART.c"
+# 1 "MPU.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,15 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "USART.c" 2
-# 10 "USART.c"
+# 1 "MPU.c" 2
+
+
+
+
+
+
+
+
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,42 +2495,221 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 10 "USART.c" 2
+# 9 "MPU.c" 2
+
+# 1 "./I2c.h" 1
+# 13 "./I2c.h"
+void I2C_Master_Init();
+void I2C_Master_Wait();
+void I2C_Master_Start();
+void I2C_Start(char add);
+void I2C_Master_RepeatedStart();
+void I2C_Master_Stop();
+void I2C_ACK();
+void I2C_NACK();
+unsigned char I2C_Master_Write(unsigned char data);
+unsigned char I2C_Read_Byte();
+unsigned char I2C_Read(unsigned char);
+# 10 "MPU.c" 2
+
+# 1 "./MPU.h" 1
+# 114 "./MPU.h"
+void MPU6050_Init();
+void MPU6050_Read();
+# 11 "MPU.c" 2
+
 
 # 1 "./USART.h" 1
 # 17 "./USART.h"
 void UART_TX_Init(void);
 void UART_Write(unsigned char);
 void UART_Write_String(char*);
-# 11 "USART.c" 2
+# 13 "MPU.c" 2
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 1 3
+
+
+
+# 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__size_t.h" 1 3
+
+
+
+typedef unsigned size_t;
+# 4 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+
+# 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__null.h" 1 3
+# 5 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
 
 
 
 
 
 
-void UART_TX_Init(void)
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdarg.h" 1 3
+
+
+
+
+
+
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+# 11 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+# 43 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 3
+struct __prbuf
 {
-  BRGH = 1;
-  SPBRG = 51;
+ char * ptr;
+ void (* func)(char);
+};
+# 85 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\conio.h" 1 3
 
-  SYNC = 0;
-  SPEN = 1;
 
-  TRISC6 = 1;
-  TRISC7 = 1;
-  TXEN = 1;
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\errno.h" 1 3
+# 29 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\errno.h" 3
+extern int errno;
+# 8 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\conio.h" 2 3
+
+
+
+
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+
+
+extern char * cgets(char *);
+extern void cputs(const char *);
+# 85 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+# 180 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 3
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+# 14 "MPU.c" 2
+
+
+
+
+
+void MPU6050_Init()
+{
+
+  _delay((unsigned long)((100)*(16000000/4000.0)));
+  I2C_Master_Init();
+
+
+  I2C_Start(0xD0);
+  I2C_Master_Write(0x19);
+  I2C_Master_Write(0x07);
+  I2C_Master_Stop();
+
+
+  I2C_Start(0xD0);
+  I2C_Master_Write(0x6B);
+  I2C_Master_Write(0x01);
+  I2C_Master_Stop();
+
+
+  I2C_Start(0xD0);
+  I2C_Master_Write(0x1A);
+  I2C_Master_Write(0x00);
+  I2C_Master_Stop();
+
+
+  I2C_Start(0xD0);
+  I2C_Master_Write(0x1C);
+  I2C_Master_Write(0x00);
+  I2C_Master_Stop();
+
+
+  I2C_Start(0xD0);
+  I2C_Master_Write(0x1B);
+  I2C_Master_Write(0x18);
+  I2C_Master_Stop();
+
+
+  I2C_Start(0xD0);
+  I2C_Master_Write(0x38);
+  I2C_Master_Write(0x01);
+  I2C_Master_Stop();
 }
 
-void UART_Write(unsigned char data)
+void MPU6050_Read()
 {
-  while(!TRMT);
-  TXREG = data;
-}
+  char buffer[40];
+  int Ax,Ay,Az,T,Gx,Gy,Gz;
 
-void UART_Write_String(char* buf)
-{
-    int i=0;
-    while(buf[i] != '\0')
-        UART_Write(buf[i++]);
+  I2C_Start(0xD0);
+  I2C_Master_Write(0x3B);
+  I2C_Master_Stop();
+  I2C_Start(0xD1);
+  Ax = ((int)I2C_Read(0)<<8) | (int)I2C_Read(0);
+  Ay = ((int)I2C_Read(0)<<8) | (int)I2C_Read(0);
+  Az = ((int)I2C_Read(0)<<8) | (int)I2C_Read(0);
+  T = ((int)I2C_Read(0)<<8) | (int)I2C_Read(0);
+  Gx = ((int)I2C_Read(0)<<8) | (int)I2C_Read(0);
+  Gy = ((int)I2C_Read(0)<<8) | (int)I2C_Read(0);
+  Gz = ((int)I2C_Read(0)<<8) | (int)I2C_Read(1);
+  I2C_Master_Stop();
+
+  PORTB = Ay/64;
+
+  sprintf(buffer,"Ax = %d    ",Ax);
+  UART_Write_String(buffer);
+
+  sprintf(buffer," Ay = %d    ",Ay);
+  UART_Write_String(buffer);
+
+  sprintf(buffer," Az = %d    ",Az);
+  UART_Write_String(buffer);
+
+  sprintf(buffer," T = %d  ",T);
+  UART_Write_String(buffer);
+
+  sprintf(buffer," Gx = %d    ",Gx);
+  UART_Write_String(buffer);
+
+  sprintf(buffer," Gy = %d    ",Gy);
+  UART_Write_String(buffer);
+
+  sprintf(buffer," Gz = %d\r\n",Gz);
+  UART_Write_String(buffer);
 }
