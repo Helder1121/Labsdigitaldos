@@ -302,8 +302,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;I2c.c: 19:   SSPSTAT = 0x00;
 [e = _SSPSTAT -> -> 0 `i `uc ]
 "20
-[; ;I2c.c: 20:   SSPADD = ((16000000/4)/100000) - 1;
-[e = _SSPADD -> - / / -> 16000000 `l -> -> 4 `i `l -> 100000 `l -> -> 1 `i `l `uc ]
+[; ;I2c.c: 20:   SSPADD = ((16000000/4)/9600) - 1;
+[e = _SSPADD -> - / / -> 16000000 `l -> -> 4 `i `l -> -> 9600 `i `l -> -> 1 `i `l `uc ]
 "21
 [; ;I2c.c: 21:   TRISC3 = 1;
 [e = _TRISC3 -> -> 1 `i `b ]

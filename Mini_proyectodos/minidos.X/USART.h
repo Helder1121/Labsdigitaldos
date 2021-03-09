@@ -6,7 +6,7 @@
  */
 #define _XTAL_FREQ  16000000
 
-#define BaudRate    57800
+#define BaudRate    9600
 #define TX_D        TRISC6
 #define RX_D        TRISC7
 

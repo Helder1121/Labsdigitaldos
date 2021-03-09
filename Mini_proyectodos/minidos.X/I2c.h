@@ -2,7 +2,7 @@
 
 #define _XTAL_FREQ             16000000
 
-#define I2C_BaudRate           100000
+#define I2C_BaudRate           9600
 #define SCL_D                  TRISC3
 #define SDA_D                  TRISC4
 
