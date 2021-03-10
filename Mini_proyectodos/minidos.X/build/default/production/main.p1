@@ -26,7 +26,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v __delay `JF1256 ~T0 @X0 0 e ]
 [p i __delay ]
 "12 main.c
-[p x FOSC  =  HS  ]
+[p x FOSC  =  INTRC_NOCLKOUT  ]
 "13
 [p x WDTE  =  OFF        ]
 "14

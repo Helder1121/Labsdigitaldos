@@ -2632,7 +2632,7 @@ extern int printf(const char *, ...);
 void MPU6050_Init()
 {
 
-  _delay((unsigned long)((100)*(16000000/4000.0)));
+  _delay((unsigned long)((100)*(8000000/4000.0)));
   I2C_Master_Init();
 
 
@@ -2692,24 +2692,10 @@ void MPU6050_Read()
 
   PORTB = (Ay+16384)/128;
 
-  sprintf(buffer,"Ax = %d    ",Ax);
-  UART_Write_String(buffer);
+
+
 
   sprintf(buffer," Ay = %d    ",Ay);
-  UART_Write_String(buffer);
-
-  sprintf(buffer," Az = %d    ",Az);
-  UART_Write_String(buffer);
-
-  sprintf(buffer," T = %d  ",T);
-  UART_Write_String(buffer);
-
-  sprintf(buffer," Gx = %d    ",Gx);
-  UART_Write_String(buffer);
-
-  sprintf(buffer," Gy = %d    ",Gy);
-  UART_Write_String(buffer);
-
-  sprintf(buffer," Gz = %d\r\n",Gz);
-  UART_Write_String(buffer);
+  UART_Write_String(PORTB);
+# 102 "MPU.c"
 }

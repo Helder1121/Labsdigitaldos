@@ -21,7 +21,7 @@
 
 // this int will hold the current count for our sketch
 int mandar = 0;
-int azul = 0;
+int LED2 = 0;
 #define LED_PIN 2
 #define RXD2 16
 #define TXD2 17
@@ -45,8 +45,9 @@ AdafruitIO_Feed *recibirFeed = io.feed("recibir");
 void setup() {
   pinMode(LED_PIN, OUTPUT);
   // start the serial connection
-  Serial.begin(115200);
-  //Serial2.begin(57800, SERIAL_8N1, RXD2, TXD2);
+  Serial.begin(9600);
+  Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2);
+  delay(1000);
 
   // wait for serial monitor to open
   while (! Serial);
@@ -76,20 +77,29 @@ void setup() {
 }
 
 void loop() {
+  if(Serial.available()){
+     Serial.write("-");
+     Serial2.write(Serial.read());
+     //LED
+     
+   }
+   if(Serial2.available()> 0){
+     //Serial.write(Serial2.read());
+     mandar = Serial2.read();
+     Serial.println(Serial2.read());
+     
+   }
 
   // io.run(); is required for all sketches.
   // it should always be present at the top of your loop
   // function. it keeps the client connected to
   // io.adafruit.com, and processes any incoming data.
   io.run();
-  //Serial.print("Data Received:");
-  //Serial.print(Serial2.readString());
-  //Serial2.println(enviar);
-  //delay(200);
-  mandar = random(0,100);
+  
+  //enviar=random(0,100);
   if (millis() > (lastUpdate + IO_LOOP_DELAY)) {
     // save count to the 'counter' feed on Adafruit IO
-    Serial.print("sending -> ");
+    Serial.print("Valor de PIC -> ");
     Serial.println(mandar);
     mandarFeed->save(mandar);
 
@@ -99,6 +109,7 @@ void loop() {
     // after publishing, store the current time
     lastUpdate = millis();
   }
+  delay(3000);
   
 }
 

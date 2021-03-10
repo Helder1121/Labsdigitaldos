@@ -2504,8 +2504,8 @@ void UART_Write_String(char*);
 
 void UART_TX_Init(void)
 {
-  BRGH = 1;
-  SPBRG = 51;
+  BRGH = 0;
+  SPBRG = 12;
 
   SYNC = 0;
   SPEN = 1;

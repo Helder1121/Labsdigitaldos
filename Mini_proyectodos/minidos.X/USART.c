@@ -16,8 +16,8 @@
 
 void UART_TX_Init(void)
 {
-  BRGH  = 1;   // Set For High-Speed Baud Rate
-  SPBRG = 51;  // Set The Baud Rate To Be 19200 bps
+  BRGH  = 0;   // Set For High-Speed Baud Rate
+  SPBRG = 12;  // Set The Baud Rate To Be 19200 bps
   //--[ Enable The Ascynchronous Serial Port ]--
   SYNC = 0;
   SPEN = 1;

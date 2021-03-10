@@ -8,7 +8,7 @@
 # 2 "<built-in>" 2
 # 1 "main.c" 2
 # 12 "main.c"
-#pragma config FOSC = HS
+#pragma config FOSC = INTRC_NOCLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
 #pragma config MCLRE = OFF

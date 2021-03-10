@@ -4,7 +4,7 @@
  * Comments:
  * Revision history: 
  */
-#define _XTAL_FREQ  16000000
+#define _XTAL_FREQ  8000000
 
 #define BaudRate    9600
 #define TX_D        TRISC6

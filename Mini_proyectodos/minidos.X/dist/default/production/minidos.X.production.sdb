@@ -126,12 +126,6 @@
 [v MPU6050_Read@buffer buffer `[40]uc  1 a 40 17 ]
 "65
 [v MPU6050_Read@Ay Ay `i  1 a 2 69 ]
-[v MPU6050_Read@Gz Gz `i  1 a 2 67 ]
-[v MPU6050_Read@Gy Gy `i  1 a 2 65 ]
-[v MPU6050_Read@Gx Gx `i  1 a 2 63 ]
-[v MPU6050_Read@T T `i  1 a 2 61 ]
-[v MPU6050_Read@Az Az `i  1 a 2 59 ]
-[v MPU6050_Read@Ax Ax `i  1 a 2 57 ]
 "102
 } 0
 "505 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\doprnt.c
@@ -193,13 +187,10 @@
 "36 D:\Cursos\Digitaldos\Labsdigitaldos\Mini_proyectodos\minidos.X\USART.c
 [v _UART_Write_String UART_Write_String `(v  1 e 1 0 ]
 {
-[v UART_Write_String@buf buf `*.4uc  1 a 1 wreg ]
 "38
-[v UART_Write_String@i i `i  1 a 2 2 ]
+[v UART_Write_String@i i `i  1 a 2 5 ]
 "36
-[v UART_Write_String@buf buf `*.4uc  1 a 1 wreg ]
-"38
-[v UART_Write_String@buf buf `*.4uc  1 a 1 4 ]
+[v UART_Write_String@buf buf `*.39uc  1 p 2 1 ]
 "41
 } 0
 "30

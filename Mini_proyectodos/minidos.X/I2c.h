@@ -1,6 +1,6 @@
 /* File: I2C.h */
 
-#define _XTAL_FREQ             16000000
+#define _XTAL_FREQ             8000000
 
 #define I2C_BaudRate           9600
 #define SCL_D                  TRISC3
