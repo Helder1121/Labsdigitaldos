@@ -2621,7 +2621,7 @@ void UART_Write_String(char*);
 void MPU6050_Init();
 void MPU6050_Read();
 # 34 "main.c" 2
-# 54 "main.c"
+# 45 "main.c"
 void main(void){
 
     UART_TX_Init();
@@ -2637,7 +2637,7 @@ void main(void){
  {
         RD2 = ~RD2;
         MPU6050_Read();
-        _delay((unsigned long)((50)*(16000000/4000.0)));
+        _delay((unsigned long)((50)*(8000000/4000.0)));
     }
     return;
 }

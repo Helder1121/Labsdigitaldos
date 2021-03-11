@@ -4,10 +4,9 @@
  *
  * Created on 9 de marzo de 2021, 01:09 AM
  */
-
+//Extraido de: https://deepbluembedded.com/mpu6050-with-microchip-pic-accelerometer-gyroscope-interfacing-with-pic/
 #include <xc.h>
 #include "I2c.h"
-
 
 //---------------[ I2C Routines ]-------------------
 //--------------------------------------------------

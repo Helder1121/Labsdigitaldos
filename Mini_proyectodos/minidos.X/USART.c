@@ -4,9 +4,10 @@
  *
  * Created on 22 de febrero de 2021, 07:53 AM
  */
-
-
-
+//Extraido de: 
+//https://deepbluembedded.com/mpu6050-with-microchip-pic-accelerometer-gyroscope-interfacing-with-pic/
+//y combinacion del proyecto pasado que tambien era de: 
+////Extraido de https://electrosome.com/
 #include <xc.h>
 #include "USART.h"
 
@@ -17,7 +18,7 @@
 void UART_TX_Init(void)
 {
   BRGH  = 0;   // Set For High-Speed Baud Rate
-  SPBRG = 12;  // Set The Baud Rate To Be 19200 bps
+  SPBRG = 12;  // Set The Baud Rate To Be 9600 bps
   //--[ Enable The Ascynchronous Serial Port ]--
   SYNC = 0;
   SPEN = 1;

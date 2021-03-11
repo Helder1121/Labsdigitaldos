@@ -4,12 +4,10 @@
  *
  * Created on 9 de marzo de 2021, 01:08 AM
  */
-
-
+//Extrado de: https://deepbluembedded.com/mpu6050-with-microchip-pic-accelerometer-gyroscope-interfacing-with-pic/
 #include <xc.h>
 #include "I2c.h"
 #include "MPU.h"
-
 #include "USART.h"  // for debugging serial terminal
 #include <stdio.h>
 
@@ -77,26 +75,9 @@ void MPU6050_Read()
   Gz = ((int)I2C_Read(0)<<8) | (int)I2C_Read(1);
   I2C_Master_Stop();
   
-  PORTB = (Ay+16384)/128;
+  PORTB = (Ay+16384)/128;//Conversion para los datos de la variable ay del 
+  //acelerometro
  
-//  sprintf(buffer,"Ax = %d    ",Ax);
-//  UART_Write_String(buffer);
- 
-  sprintf(buffer," Ay = %d    ",Ay);
+  sprintf(buffer," Ay = %d    ",Ay); 
   UART_Write_String(PORTB);
- 
-//  sprintf(buffer," Az = %d    ",Az);
-//  UART_Write_String(buffer);
-// 
-//  sprintf(buffer," T = %d  ",T);
-//  UART_Write_String(buffer);
-// 
-//  sprintf(buffer," Gx = %d    ",Gx);
-//  UART_Write_String(buffer);
-// 
-//  sprintf(buffer," Gy = %d    ",Gy);
-//  UART_Write_String(buffer);
-// 
-//  sprintf(buffer," Gz = %d\r\n",Gz);
-//  UART_Write_String(buffer);
 }

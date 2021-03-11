@@ -41,9 +41,12 @@ unsigned long lastUpdate = 0;
 // set up the 'counter' feed
 AdafruitIO_Feed *mandarFeed = io.feed("mandar");
 AdafruitIO_Feed *recibirFeed = io.feed("recibir");
+AdafruitIO_Feed *LEDREDFeed = io.feed("LEDRED");
 
 void setup() {
   pinMode(LED_PIN, OUTPUT);
+  pinMode(22, OUTPUT);
+  pinMode(23, OUTPUT);
   // start the serial connection
   Serial.begin(9600);
   Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2);
@@ -62,6 +65,7 @@ void setup() {
   // will be called whenever a message is
   // received from adafruit io.
   recibirFeed->onMessage(handleMessage);
+  LEDREDFeed->onMessage(handleMessage2);
 
   // wait for a connection
   while (io.status() < AIO_CONNECTED) {
@@ -73,6 +77,7 @@ void setup() {
   Serial.println();
   Serial.println(io.statusText());
   recibirFeed->get();
+  LEDREDFeed->get();
 
 }
 
@@ -127,5 +132,19 @@ void handleMessage(AdafruitIO_Data *data) {
   if (data->toString() == "OFF") {
     digitalWrite(LED_PIN, LOW);
   }
+}
+void handleMessage2(AdafruitIO_Data *data) {
 
+  Serial.print("received <- ");
+  Serial.println(data->value());
+
+   if(data->toString() == "ON"){      //enciende el LED azul
+    digitalWrite(22, HIGH);
+    Serial.print("LEDRED");
+    }
+   
+   if(data->toString() == "OFF"){   //apaga el LED azul
+    digitalWrite(22, LOW);  
+    Serial.print("LEDRED");
+    }
 }

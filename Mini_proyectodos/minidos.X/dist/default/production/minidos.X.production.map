@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.31\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\minidos.X.production.sym \
   --cmf=dist/default/production\minidos.X.production.cmf -z -Q16F887 \
-  -oC:\Users\betov\AppData\Local\Temp\s4n8.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\betov\AppData\Local\Temp\si78.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/minidos.X.production.map -E1 -ver=XC8 Compiler \
   --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK -ACODE=00h-07FFhx4 \
   -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 \
@@ -18,7 +18,7 @@ Linker command line:
   -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 \
   -preset_vec=00h,intentry,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=ENTRY -k C:\Users\betov\AppData\Local\Temp\s4n8.o \
+  -pfunctab=ENTRY -k C:\Users\betov\AppData\Local\Temp\si78.o \
   dist/default/production\minidos.X.production.o 
 
 Object code version is 3.11
@@ -28,31 +28,31 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\betov\AppData\Local\Temp\s4n8.o
+C:\Users\betov\AppData\Local\Temp\si78.o
                 end_init                              0        0        3        0       0
                 config                             2007     2007        2        0       4
 dist/default/production\minidos.X.production.o
                 cinit                               7FC      7FC        4      FF8       0
                 config                             2007     2007        2        0       4
-                text17                              411      411        D      822       0
-                text16                              41E      41E        D      83C       0
-                text15                              3EA      3EA        9      7D4       0
-                text14                              43A      43A       10      874       0
-                text13                              44A      44A       10      894       0
+                text17                              416      416        D      82C       0
+                text16                              423      423        D      846       0
+                text15                              3EF      3EF        9      7DE       0
+                text14                              43F      43F       10      87E       0
+                text13                              44F      44F       10      89E       0
                 text12                              5C2      5C2       9D      B84       0
-                text11                              3F3      3F3        9      7E6       0
-                text10                              3FC      3FC        9      7F8       0
-                text9                               45A      45A       27      8B4       0
-                text8                               405      405        C      80A       0
+                text11                              3F8      3F8        9      7F0       0
+                text10                              401      401        9      802       0
+                text9                               45F      45F       27      8BE       0
+                text8                               40A      40A        C      814       0
                 text7                               4AE      4AE       2F      95C       0
                 text6                               55B      55B       67      AB6       0
                 text5                               517      517       44      A2E       0
                 text4                               4DD      4DD       3A      9BA       0
                 text3                               714      714       E8      E28       0
                 text2                               65F      65F       B5      CBE       0
-                text1                               42B      42B        F      856       0
-                maintext                            481      481       2D      902       0
-                cstackBANK0                          20       20       4A       20       1
+                text1                               430      430        F      860       0
+                maintext                            486      486       28      90C       0
+                cstackBANK0                          20       20       49       20       1
                 cstackCOMMON                         70       70        E       70       1
                 strings                               3        3       1D        6       0
 
@@ -62,24 +62,24 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   CODE           
                 end_init                              0        0        3         0
                 cinit                               7FC      7FC        4         0
-                text17                              411      411        D         0
-                text16                              41E      41E        D         0
-                text15                              3EA      3EA        9         0
-                text14                              43A      43A       10         0
-                text13                              44A      44A       10         0
+                text17                              416      416        D         0
+                text16                              423      423        D         0
+                text15                              3EF      3EF        9         0
+                text14                              43F      43F       10         0
+                text13                              44F      44F       10         0
                 text12                              5C2      5C2       9D         0
-                text11                              3F3      3F3        9         0
-                text10                              3FC      3FC        9         0
-                text9                               45A      45A       27         0
-                text8                               405      405        C         0
+                text11                              3F8      3F8        9         0
+                text10                              401      401        9         0
+                text9                               45F      45F       27         0
+                text8                               40A      40A        C         0
                 text7                               4AE      4AE       2F         0
                 text6                               55B      55B       67         0
                 text5                               517      517       44         0
                 text4                               4DD      4DD       3A         0
                 text3                               714      714       E8         0
                 text2                               65F      65F       B5         0
-                text1                               42B      42B        F         0
-                maintext                            481      481       2D         0
+                text1                               430      430        F         0
+                maintext                            486      486       28         0
 
         CLASS   STRCODE        
 
@@ -94,7 +94,7 @@ TOTAL           Name                               Link     Load   Length     Sp
                 cstackCOMMON                         70       70        E         1
 
         CLASS   BANK0          
-                cstackBANK0                          20       20       4A         1
+                cstackBANK0                          20       20       49         1
 
         CLASS   BANK1          
 
@@ -128,19 +128,19 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 reset_vec                      000000  000003  000003         0       0  CODE        2
                 strings                        000003  00001D  000020         6       0  STRING      2
-                cstackBANK0                    000020  00004A  00006A        20       1  BANK0       1
+                cstackBANK0                    000020  000049  000069        20       1  BANK0       1
                 cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
-                text15                         0003EA  000009  0003F3       7D4       0  CODE        2
-                text11                         0003F3  000009  0003FC       7E6       0  CODE        2
-                text10                         0003FC  000009  000405       7F8       0  CODE        2
-                text8                          000405  00000C  000411       80A       0  CODE        2
-                text17                         000411  00000D  00041E       822       0  CODE        2
-                text16                         00041E  00000D  00042B       83C       0  CODE        2
-                text1                          00042B  00000F  00043A       856       0  CODE        2
-                text14                         00043A  000010  00044A       874       0  CODE        2
-                text13                         00044A  000010  00045A       894       0  CODE        2
-                text9                          00045A  000027  000481       8B4       0  CODE        2
-                maintext                       000481  00002D  0004AE       902       0  CODE        2
+                text15                         0003EF  000009  0003F8       7DE       0  CODE        2
+                text11                         0003F8  000009  000401       7F0       0  CODE        2
+                text10                         000401  000009  00040A       802       0  CODE        2
+                text8                          00040A  00000C  000416       814       0  CODE        2
+                text17                         000416  00000D  000423       82C       0  CODE        2
+                text16                         000423  00000D  000430       846       0  CODE        2
+                text1                          000430  00000F  00043F       860       0  CODE        2
+                text14                         00043F  000010  00044F       87E       0  CODE        2
+                text13                         00044F  000010  00045F       89E       0  CODE        2
+                text9                          00045F  000027  000486       8BE       0  CODE        2
+                maintext                       000486  000028  0004AE       90C       0  CODE        2
                 text7                          0004AE  00002F  0004DD       95C       0  CODE        2
                 text4                          0004DD  00003A  000517       9BA       0  CODE        2
                 text5                          000517  000044  00055B       A2E       0  CODE        2
@@ -154,19 +154,19 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
-        BANK0            006A-006F              6           1
+        BANK0            0069-006F              7           1
         BANK1            00A0-00EF             50           1
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
-        CODE             0020-03E9            3CA           2
+        CODE             0020-03EE            3CF           2
                          0800-1FFF            800
-        CONST            0020-03E9            100           2
+        CONST            0020-03EE            100           2
                          0800-1FFF            100
         EEDATA           2100-21FF            100           2
-        ENTRY            0020-03E9            100           2
+        ENTRY            0020-03EE            100           2
                          0800-1FFF            100
         IDLOC            2000-2003              4           2
-        RAM              006A-006F              6           1
+        RAM              0069-006F              7           1
                          00A0-00EF             50
                          0110-016F             60
                          0190-01EF             60
@@ -175,9 +175,9 @@ UNUSED ADDRESS RANGES
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
         STACK            0110-016F             60           1
-        STRCODE          0020-03E9            3CA           2
+        STRCODE          0020-03EE            3CF           2
                          0800-1FFF           1800
-        STRING           0020-03E9            100           2
+        STRING           0020-03EE            100           2
                          0800-1FFF            100
 
                                   Symbol Table
@@ -201,14 +201,14 @@ _ACKSTAT                    (abs)        048E
 _ANSELH                     (abs)        0189
 _BF                         (abs)        04A0
 _BRGH                       (abs)        04C2
-_I2C_ACK                    text11       03F3
-_I2C_Master_Init            text17       0411
-_I2C_Master_Stop            text15       03EA
-_I2C_Master_Wait            text16       041E
-_I2C_Master_Write           text14       043A
-_I2C_NACK                   text10       03FC
-_I2C_Read                   text9        045A
-_I2C_Start                  text13       044A
+_I2C_ACK                    text11       03F8
+_I2C_Master_Init            text17       0416
+_I2C_Master_Stop            text15       03EF
+_I2C_Master_Wait            text16       0423
+_I2C_Master_Write           text14       043F
+_I2C_NACK                   text10       0401
+_I2C_Read                   text9        045F
+_I2C_Start                  text13       044F
 _MPU6050_Init               text12       05C2
 _MPU6050_Read               text2        065F
 _PEN                        (abs)        048A
@@ -235,8 +235,8 @@ _TRISD2                     (abs)        0442
 _TRMT                       (abs)        04C1
 _TXEN                       (abs)        04C5
 _TXREG                      (abs)        0019
-_UART_TX_Init               text1        042B
-_UART_Write                 text8        0405
+_UART_TX_Init               text1        0430
+_UART_Write                 text8        040A
 _UART_Write_String          text7        04AE
 __Habs1                     abs1         0000
 __Hbank0                    bank0        0000
@@ -328,18 +328,18 @@ ___lwmod@divisor            cstackCOMMON 0078
 ___sp                       stack        0000
 ___stackhi                  (abs)        0000
 ___stacklo                  (abs)        0000
-__end_of_I2C_ACK            text11       03FC
-__end_of_I2C_Master_Init    text17       041E
-__end_of_I2C_Master_Stop    text15       03F3
-__end_of_I2C_Master_Wait    text16       042B
-__end_of_I2C_Master_Write   text14       044A
-__end_of_I2C_NACK           text10       0405
-__end_of_I2C_Read           text9        0481
-__end_of_I2C_Start          text13       045A
+__end_of_I2C_ACK            text11       0401
+__end_of_I2C_Master_Init    text17       0423
+__end_of_I2C_Master_Stop    text15       03F8
+__end_of_I2C_Master_Wait    text16       0430
+__end_of_I2C_Master_Write   text14       044F
+__end_of_I2C_NACK           text10       040A
+__end_of_I2C_Read           text9        0486
+__end_of_I2C_Start          text13       045F
 __end_of_MPU6050_Init       text12       065F
 __end_of_MPU6050_Read       text2        0714
-__end_of_UART_TX_Init       text1        043A
-__end_of_UART_Write         text8        0411
+__end_of_UART_TX_Init       text1        043F
+__end_of_UART_Write         text8        0416
 __end_of_UART_Write_String  text7        04DD
 __end_of___awdiv            text6        05C2
 __end_of___lwdiv            text5        055B
@@ -352,25 +352,25 @@ __end_of_sprintf            text3        07FC
 __initialization            cinit        07FC
 __pcstackBANK0              cstackBANK0  0020
 __pcstackCOMMON             cstackCOMMON 0070
-__pmaintext                 maintext     0481
+__pmaintext                 maintext     0486
 __pstrings                  strings      0003
-__ptext1                    text1        042B
-__ptext10                   text10       03FC
-__ptext11                   text11       03F3
+__ptext1                    text1        0430
+__ptext10                   text10       0401
+__ptext11                   text11       03F8
 __ptext12                   text12       05C2
-__ptext13                   text13       044A
-__ptext14                   text14       043A
-__ptext15                   text15       03EA
-__ptext16                   text16       041E
-__ptext17                   text17       0411
+__ptext13                   text13       044F
+__ptext14                   text14       043F
+__ptext15                   text15       03EF
+__ptext16                   text16       0423
+__ptext17                   text17       0416
 __ptext2                    text2        065F
 __ptext3                    text3        0714
 __ptext4                    text4        04DD
 __ptext5                    text5        0517
 __ptext6                    text6        055B
 __ptext7                    text7        04AE
-__ptext8                    text8        0405
-__ptext9                    text9        045A
+__ptext8                    text8        040A
+__ptext9                    text9        045F
 __size_of_I2C_ACK           (abs)        0000
 __size_of_I2C_Master_Init   (abs)        0000
 __size_of_I2C_Master_Stop   (abs)        0000
@@ -392,7 +392,7 @@ __size_of_sprintf           (abs)        0000
 __stringbase                strings      0008
 __stringtab                 strings      0003
 _dpowers                    strings      0009
-_main                       maintext     0481
+_main                       maintext     0486
 _sprintf                    text3        0714
 btemp                       (abs)        007E
 end_of_initialization       cinit        07FC
@@ -419,7 +419,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 54 in file "main.c"
+		line 45 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -435,9 +435,9 @@ FUNCTION INFORMATION:
  Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
       Params:         0       0       0       0       0
       Locals:         0       0       0       0       0
-      Temps:          0       3       0       0       0
-      Totals:         0       3       0       0       0
-Total ram usage:        3 bytes
+      Temps:          0       2       0       0       0
+      Totals:         0       2       0       0       0
+Total ram usage:        2 bytes
  Hardware stack levels required when called:    4
  This function calls:
 		_MPU6050_Init
@@ -450,7 +450,7 @@ Total ram usage:        3 bytes
 
  *************** function _UART_TX_Init *****************
  Defined at:
-		line 17 in file "USART.c"
+		line 14 in file "USART.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -479,7 +479,7 @@ Total ram usage:        0 bytes
 
  *************** function _MPU6050_Read *****************
  Defined at:
-		line 62 in file "MPU.c"
+		line 60 in file "MPU.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -659,7 +659,7 @@ Total ram usage:        9 bytes
 
  *************** function _UART_Write_String *****************
  Defined at:
-		line 36 in file "USART.c"
+		line 33 in file "USART.c"
  Parameters:    Size  Location     Type
   buf             2    1[COMMON] PTR unsigned char 
 		 -> RAM(512), 
@@ -690,7 +690,7 @@ Total ram usage:        6 bytes
 
  *************** function _UART_Write *****************
  Defined at:
-		line 30 in file "USART.c"
+		line 27 in file "USART.c"
  Parameters:    Size  Location     Type
   data            1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -719,7 +719,7 @@ Total ram usage:        1 bytes
 
  *************** function _I2C_Read *****************
  Defined at:
-		line 89 in file "I2c.c"
+		line 87 in file "I2c.c"
  Parameters:    Size  Location     Type
   ACK_NACK        1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -751,7 +751,7 @@ Total ram usage:        3 bytes
 
  *************** function _I2C_NACK *****************
  Defined at:
-		line 62 in file "I2c.c"
+		line 60 in file "I2c.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -780,7 +780,7 @@ Total ram usage:        0 bytes
 
  *************** function _I2C_ACK *****************
  Defined at:
-		line 55 in file "I2c.c"
+		line 53 in file "I2c.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -809,7 +809,7 @@ Total ram usage:        0 bytes
 
  *************** function _MPU6050_Init *****************
  Defined at:
-		line 19 in file "MPU.c"
+		line 17 in file "MPU.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -842,7 +842,7 @@ Total ram usage:        3 bytes
 
  *************** function _I2C_Start *****************
  Defined at:
-		line 36 in file "I2c.c"
+		line 34 in file "I2c.c"
  Parameters:    Size  Location     Type
   add             1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -874,7 +874,7 @@ Total ram usage:        1 bytes
 
  *************** function _I2C_Master_Write *****************
  Defined at:
-		line 69 in file "I2c.c"
+		line 67 in file "I2c.c"
  Parameters:    Size  Location     Type
   data            1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -906,7 +906,7 @@ Total ram usage:        1 bytes
 
  *************** function _I2C_Master_Stop *****************
  Defined at:
-		line 49 in file "I2c.c"
+		line 47 in file "I2c.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -937,7 +937,7 @@ Total ram usage:        0 bytes
 
  *************** function _I2C_Master_Wait *****************
  Defined at:
-		line 25 in file "I2c.c"
+		line 23 in file "I2c.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -971,7 +971,7 @@ Total ram usage:        0 bytes
 
  *************** function _I2C_Master_Init *****************
  Defined at:
-		line 15 in file "I2c.c"
+		line 13 in file "I2c.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1004,8 +1004,8 @@ MODULE INFORMATION
 Module		Function		Class		Link	Load	Size
 USART.c
 		_UART_Write_String		CODE           	04AE	0000	47
-		_UART_Write    		CODE           	0405	0000	12
-		_UART_TX_Init  		CODE           	042B	0000	15
+		_UART_Write    		CODE           	040A	0000	12
+		_UART_TX_Init  		CODE           	0430	0000	15
 
 USART.c estimated size: 74
 
@@ -1026,14 +1026,14 @@ C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c
 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\lwmod.c estimated size: 58
 
 I2c.c
-		_I2C_Master_Wait		CODE           	041E	0000	13
-		_I2C_Master_Init		CODE           	0411	0000	13
-		_I2C_Master_Stop		CODE           	03EA	0000	9
-		_I2C_Read      		CODE           	045A	0000	39
-		_I2C_ACK       		CODE           	03F3	0000	9
-		_I2C_Master_Write		CODE           	043A	0000	16
-		_I2C_NACK      		CODE           	03FC	0000	9
-		_I2C_Start     		CODE           	044A	0000	16
+		_I2C_Master_Wait		CODE           	0423	0000	13
+		_I2C_Master_Init		CODE           	0416	0000	13
+		_I2C_Master_Stop		CODE           	03EF	0000	9
+		_I2C_Read      		CODE           	045F	0000	39
+		_I2C_ACK       		CODE           	03F8	0000	9
+		_I2C_Master_Write		CODE           	043F	0000	16
+		_I2C_NACK      		CODE           	0401	0000	9
+		_I2C_Start     		CODE           	044F	0000	16
 
 I2c.c estimated size: 124
 
@@ -1055,7 +1055,7 @@ shared
 shared estimated size: 17
 
 main.c
-		_main          		CODE           	0481	0000	45
+		_main          		CODE           	0486	0000	40
 
-main.c estimated size: 45
+main.c estimated size: 40
 

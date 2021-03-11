@@ -13,8 +13,6 @@
 
 
 
-
-
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2495,7 +2493,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 9 "MPU.c" 2
+# 7 "MPU.c" 2
 
 # 1 "./I2c.h" 1
 # 13 "./I2c.h"
@@ -2510,13 +2508,13 @@ void I2C_NACK();
 unsigned char I2C_Master_Write(unsigned char data);
 unsigned char I2C_Read_Byte();
 unsigned char I2C_Read(unsigned char);
-# 10 "MPU.c" 2
+# 8 "MPU.c" 2
 
 # 1 "./MPU.h" 1
 # 114 "./MPU.h"
 void MPU6050_Init();
 void MPU6050_Read();
-# 11 "MPU.c" 2
+# 9 "MPU.c" 2
 
 
 # 1 "./USART.h" 1
@@ -2524,7 +2522,7 @@ void MPU6050_Read();
 void UART_TX_Init(void);
 void UART_Write(unsigned char);
 void UART_Write_String(char*);
-# 13 "MPU.c" 2
+# 11 "MPU.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdio.h" 1 3
 
@@ -2623,7 +2621,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 #pragma printf_check(sprintf) const
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
-# 14 "MPU.c" 2
+# 12 "MPU.c" 2
 
 
 
@@ -2697,5 +2695,5 @@ void MPU6050_Read()
 
   sprintf(buffer," Ay = %d    ",Ay);
   UART_Write_String(PORTB);
-# 102 "MPU.c"
+# 100 "MPU.c"
 }
