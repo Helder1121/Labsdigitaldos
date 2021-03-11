@@ -10,8 +10,6 @@
 ////Extraido de https://electrosome.com/
 #include <xc.h>
 #include "USART.h"
-
-
 //---------------[ UART Routines ]------------------
 //--------------------------------------------------
 
@@ -27,7 +25,7 @@ void UART_TX_Init(void)
   RX_D = 1;
   TXEN = 1;  // Enable UART Transmission
 }
-
+//Labs pasados
 void UART_Write(unsigned char data)
 {
   while(!TRMT);

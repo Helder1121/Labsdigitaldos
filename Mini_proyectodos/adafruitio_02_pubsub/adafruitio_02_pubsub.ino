@@ -105,7 +105,7 @@ void loop() {
   if (millis() > (lastUpdate + IO_LOOP_DELAY)) {
     // save count to the 'counter' feed on Adafruit IO
     Serial.print("Valor de PIC -> ");
-    Serial.println(mandar);
+    Serial.println(mandar);//Valor que se manda del pic
     mandarFeed->save(mandar);
 
     // increment the count by 1
@@ -126,10 +126,10 @@ void handleMessage(AdafruitIO_Data *data) {
   Serial.print("received <- ");
   Serial.println(data->value());
 
-  if (data->toString() == "ON") {
+  if (data->toString() == "ON") { //enciende el LED azul
     digitalWrite(LED_PIN, HIGH);
   }
-  if (data->toString() == "OFF") {
+  if (data->toString() == "OFF") {    //apaga el LED azul
     digitalWrite(LED_PIN, LOW);
   }
 }
