@@ -313,11 +313,11 @@ void semaforo(void){
 }
 void ganador(void){
 if (cont>8){
-  digitalWrite(led17, HIGH);
-  digitalWrite(led8, LOW);
+  digitalWrite(led17, HIGH);//Indicador J1
+  digitalWrite(led8, LOW);//Ultima led del J1
 }
 if (cont2>8){
-  digitalWrite(led18, HIGH);
-  digitalWrite(led16, LOW); 
+  digitalWrite(led18, HIGH);//Indicador J2
+  digitalWrite(led16, LOW);//Ultima led del J2 
 }
 }
