@@ -30,8 +30,8 @@ int led17 = PA_6;
 int led18 = PA_7;
 
 //Variables
-int avanzar = PUSH1; 
-int avanzar2 = PUSH2; 
+int avanzar = PUSH2; 
+int avanzar2 = PUSH1; 
 //Puertos de la tiva push1 y push2 
 int presionado = 0;
 int presionado2 = 0; 
@@ -72,8 +72,8 @@ pinMode(ledB, OUTPUT);
 pinMode(led17, OUTPUT);
 pinMode(led18, OUTPUT);
 //Push
-pinMode(avanzar, OUTPUT);
-pinMode(avanzar2, OUTPUT);
+pinMode(avanzar, INPUT_PULLUP);
+pinMode(avanzar2, INPUT_PULLUP);
 
 semaforo();
 }
