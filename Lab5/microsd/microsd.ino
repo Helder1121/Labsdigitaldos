@@ -8,7 +8,7 @@
 
 File root;
 File myFile;
-
+int imag = 0;
 void setup()
 {
   // Open serial communications and wait for port to open:
@@ -37,9 +37,46 @@ void setup()
 
 void loop()
 {
-  // nothing happens after setup finishes.
+if (Serial.available()>0){
+  imag = Serial.read();
+  if (imag == '1'){
+    myFile = SD.open("darkB.txt"); 
+    if (myFile){
+      while (myFile.available()){
+        Serial.write(myFile.read());
+      }
+      myFile.close();
+    }
+    else{
+      Serial.println("error al abrir el .txt");
+    }
+  }
 }
-
+  if (imag == '2'){
+    myFile = SD.open("mario.txt"); 
+    if (myFile){
+      while (myFile.available()){
+        Serial.write(myFile.read());
+      }
+      myFile.close();
+    }
+    else{
+      Serial.println("error al abrir el .txt");
+    }
+  }
+  if (imag == '3'){
+    myFile = SD.open("wason.txt"); 
+    if (myFile){
+      while (myFile.available()){
+        Serial.write(myFile.read());
+      }
+      myFile.close();
+    }
+    else{
+      Serial.println("error al abrir el .txt");
+    }
+  }
+}
 void printDirectory(File dir, int numTabs) {
    while(true) {
      File entry =  dir.openNextFile();
