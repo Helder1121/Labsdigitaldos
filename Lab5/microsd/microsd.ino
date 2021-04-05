@@ -1,5 +1,5 @@
 //Electronica Digital
-//Laboratorio 4
+//Laboratorio 5
 //Helder Ovalle ;18349
 //Seccion:20
 
