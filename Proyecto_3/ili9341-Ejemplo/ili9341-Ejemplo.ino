@@ -20,6 +20,10 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/timer.h"
 
+#include <SPI.h>
+#include <SD.h>
+
+
 //#include "bitmaps.h"
 #include "font.h"
 #include "lcd_registers.h"
@@ -47,9 +51,36 @@ void LCD_Print(String text, int x, int y, int fontSize, int color, int backgroun
 void LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);
 void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
 
+void open_SD_bitmap(unsigned char Bitmap_SD[], unsigned long Size_bitmap, char* filename);
+int ACII_to_HEX(char *puntero);
 
-extern uint8_t fondo[];
-extern uint8_t fondo_dos[];
+
+void LCD_SD_Sprite(int x, int y, int width, int height,int columns, int index, char flip, char offset,char * direccion);
+unsigned char Char_to_uChar(char letra);
+//Movimiento
+extern uint8_t jinmov[];
+extern uint8_t kazuya[];
+//Golpes 
+extern uint8_t jinizq[];
+extern uint8_t kazuyaizq[];
+extern uint8_t jindere[];
+extern uint8_t kazuyadere[];
+//Patadas
+extern uint8_t jinagachado[];
+extern uint8_t kazuyaagachado[];
+extern uint8_t jinpatada[];
+extern uint8_t kazuyapatada[];
+//Fondo y portada
+extern uint8_t portada[];
+extern uint8_t portada2[];
+extern uint8_t suelo[];
+//***************************
+//SD
+//***************************
+unsigned char portada_arreglo[307201]={0};
+unsigned char portadacrack_arreglo[300000]={0};
+unsigned char jinpatada_arreglo[137000]={0};
+unsigned char kazuyapatada_arreglo[129000]={0};
 //***************************************************************************************************************************************
 // Inicialización
 //***************************************************************************************************************************************
@@ -60,77 +91,200 @@ void setup() {
   Serial.println("Inicio");
   LCD_Init();
   LCD_Clear(0x00);
-  
-  FillRect(0, 0, 319, 206, 0x421b);
-  String text1 = "Super Mario World!";
-  LCD_Print(text1, 20, 100, 2, 0xffff, 0x421b);
+  FillRect(0, 0, 340, 220, 0x665F);
 //LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
     
   //LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);
-  LCD_Bitmap(0, 0, 320, 240, fondo_dos);
-/*  
-  for(int x = 0; x <319; x++){
-    LCD_Bitmap(x, 52, 16, 16, tile2);
-    LCD_Bitmap(x, 68, 16, 16, tile);
-    
-    LCD_Bitmap(x, 207, 16, 16, tile);
-    LCD_Bitmap(x, 223, 16, 16, tile);
-    x += 15;
- }
-*/  
+  //LCD_Bitmap(0, 0, 320, 240, portada);
+
+  for(int x = 0; x <319; x++){ 
+    //LCD_Bitmap(x, 220, 168, 41, baranda);
+    //LCD_Bitmap(x, 185, 168, 41, baranda);
+    //LCD_Bitmap(x, 191, 16, 16, suelo);
+    LCD_Bitmap(x, 185, 95, 40, suelo);
+    LCD_Bitmap(x, 225, 95, 40, suelo);
+    x += 94;
+ }  
+
 }
 //***************************************************************************************************************************************
 // Loop Infinito
 //***************************************************************************************************************************************
 void loop() {
- /* for(int x = 0; x <320-32; x++){
-    delay(15);
-    int anim2 = (x/35)%2;
-    
-    LCD_Sprite(x,100,16,24,planta,2,anim2,0,1);
-    V_line( x -1, 100, 24, 0x421b);
-    
-    //LCD_Bitmap(x, 100, 32, 32, prueba);
-    
-    int anim = (x/11)%8;
-    
-
-    int anim3 = (x/11)%4;
-    
-    LCD_Sprite(x, 20, 16, 32, mario,8, anim,1, 0);
-    V_line( x -1, 20, 32, 0x421b);
- 
-    //LCD_Sprite(x,100,32,32,bowser,4,anim3,0,1);
-    //V_line( x -1, 100, 32, 0x421b);
- 
- 
-    LCD_Sprite(x, 140, 16, 16, enemy,2, anim2,1, 0);
-    V_line( x -1, 140, 16, 0x421b);
-  
-    LCD_Sprite(x, 175, 16, 32, luigi,8, anim,1, 0);
-    V_line( x -1, 175, 32, 0x421b);
+    //LCD_Bitmap(0, 0, 320, 240, portada);
+    //delay(10);
+    //LCD_Bitmap(0, 0, 320, 240, portada2);
+    //open_SD_bitmap(portada_arreglo,307201,"portada.txt");
+//Movimiento de ambos jugadores
+/*  for(int x = 0; x <320-49; x++){
+    int anim = (x/35)%6;
+    LCD_Sprite(x, 100, 49,84,jinmov,6,anim,0,0 );
+    V_line(x-1,100,84,0x665F); 
   }
-  for(int x = 320-32; x >0; x--){
-    delay(5);
-    int anim = (x/11)%8;
-    int anim2 = (x/11)%2;
-    
-    LCD_Sprite(x,100,16,24,planta,2,anim2,0,0);
-    V_line( x + 16, 100, 24, 0x421b);
-    
-    //LCD_Bitmap(x, 100, 32, 32, prueba);
-    
-    //LCD_Sprite(x, 140, 16, 16, enemy,2, anim2,0, 0);
-    //V_line( x + 16, 140, 16, 0x421b);
-    
-    //LCD_Sprite(x, 175, 16, 32, luigi,8, anim,0, 0);
-    //V_line( x + 16, 175, 32, 0x421b);
+  for(int x = 320-49; x >0; x--){
+    int anim = (x/35)%6;
+    LCD_Sprite(x,100,49,84,jinmov,6,anim,1,0);
+    V_line( x+49, 100, 84, 0x665F);
+  }
 
-    //LCD_Sprite(x, 20, 16, 32, mario,8, anim,0, 0);
-    //V_line( x + 16, 20, 32, 0x421b);
-  } 
-*/
+  for(int x = 200; x <320-49; x++){
+    int anim2 = (x/35)%6;
+    LCD_Sprite(x, 100, 49,84,kazuya,6,anim2,0,0 );
+    V_line(x-1,100,84,0x665F); 
+  }
+  for(int x = 320-49; x >0; x--){
+    int anim2 = (x/35)%6;
+    LCD_Sprite(x,100,49,84,kazuya,6,anim2,1,0);
+    V_line( x+49, 100, 84, 0x665F);
+  }*/
+//Golpes de los jugadores  
+//Kazuya
+//Izquierda
+/*for(int x = 0; x <320-68; x++){
+    int anim3 = (x/35)%3;
+    LCD_Sprite(x, 99,68,85,kazuyaizq,3,anim3,0,0 );
+    V_line(x-1,99,85,0x665F); 
+  }
+  for(int x = 320-68; x >0; x--){
+    int anim3 = (x/35)%3;
+    LCD_Sprite(x,99,68,85,kazuyaizq,3,anim3,1,0);
+    V_line( x+68,99,85, 0x665F);
+  }
+//Derecha
+for(int x = 0; x <320-73; x++){
+    int anim4 = (x/35)%4;
+    LCD_Sprite(x,99,73,84,kazuyadere,4,anim4,0,0 );
+    V_line(x-1,99,85,0x665F); 
+  }
+  for(int x = 320-73; x >0; x--){
+    int anim4 = (x/35)%4;
+    LCD_Sprite(x,99,73,84,kazuyadere,4,anim4,1,0);
+    V_line( x+73,99,84, 0x665F);
+  }*/
+//Jin
+//Izquierda
+/*for(int x = 0; x <320-66; x++){
+    int anim5 = (x/35)%3;
+    LCD_Sprite(x, 102,66,82,jinizq,3,anim5,0,0 );
+    V_line(x-1,102,82,0x665F); 
+  }
+  for(int x = 320-66; x >0; x--){
+    int anim5 = (x/35)%3;
+    LCD_Sprite(x,102,66,82,jinizq,3,anim5,1,0);
+    V_line( x+66,102,82, 0x665F);
+  }
+//Derecha
+for(int x = 0; x <320-70; x++){
+    int anim6 = (x/35)%3;
+    LCD_Sprite(x,102,70,82,jindere,4,anim6,0,0 );
+    V_line(x-1,102,82,0x665F); 
+  }
+  for(int x = 320-70; x >0; x--){
+    int anim6 = (x/35)%3;
+    LCD_Sprite(x,102,70,82,jindere,4,anim6,1,0);
+    V_line( x+70,102,82, 0x665F);
+  }
+  */
+  /*
+//Patadas de los jugadores 
+//Kazuya
+//Patada
+  for(int x = 0; x <320-72; x++){
+    int anim7 = (x/35)%5;
+    LCD_Sprite(x, 102,72,92,kazuyapatada,5,anim7,0,0 );
+    V_line(x-1,102,90,0x665F); 
+  }
+  for(int x = 320-72; x >0; x--){
+    int anim7 = (x/35)%5;
+    LCD_Sprite(x,102,72,92,kazuyapatada,5,anim7,1,0);
+    V_line( x+66,102,92, 0x665F);
+  }
+//Agahcado
+  for(int x = 0; x <320-60; x++){
+    int anim8 = (x/35)%4;
+    LCD_Sprite(x,102,60,84,kazuyaagachado,4,anim8,0,0 );
+    V_line(x-1,102,84,0x665F); 
+  }
+  for(int x = 320-60; x >0; x--){
+    int anim8 = (x/35)%4;
+    LCD_Sprite(x,102,60,84,kazuyaagachado,4,anim8,1,0);
+    V_line( x+60,102,84, 0x665F);
+  }
+//Jin
+//Patada
+  for(int x = 0; x <320-84; x++){
+    int anim9 = (x/35)%5;
+    LCD_Sprite(x, 102,84,84,jinpatada,5,anim9,0,0 );
+    V_line(x-1,102,84,0x665F); 
+  }
+  for(int x = 320-84; x >0; x--){
+    int anim9 = (x/35)%5;
+    LCD_Sprite(x,102,84,84,jinpatada,5,anim9,1,0);
+    V_line( x+84,102,84, 0x665F);
+  }
+//Agahcado
+for(int x = 0; x <320-56; x++){
+    int anim10 = (x/35)%4;
+    LCD_Sprite(x,102,56,81,jinagachado,4,anim10,0,0 );
+    V_line(x-1,102,81,0x665F); 
+  }
+  for(int x = 320-56; x >0; x--){
+    int anim10 = (x/35)%4;
+    LCD_Sprite(x,102,56,81,jinagachado,4,anim10,1,0);
+    V_line( x+56,102,81, 0x665F);
+  }*/
+
+//Patadas
+  LCD_SD_Sprite( 100, 102,84, 84, 5, 0, 0, 0,"jinpatada.txt");  
 }
+
+
+//*********************************************
+// FUNCION PARA LEER VALORES ASCII DE LA SD
+//*********************************************
+void open_SD_bitmap(unsigned char Bitmap_SD[], unsigned long Size_bitmap, char* filename) {
+  File myFile = SD.open(filename);     // ABRIR EL ARCHIVO 
+  unsigned long i = 0;            
+  char Bitmap_SD_HEX[] = {0, 0};          //SE HACE ARREGLO DE DOS NUM, PARA CADA UNA DE LAS POSICIONES
+  int Pos_1, Pos_2;                     //VARIABLES DE LAS POSICIONES
+  if (myFile) {                 
+    do {
+      Bitmap_SD_HEX[0] = myFile.read(); //LEE
+      Pos_1 = ACII_to_HEX(Bitmap_SD_HEX);       //TRANSOFRMA
+      Bitmap_SD_HEX[0] = myFile.read(); //LEE
+      Pos_2 = ACII_to_HEX(Bitmap_SD_HEX);       //TRANSFORMA
+      Bitmap_SD[i] = (Pos_1 << 4) | (Pos_2 & 0xF);  //SE CONCATENA CONCATENA
+      i++;                        
+    } while (i < (Size_bitmap + 1));
+  }
+  myFile.close();                       
+}
+
+//*********************************************
+// FUNCION PARA PASAR INFO DE SD A VALORES HEXADECIMALES
+//*********************************************
+int ACII_to_HEX(char *puntero) {
+  int i = 0;
+  for (;;) {
+    char num = *puntero;
+    if (num >= '0' && num <= '9') {
+      i *= 16;
+      i += num - '0';
+    }
+    else if (num >= 'a' && num <= 'f') {
+      i *= 16;
+      i += (num - 'a') + 10;
+    }
+    else break;
+    puntero++;
+  }
+  return i;
+}
+
+
+
+
+
 //***************************************************************************************************************************************
 // Función para inicializar LCD
 //***************************************************************************************************************************************
@@ -480,4 +634,55 @@ void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int 
     
     }
   digitalWrite(LCD_CS, HIGH);
+}
+
+//************************************************************************************************
+//  convertir caracter hex a su numero en unsigned int
+//************************************************************************************************
+unsigned char Char_to_uChar(char letra){
+  unsigned char num;
+  if(letra>=48 && letra <=57){
+    num = letra - 48;
+  }
+  else if (letra >= 97 && letra <=102){
+    num = letra -87;
+  }
+  return num;
+}
+
+
+//****************************************************************************************************************************
+//Sprites
+//****************************************************************************************************************************
+void LCD_SD_Sprite(int x, int y, int width, int height,int columns, int index, char flip, char offset,char * direccion){
+  File myFile = SD.open(direccion);
+  uint16_t n = 0;
+  uint16_t dimension = width*columns*height*2;
+  unsigned char vegueta[dimension] = {};
+  if (myFile) {
+    // read from the file until there's nothing else in it:
+    while (myFile.available()) {
+      //Serial.write(myFile.read());
+      //delay(500);
+      unsigned char numero = 0;
+      for(uint8_t m = 0; m < 2; m++){
+        char caracter = myFile.read();
+        unsigned char digito = Char_to_uChar(caracter);
+        if (m == 0){
+          numero = digito*16;
+        }
+        else if (m == 1){
+          numero = numero + digito;
+        }
+      }
+      vegueta[n] = numero;
+      n ++;
+    }
+    // close the file:
+    myFile.close();
+  } else {
+    // if the file didn't open, print an error:
+    Serial.println("error opening ");
+  }
+   LCD_Sprite(x,y,width,height,vegueta,columns,index,flip,offset);
 }
