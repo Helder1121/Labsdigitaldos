@@ -55,9 +55,9 @@ void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int 
 void open_SD_bitmap(unsigned char Bitmap_SD[], unsigned long Size_bitmap, char* filename);
 int ACII_to_HEX(char *puntero);
 
-int imag = 0;
+/*int imag = 0;
 void LCD_SD_Sprite(int x, int y, int width, int height,int columns, int index, char flip, char offset,char * direccion);
-unsigned char Char_to_uChar(char letra);
+unsigned char Char_to_uChar(char letra);*/
 //Movimiento
 extern uint8_t jinmov[];
 extern uint8_t kazuya[];
@@ -79,10 +79,6 @@ extern uint8_t portada2[];
 //SD
 //***************************
 unsigned char portada_arreglo[307201]={0};
-unsigned char portadacrack_arreglo[300000]={0};
-unsigned char jinpatada_arreglo[137000]={0};
-unsigned char kazuyapatada_arreglo[129000]={0};
-unsigned char suelo_arreglo[15201]={0};
 //***************************************************************************************************************************************
 // Inicialización
 //***************************************************************************************************************************************
@@ -142,7 +138,7 @@ void loop() {
     //delay(10);
     //LCD_Bitmap(0, 0, 320, 240, portada2);
     //open_SD_bitmap(portada_arreglo,307201,"portada.txt");
-
+open_SD_bitmap(portada_arreglo, 21453, "portadaactualdos.txt");
 
 //Movimiento de ambos jugadores
 /*  for(int x = 0; x <320-49; x++){
@@ -265,6 +261,50 @@ for(int x = 0; x <320-56; x++){
 
 //Patadas
   
+}
+//***************************************************************************************************************************************
+// SD
+//***************************************************************************************************************************************
+//*********************************************
+// FUNCION PARA LEER VALORES ASCII DE LA SD
+//*********************************************
+void open_SD_bitmap(unsigned char Bitmap_SD[], unsigned long Size_bitmap, char* filename) {
+  File myFile = SD.open(filename);     // ABRIR EL ARCHIVO 
+  unsigned long i = 0;            
+  char Bitmap_SD_HEX[] = {0, 0};          //SE HACE ARREGLO DE DOS NUM, PARA CADA UNA DE LAS POSICIONES
+  int Pos_1, Pos_2;                     //VARIABLES DE LAS POSICIONES
+  if (myFile) {                 
+    do {
+      Bitmap_SD_HEX[0] = myFile.read(); //LEE
+      Pos_1 = ACII_to_HEX(Bitmap_SD_HEX);       //TRANSOFRMA
+      Bitmap_SD_HEX[0] = myFile.read(); //LEE
+      Pos_2 = ACII_to_HEX(Bitmap_SD_HEX);       //TRANSFORMA
+      Bitmap_SD[i] = (Pos_1 << 4) | (Pos_2 & 0xF);  //SE CONCATENA CONCATENA
+      i++;                        
+    } while (i < (Size_bitmap + 1));
+  }
+  myFile.close();                       
+}
+
+//*********************************************
+// FUNCION PARA PASAR INFO DE SD A VALORES HEXADECIMALES
+//*********************************************
+int ACII_to_HEX(char *puntero) {
+  int i = 0;
+  for (;;) {
+    char num = *puntero;
+    if (num >= '0' && num <= '9') {
+      i *= 16;
+      i += num - '0';
+    }
+    else if (num >= 'a' && num <= 'f') {
+      i *= 16;
+      i += (num - 'a') + 10;
+    }
+    else break;
+    puntero++;
+  }
+  return i;
 }
 
 
@@ -617,55 +657,4 @@ void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int 
     
     }
   digitalWrite(LCD_CS, HIGH);
-}
-
-//************************************************************************************************
-//  convertir caracter hex a su numero en unsigned int
-//************************************************************************************************
-unsigned char Char_to_uChar(char letra){
-  unsigned char num;
-  if(letra>=48 && letra <=57){
-    num = letra - 48;
-  }
-  else if (letra >= 97 && letra <=102){
-    num = letra -87;
-  }
-  return num;
-}
-
-
-//****************************************************************************************************************************
-//Sprites
-//****************************************************************************************************************************
-void LCD_SD_Sprite(int x, int y, int width, int height,int columns, int index, char flip, char offset,char * direccion){
-  File myFile = SD.open(direccion);
-  uint16_t n = 0;
-  uint16_t dimension = width*columns*height*2;
-  unsigned char vegueta[dimension] = {};
-  if (myFile) {
-    // read from the file until there's nothing else in it:
-    while (myFile.available()) {
-      //Serial.write(myFile.read());
-      //delay(500);
-      unsigned char numero = 0;
-      for(uint8_t m = 0; m < 2; m++){
-        char caracter = myFile.read();
-        unsigned char digito = Char_to_uChar(caracter);
-        if (m == 0){
-          numero = digito*16;
-        }
-        else if (m == 1){
-          numero = numero + digito;
-        }
-      }
-      vegueta[n] = numero;
-      n ++;
-    }
-    // close the file:
-    myFile.close();
-  } else {
-    // if the file didn't open, print an error:
-    Serial.println("error opening ");
-  }
-   LCD_Sprite(x,y,width,height,vegueta,columns,index,flip,offset);
 }
